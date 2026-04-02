@@ -200,7 +200,7 @@ requestAnimationFrame(render);
         </p>
       </div>
 
-      <div className="scrolly-anim w-full max-w-6xl aspect-video bg-black/40 rounded-lg overflow-hidden border border-white/5 relative">
+      <div className="scrolly-anim w-full max-w-7xl aspect-video bg-black/40 rounded-lg overflow-hidden border border-white/5 relative">
         {isLoading && (
           <div className="absolute inset-0 flex items-center justify-center bg-black/80 z-10">
             <span className="text-xs text-google-grey tracking-widest">
