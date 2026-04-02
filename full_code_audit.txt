@@ -1,0 +1,1997 @@
+import React, { useRef, useEffect, useState } from 'react';
+import { gsap } from 'gsap';
+import { QRCodeSVG } from 'qrcode.react';
+
+interface ARCardProps {
+  label: string;
+  modelPath: string;
+}
+
+const ARCard: React.FC<ARCardProps> = ({ label, modelPath }) => {
+  const [modelUrl, setModelUrl] = useState('');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setModelUrl(`${window.location.origin}${modelPath}`);
+    }
+  }, [modelPath]);
+
+  return (
+    <div className="ar-reveal bg-zinc-900/70 backdrop-blur-md w-full max-w-[280px] aspect-[3/4] rounded-2xl p-6 overflow-hidden border border-white/10 shadow-2xl transition-transform duration-500 hover:scale-[1.03] flex flex-col items-center justify-between group">
+      <div className="flex-grow flex items-center justify-center w-full">
+        {modelUrl && (
+          <div className="p-3 rounded-xl bg-zinc-200 shadow-inner">
+            <QRCodeSVG
+              value={modelUrl}
+              size={180}
+              level={"M"}
+              includeMargin={false}
+            />
+          </div>
+        )}
+      </div>
+
+      <div className="mt-6 text-center">
+        <p className="text-zinc-400 text-[10px] uppercase tracking-widest font-bold mb-2">
+          Scan to View
+        </p>
+        <div className="px-4 py-2 bg-zinc-800 text-white text-xs font-bold rounded-full uppercase tracking-wider group-hover:bg-blue-600 transition-colors">
+          {label}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const ARSection: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(".ar-reveal", {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+        autoAlpha: 0,
+        y: 30,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power3.out"
+      });
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section 
+      id="ar-interaction" 
+      ref={sectionRef} 
+      className="w-full py-20 flex items-center justify-center px-8 relative overflow-hidden bg-[#0b0f14] border-t border-white/5"
+    >
+      {/* Dot grid background */}
+ <div
+  className="absolute inset-0 pointer-events-none"
+  style={{
+    backgroundImage: 'radial-gradient(rgba(120,130,160,0.18) 1px, transparent 1px)',
+    backgroundSize: '18px 18px'
+  }}
+/>
+
+      <div className="max-w-6xl mx-auto flex flex-col items-center text-center justify-center gap-12 relative z-10">
+        
+        {/* Header */}
+        <div className="flex flex-col items-center gap-5">
+          <h2 className="ar-reveal text-xl md:text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent tracking-[0.2em] uppercase">
+            WANT A CLOSER LOOK?
+          </h2>
+
+          <div className="ar-reveal space-y-3 max-w-3xl">
+            <h3 className="text-white text-2xl font-bold">
+              Experience Plugin Launcher in Augmented Reality
+            </h3>
+            <p className="text-zinc-300 text-lg md:text-xl leading-relaxed">
+              Scan with your iPhone or iPad to place Plugin Launcher in your Studio.
+            </p>
+          </div>
+        </div>
+
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 w-full place-items-center">
+          <ARCard label="EFFECTS" modelPath="/models/effects.usdz" />
+          <ARCard label="INSTRUMENTS" modelPath="/models/instruments.usdz" />
+          <ARCard label="MAX CUSTOM" modelPath="/models/max.usdz" />
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
+export default ARSection;import React, { useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
+
+interface Artist {
+  name: string;
+  title: string;
+  quote: string;
+  image: string;
+}
+
+const artists: Artist[] = [
+  {
+    name: "RUDY VALENTINO JR.",
+    title: "MUSICIAN, PRODUCER & SONGWRITER",
+    quote: "“...an **amazing tool** for both pre- and post-work. Great innovation!”",
+    image: "/images/creatives_gallery/rudy.png"
+  },
+  {
+    name: "BABA OMAR",
+    title: "ACOUSTIC ENGINEER & MUSIC PRODUCER",
+    quote: "“...a lifesaver. There was never a better way to **speed up my workflow**.”",
+    image: "/images/creatives_gallery/baba.png"
+  },
+  {
+    name: "CHILANI",
+    title: "SINGER, SONGWRITER & PRODUCER",
+    quote: "“I love layering a lot of vocals. With a click, it gives me the freedom to quickly **access my creative flow** in just one window.”",
+    image: "/images/creatives_gallery/chilani.png"
+  },
+  {
+    name: "LEX CAMERON",
+    title: "MUSICAL DIRECTOR, PRODUCER & SINGER - SONGWRITER",
+    quote: "“...gives me back that **precious extra** time to put into my live and studio productions. Genius idea!!”",
+    image: "/images/creatives_gallery/lex.png"
+  },
+  {
+    name: "MICHELLE CHRISTIANSEN",
+    title: "PRODUCER & SONGWRITER",
+    quote: "“...you can select your synth or effect of choice… with the **touch of your fingers**.”",
+    image: "/images/creatives_gallery/michelle.png"
+  },
+  {
+    name: "ROUGHHOUSE",
+    title: "MUSICIAN, RECORDING ARTIST & PRODUCER",
+    quote: "“...this **amazing software** has taken my workflow to new heights… given me back hours of creative work time.”",
+    image: "/images/creatives_gallery/rough.png"
+  },
+  {
+    name: "SANTELLA AUSTIN",
+    title: "SONGWRITER, PRODUCER & VOCAL COACH",
+    quote: "“...a godsend. It allows me to **be more organized** than I have ever been before, which in turn allows me to get way more done.”",
+    image: "/images/creatives_gallery/santella.png"
+  }
+];
+
+const ArtistCard: React.FC<{ artist: Artist }> = ({ artist }) => {
+  const formatQuote = (text: string) => {
+    const parts = text.split(/\*\*(.*?)\*\*/g);
+    return parts.map((part, i) =>
+      i % 2 === 1 ? <span key={i} className="text-google-white font-bold">{part}</span> : part
+    );
+  };
+
+  return (
+    <div className="w-full h-[380px] bg-[#111111]/80 backdrop-blur-sm p-8 md:p-10 rounded-sm relative overflow-hidden flex flex-col justify-between border border-white/5 transition-all duration-500 hover:bg-[#181818] hover:border-white/10 group shadow-2xl">
+      <div className="text-google-grey text-sm md:text-lg leading-relaxed font-medium mb-4 w-full whitespace-normal relative z-10">
+        {formatQuote(artist.quote)}
+      </div>
+
+      <div className="flex justify-between items-end mt-auto w-full relative z-10">
+        <div className="flex flex-col gap-1 max-w-[65%]">
+          <h4 className="text-google-white font-bold text-sm md:text-base tracking-wider uppercase break-words">{artist.name}</h4>
+          <p className="text-google-grey text-[10px] md:text-[11px] font-bold tracking-[0.15em] uppercase leading-tight">
+            {artist.title}
+          </p>
+        </div>
+
+        <div className="relative w-24 h-24 flex-shrink-0 mb-12">
+          <div className="absolute inset-0 rounded-full border border-white/10 overflow-hidden shadow-2xl group-hover:border-white/30 transition-colors duration-500">
+            <img
+              src={artist.image}
+              alt={artist.name}
+              className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const ArtistGallery: React.FC = () => {
+  const marqueeRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  const marqueeList = [...artists, ...artists];
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.set(trackRef.current, { xPercent: 0 });
+
+      gsap.to(trackRef.current, {
+        xPercent: -50,
+        repeat: -1,
+        duration: 80,
+        ease: "none",
+      });
+    }, marqueeRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section 
+      id="artist-testimonials" 
+      className="relative w-full bg-[#030303] pt-12 pb-24 overflow-hidden border-t border-white/5"
+    >
+      {/* ABSTRACT AURORA BACKGROUND */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute top-[10%] left-[-5%] w-[45%] h-[50%] bg-blue-900/15 rounded-full blur-[120px]" />
+        <div className="absolute top-[40%] right-[5%] w-[50%] h-[55%] bg-purple-900/20 rounded-full blur-[140px]" />
+        <div className="absolute bottom-[-10%] left-[20%] w-[40%] h-[40%] bg-cyan-900/15 rounded-full blur-[100px]" />
+      </div>
+
+      {/* Subtle Texture Overlay */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-[1]" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
+
+      <div className="px-10 mb-20 text-center relative z-10">
+        <span className="textsm tracking-[0.4em] font-medium text-google-grey uppercase">
+          TRUSTED BY PROFESSIONALS
+        </span>
+      </div>
+
+      <div ref={marqueeRef} className="relative w-full z-10 overflow-hidden">
+        {/* Edge Fades - updated from #050505 to #030303 to match background */}
+        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#030303] to-transparent z-20 pointer-events-none"></div>
+        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#030303] to-transparent z-20 pointer-events-none"></div>
+
+        {/* The Track */}
+        <div ref={trackRef} className="flex whitespace-nowrap w-fit will-change-transform">
+          {marqueeList.map((artist, idx) => (
+            <div key={`${artist.name}-${idx}`} className="flex-shrink-0 mx-6 md:mx-10 w-[400px] md:w-[450px]">
+              <ArtistCard artist={artist} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ArtistGallery;import React, { useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
+
+const ComparisonTable: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(".table-row-reveal", {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+        autoAlpha: 0,
+        y: 20,
+        duration: 0.6,
+        stagger: 0.05,
+        ease: "power2.out"
+      });
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
+
+  return (
+   <section 
+  id="comparison-panel" 
+  ref={sectionRef} 
+  className="w-full bg-gradient-to-b from-[#080808] via-[#0b1220] to-[#080808] pt-24 md:pt-32 pb-20 px-6 md:px-12 border-t border-white/5"
+>
+  <div className="max-w-6xl mx-auto space-y-32">
+
+        {/* Header Block */}
+        <div className="text-center space-y-4">
+          <span className="table-row-reveal text-sm tracking-[0.4em] font-medium text-google-grey uppercase">
+            CHOOSE YOUR WORKFLOW
+          </span>
+          <h2 className="table-row-reveal text-3xl md:text-5xl font-bold text-google-white tracking-tight">
+            Logic Essentials. Total Studio Control.
+          </h2>
+        </div>
+
+        {/* Workflow Profile Table */}
+        <div className="overflow-x-auto">
+          <table className="w-full text-left border-collapse min-w-[700px]">
+            <thead>
+              <tr className="border-b border-white/10">
+                <th className="py-6 text-sm tracking-[0.3em] font-bold text-google-grey uppercase w-1/4">Workflow Profile</th>
+                <th className="py-6 text-2xl font-black text-cyan-500 text-center w-3/8">Standard</th>
+                <th className="py-6 text-2xl font-black text-orange-500 text-center w-3/8">MAX</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-white/5">
+              <tr className="table-row-reveal group hover:bg-white/[0.02] transition-colors">
+                <td className="py-8 pr-8 text-google-white font-bold align-top text-base">The Library</td>
+                <td className="py-8 px-6 text-google-grey text-center align-top leading-relaxed text-base">Optimized for every stock Logic Pro instrument and effect.</td>
+                <td className="py-8 px-6 text-google-grey text-center align-top leading-relaxed text-base">Everything in Standard, plus full support for your entire third-party collection.</td>
+              </tr>
+              <tr className="table-row-reveal group hover:bg-white/[0.02] transition-colors">
+                <td className="py-8 pr-8 text-google-white font-bold align-top text-base">The Advantage</td>
+                <td className="py-8 px-6 text-google-grey text-center align-top leading-relaxed text-base">Instant access to Logic Pro's native plugins and instruments.</td>
+                <td className="py-8 px-6 text-google-grey text-center align-top leading-relaxed text-base">A complete custom console with triple layouts and up to 840 triggers.</td>
+              </tr>
+              <tr className="table-row-reveal group hover:bg-white/[0.02] transition-colors">
+                <td className="py-8 pr-8 text-google-white font-bold align-top text-base">Workflow Match</td>
+                <td className="py-8 px-6 text-google-grey text-center align-top leading-relaxed text-base">Songwriters, producers, and stock-tool purists.</td>
+                <td className="py-8 px-6 text-google-grey text-center align-top leading-relaxed text-base">Composers, mix engineers, and sound designers.</td>
+              </tr>
+              <tr className="table-row-reveal group hover:bg-white/[0.02] transition-colors">
+                <td className="py-8 pr-8 text-google-white font-bold align-top text-base">Core Philosophy</td>
+                <td className="py-8 px-6 text-google-grey text-center align-top leading-relaxed text-base">Pure Logic Focus. (Stock plugins only).</td>
+                <td className="py-8 px-6 text-google-grey text-center align-top leading-relaxed text-base">Expansive Control. (Full AU and Native support).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        {/* Feature Comparison Table */}
+        <div className="overflow-x-auto pb-12">
+          <table className="w-full text-left border-collapse min-w-[700px]">
+            <thead>
+              <tr className="border-b border-white/10">
+                <th className="py-6 text-sm tracking-[0.3em] font-bold text-google-grey uppercase w-1/4">Feature</th>
+                <th className="py-6 text-2xl font-black text-cyan-500 text-center w-3/8">Standard</th>
+                <th className="py-6 text-2xl font-black text-orange-500 text-center w-3/8 pl-6">
+                  <div className="flex items-center justify-center gap-4">
+                    <span>MAX</span>
+                    <span className="text-[9px] tracking-[0.2em] font-black text-orange-500 bg-orange-500/10 px-3 py-1.5 rounded-full border border-orange-500/20 uppercase whitespace-nowrap">Recommended</span>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-white/5">
+              {[
+                { label: "Price", std: "£29.99", max: "£49.99 (Intro Offer)" },
+                { label: "Logic Native Plugins", std: <><span className="text-emerald-500/70 text-[1.2em] mr-2">●</span> Included</>, max: <><span className="text-emerald-500/70 text-[1.2em] mr-2">●</span> Included</> },
+                { label: "3rd Party Plugins (AU)", std: <><span className="text-white/20 text-[1.2em] mr-2">●</span> (Native Only)</>, max: <><span className="text-emerald-500/70 text-[1.2em] mr-2">●</span> Fully Supported</> },
+                { label: "Custom Projects", std: <><span className="text-white/20 text-[1.2em] mr-2">●</span> (Preset Only)</>, max: <><span className="text-emerald-500/70 text-[1.2em] mr-2">●</span> 3 Custom Views</> },
+                { label: "Multi-Action Triggers", std: <><span className="text-emerald-500/70 text-[1.2em] mr-2">●</span> Pre-assigned Macros</>, max: <><span className="text-emerald-500/70 text-[1.2em] mr-2">●</span> 4 Custom Triggers per button</> },
+                { label: "840 Trigger Capacity", std: <><span className="text-white/20 text-[1.2em] mr-2">●</span> (Standard Grid)</>, max: <><span className="text-emerald-500/70 text-[1.2em] mr-2">●</span> Fully Enabled</> },
+                { label: "Ideal For", std: "Stock Tools Only", max: "Complete Studio Control" },
+              ].map((row, i) => (
+                <tr key={i} className="table-row-reveal group hover:bg-white/[0.01] transition-colors">
+                  <td className="py-6 pr-8 text-google-white font-bold text-base">{row.label}</td>
+                  <td className="py-6 px-6 text-center text-google-grey text-base">{row.std}</td>
+<td className="py-6 px-6 text-center text-google-grey text-base">{row.max}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
+export default ComparisonTable;import React, { useState, useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
+
+interface FAQItem {
+  question: string;
+  answer: string | React.ReactNode;
+}
+
+const faqs: FAQItem[] = [
+  {
+    question: "Why is Logic Pro 11.1 required?",
+    answer: "Logic Pro 11.1 introduced an enhanced search architecture. Plugin Launcher utilizes these deep system improvements to identify and load plugins with significantly higher speed and reliability."
+  },
+  {
+    question: "Does the Standard version support third-party plugins?",
+    answer: (
+      <span>
+        Standard is optimized for Logic Pro’s native effects and instruments. For third-party Audio Units (AU) and expansive collections, you will need Plugin Launcher MAX.<br />
+        <span className="italic">Note: VST formats are not supported in Logic Pro, and therefore not supported by the launcher.</span>
+      </span>
+    )
+  },
+  {
+    question: "What kind of updates can I expect?",
+    answer: "We provide regular updates to ensure seamless compatibility with new Logic Pro native plugins and instruments as Apple releases them."
+  },
+  {
+    question: "Can I customize the Plugin Launcher Standard version?",
+    answer: "Standard comes preloaded with Logic’s native categories for a plug-and-play experience. Full layout customization and button renaming are MAX exclusives."
+  },
+  {
+    question: "Can I upgrade to MAX later?",
+    answer: "Absolutely. If your studio grows, your license can too. You can upgrade from Standard to MAX at any time by simply paying the difference."
+  },
+  {
+    question: "Do I need to purchase Flexi-Deck separately?",
+    answer: "No. Plugin Launcher is powered by the Flexi-Deck engine, which is included with every download. It runs as a lightweight host for your project."
+  },
+  {
+    question: "What is the difference between Player mode and Creator mode?",
+    answer: "Standard operates in Player Mode for a streamlined, focused workflow. MAX unlocks Creator Mode, giving you total control over layouts and multi-action triggers."
+  },
+  {
+    question: "Is there a demo I can try before purchase?",
+    answer: "Yes. Both versions include a 30-day demo period with limited features so you can experience the speed increase in your own sessions."
+  }
+];
+
+const AccordionItem: React.FC<{ item: FAQItem; isOpen: boolean; onClick: () => void }> = ({ item, isOpen, onClick }) => {
+  return (
+    <div className="border-b border-white/5 last:border-0 overflow-hidden">
+      <button
+        onClick={onClick}
+        className="w-full flex items-center justify-between py-8 text-left group focus:outline-none"
+      >
+        <span className={`text-lg md:text-xl font-bold transition-colors duration-300 ${isOpen ? 'text-google-white' : 'text-google-grey group-hover:text-google-white'}`}>
+          Q: {item.question}
+        </span>
+        <div className={`relative flex-shrink-0 ml-4 w-6 h-6 transition-transform duration-500 ${isOpen ? 'rotate-45' : 'rotate-0'}`}>
+          <div className="absolute inset-0 m-auto w-full h-[1px] bg-zinc-600 group-hover:bg-white transition-colors"></div>
+          <div className="absolute inset-0 m-auto w-[1px] h-full bg-zinc-600 group-hover:bg-white transition-colors"></div>
+        </div>
+      </button>
+
+      <div className={`grid transition-all duration-500 ease-in-out ${isOpen ? 'grid-rows-[1fr] opacity-100 pb-8' : 'grid-rows-[0fr] opacity-0'}`}>
+        <div className="overflow-hidden">
+          <p className="text-google-grey text-lg md:text-xl leading-relaxed pl-6 border-l border-zinc-800">
+            A: {item.answer}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const FAQSection: React.FC = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(".faq-reveal", {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 85%",
+        },
+        autoAlpha: 0,
+        y: 20,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power2.out"
+      });
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section id="faq-panel" ref={sectionRef} className="w-full bg-[#0a0a0a] py-24 px-8 border-t border-white/5">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-16 space-y-4">
+          <span className="faq-reveal text-sm tracking-[0.4em] font-medium text-google-grey uppercase">
+            Questions & Answers
+          </span>
+          <h2 className="faq-reveal text-3xl md:text-5xl font-bold text-google-white tracking-tight">
+            The finer details.
+          </h2>
+        </div>
+
+        <div className="faq-reveal space-y-0 max-w-4xl mx-auto">
+          {faqs.map((faq, idx) => (
+            <AccordionItem
+              key={idx}
+              item={faq}
+              isOpen={openIndex === idx}
+              onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
+            />
+          ))}
+        </div>
+
+        <div className="mt-24 text-center faq-reveal">
+          <p className="text-google-grey text-base">
+            Still looking for something? <a href="mailto:tony@bcd.center" className="text-cyan-500 hover:text-cyan-400 transition-colors underline underline-offset-4"><br />Contact our support team.</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default FAQSection;
+import React, { useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+const FeaturePanel: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isMuted, setIsMuted] = React.useState(true);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(".feature-anim", {
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 35%",
+          toggleActions: "play none none reverse"
+        },
+        autoAlpha: 0,
+        y: 20,
+        duration: 1,
+        stagger: 0.1,
+        ease: "power2.out"
+      });
+
+      ScrollTrigger.create({
+        trigger: containerRef.current,
+        start: "top 35%", // Delay until the bottom of the section is well within the viewport
+        onEnter: () => videoRef.current?.play().catch(() => { }),
+        onLeave: () => videoRef.current?.pause(),
+        onEnterBack: () => videoRef.current?.play().catch(() => { }),
+        onLeaveBack: () => videoRef.current?.pause(),
+      });
+    }, containerRef);
+    return () => ctx.revert();
+  }, []);
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
+  return (
+    <section id="panel-2-features" ref={containerRef} className="w-full bg-gradient-to-b from-[#0a0a0a] to-[#050505] py-24 px-8">
+      <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
+   <span className="feature-anim text-sm tracking-[0.4em] font-medium text-google-grey uppercase mb-4">
+          WORKFLOW ACCELERATOR
+        </span>
+
+        <h2 className="feature-anim text-4xl md:text-6xl font-bold text-google-white tracking-tight mb-4">
+          Every Plugin. One Touch.
+        </h2>
+
+        <p className="feature-anim text-google-grey text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
+          Built for high-pressure sessions. Keep your focus locked. <br />Eliminate the menu-dive. Launch your entire library <br />from a single, touch-ready interface.
+        </p>
+
+        <div className="feature-anim w-full max-w-5xl aspect-video bg-black rounded-lg overflow-hidden border border-white/5 shadow-2xl relative group">
+          <video ref={videoRef} loop muted playsInline className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+            <source src="/images/movies/bcd_promo_30_sec.mp4" type="video/mp4" />
+          </video>
+
+          <button
+            onClick={toggleMute}
+            className="absolute bottom-6 right-6 p-3 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-google-white hover:bg-white/10 hover:scale-110 transition-all duration-300 z-10"
+            aria-label={isMuted ? "Unmute video" : "Mute video"}
+          >
+            {isMuted ? (
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 9.75L19.5 12m0 0l2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
+              </svg>
+            )}
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default FeaturePanel;
+import React from 'react';
+
+const Footer: React.FC = () => {
+  return (
+    <footer className="w-full bg-black py-24 px-8 border-t border-white/5 text-center">
+      <div className="max-w-4xl mx-auto space-y-12">
+
+        {/* Label */}
+        <h2 className="text-sm tracking-[0.4em] font-medium text-google-grey uppercase">
+          Legal & Compatibility
+        </h2>
+
+        {/* Legal Block */}
+       <div className="space-y-6 text-google-grey text-[11px] md:text-xs tracking-wide leading-relaxed max-w-2xl mx-auto font-medium">
+  
+  <p>
+    Plugin Launcher and Plugin Launcher MAX are independent products <br />and are not affiliated with or endorsed by Apple Inc.
+  </p>
+
+  <p>
+    Logic Pro and macOS are trademarks of Apple Inc., registered in the U.S. and other countries.
+  </p>
+
+  <p>
+    Built for Logic Pro using Audio Units (AU). VST is not supported.
+  </p>
+
+  <p>
+    All product names, logos, and interfaces are the property of their respective owners.
+  </p>
+
+</div>
+
+        {/* Footer Bottom */}
+        <div className="pt-12 border-t border-white/5 flex flex-col items-center gap-4">
+          
+          <div className="text-[10px] tracking-[0.4em] uppercase text-google-grey font-bold">
+            © 2026 BCD. All rights reserved.
+          </div>
+
+          <a 
+            href="https://bcd.center/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-[10px] tracking-[0.2em] uppercase text-zinc-600 hover:text-cyan-500 transition-colors duration-300 font-medium"
+          >
+            bcd.center
+          </a>
+
+        </div>
+
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
+export default function FooterCTA() { return null; }
+import React, { useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
+
+const Hero: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null); // ✅ moved inside
+
+  useEffect(() => {
+    // 👉 FORCE VIDEO TO START ASAP
+    const video = videoRef.current;
+    if (video) {
+      video.play().catch(() => {});
+    }
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "+=100%",
+          scrub: 1,
+          pin: true,
+        }
+      });
+
+      tl.fromTo(".hero-title",
+        { scale: 3, autoAlpha: 0, z: 500 },
+        { scale: 1, autoAlpha: 1, z: 0, duration: 1.5, ease: "power3.out" },
+        0
+      );
+
+      gsap.set(".hero-subtitle", { autoAlpha: 0, y: 30 });
+
+      tl.to(".hero-subtitle",
+        { autoAlpha: 1, y: 0, duration: 1, ease: "power2.out" },
+        ">-=0.5"
+      );
+
+      tl.to(overlayRef.current, { opacity: 0.8, duration: 1.5 }, 0)
+        .fromTo(contentRef.current,
+          { autoAlpha: 1 },
+          { autoAlpha: 1, duration: 1.5 },
+          0
+        )
+        .fromTo(".hero-brand-logo",
+          { autoAlpha: 0, y: 20 },
+          { autoAlpha: 1, y: 0, duration: 0.8, stagger: 0.2 },
+          "-=0.5"
+        );
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  const handleScrollDown = () => {
+    gsap.to(window, {
+      duration: 1,
+      scrollTo: { y: "#panel-2-features", autoKill: true },
+      ease: "power2.inOut"
+    });
+  };
+
+  return (
+    <section
+      id="panel-1-hero"
+      ref={containerRef}
+      className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-black"
+    >
+      <div className="absolute inset-0 z-0">
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="w-full h-full object-cover scale-105"
+        >
+          <source src="/images/movies/bcd_hero.mp4" type="video/mp4" />
+        </video>
+
+        <div
+          ref={overlayRef}
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-black opacity-0 z-10"
+        />
+      </div>
+
+      <div
+        ref={contentRef}
+        className="relative z-20 text-center px-8 flex flex-col items-center"
+      >
+        <h1 className="hero-title text-5xl md:text-8xl font-bold tracking-tighter mb-4 text-google-white uppercase origin-center will-change-transform">
+          BROWSE. CLICK. DONE.
+        </h1>
+
+        <p className="hero-subtitle text-google-white text-xl md:text-3xl tracking-widest mb-12 font-medium opacity-0">
+          Load any plugin instantly.
+        </p>
+
+        <div className="flex flex-wrap justify-center items-center gap-12">
+          <img src="/images/logos/logo_logic.png" className="hero-brand-logo h-12 md:h-16 opacity-0" />
+          <img src="/images/logos/logo_studio1.png" className="hero-brand-logo h-12 md:h-16 opacity-0" />
+          <img src="/images/logos/logo_luna.png" className="hero-brand-logo h-12 md:h-16 opacity-0" />
+        </div>
+      </div>
+
+      <button
+        onClick={handleScrollDown}
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 z-30 opacity-40 hover:opacity-100"
+      >
+        <svg className="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7-7-7" />
+        </svg>
+      </button>
+    </section>
+  );
+};
+
+export default Hero;
+import React, { useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+const MaxButton: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Animation for the container appearance
+      gsap.from(".video-only-anim", {
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        },
+        autoAlpha: 0,
+        scale: 0.98,
+        duration: 0.6,
+        ease: "power3.out"
+      });
+    }, containerRef);
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section id="cinematic-break" ref={containerRef} className="w-full bg-[#000000] pt-8 pb-16 px-8 overflow-hidden border-t border-white/5">
+      <div className="max-w-7xl mx-auto">
+        <div className="video-only-anim relative group w-full aspect-video bg-zinc-950 rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_80px_rgba(0,0,0,0.8)]">
+          {/* Main Video */}
+          <video
+            ref={videoRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover opacity-90 transition-opacity duration-700 group-hover:opacity-100"
+          >
+            <source src="/images/movies/4_macros_per_button.mp4" type="video/mp4" />
+          </video>
+
+          {/* Subtle vignette and scanline effect overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60 pointer-events-none"></div>
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%]"></div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default MaxButton;
+import React from 'react';
+
+const MaxIntroSection: React.FC = () => {
+  return (
+    <section className="w-full bg-[#0a0a0a] pt-16 pb-16 px-8 flex flex-col items-center border-t border-white/5">
+
+      <div className="text-center max-w-5xl">
+        <span className="text-sm tracking-[0.4em] font-medium text-google-grey uppercase mb-4 block">
+          PLUGIN LAUNCHER MAX
+        </span>
+
+        <h2 className="text-4xl md:text-6xl font-bold text-google-white mb-4">
+          Your Custom Console.
+        </h2>
+
+        <p className="text-google-grey text-lg md:text-xl max-w-2xl mx-auto">
+          Engineered for massive third-party libraries and relentless deadlines. <br />One touch. Any plugin.
+        </p>
+      </div>
+
+    </section>
+  );
+};
+
+export default MaxIntroSection;import React, { useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
+
+const MaxSection: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const mediaRef = useRef<HTMLDivElement>(null);
+  const labelRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Entrance reveal
+      gsap.from(".max-std-anim", {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+        autoAlpha: 0,
+        y: 40,
+        duration: 1.4,
+        stagger: 0.15,
+        ease: "expo.out"
+      });
+
+      // Subtle parallax for the media column
+      gsap.to(mediaRef.current, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true
+        },
+        y: -60,
+        ease: "none"
+      });
+
+      // Subtle drift for the header label
+      gsap.to(labelRef.current, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true
+        },
+        x: -20,
+        ease: "none"
+      });
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section 
+      id="max-details" 
+      ref={sectionRef} 
+      className="relative w-full bg-[#030303] pt-12 pb-8 px-8 border-t border-white/5 overflow-hidden"
+    >
+      {/* ABSTRACT AURORA BACKGROUND */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute top-[20%] -right-[10%] w-[50%] h-[50%] bg-orange-900/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[10%] -left-[10%] w-[40%] h-[40%] bg-purple-900/15 rounded-full blur-[100px]" />
+      </div>
+
+      <style>{`
+        @keyframes spin-slow {
+          100% { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+          animation: spin-slow 4s linear infinite;
+        }
+      `}</style>
+
+      <div className="relative z-10 max-w-7xl mx-auto">
+        <div className="text-center mb-24 overflow-hidden">
+          <span ref={labelRef} className="inline-block text-sm tracking-[0.4em] font-medium text-google-grey uppercase">
+            PLUGIN LAUNCHER MAX
+          </span>
+        </div>
+
+        <div className="flex flex-col md:flex-row gap-20 items-start">
+          {/* Left Column (60%) - Parallax Media */}
+          <div ref={mediaRef} className="w-full md:w-[60%] flex flex-col gap-12">
+            <div className="max-std-anim w-full aspect-video bg-black rounded-xl overflow-hidden border border-white/10 relative group shadow-[0_0_100px_rgba(0,0,0,0.6)]">
+              <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-90 transition-opacity duration-700">
+                <source src="/images/movies/bcd_max_load_3_plugins.mp4" type="video/mp4" />
+              </video>
+            </div>
+
+            <div className="max-std-anim w-full aspect-video bg-black rounded-xl overflow-hidden border border-white/10 shadow-[0_0_80px_rgba(0,0,0,0.4)]">
+              <img
+                src="/images/launchers/logic_pro_max_angle.png"
+                alt="Plugin Launcher MAX UI Detail"
+                className="w-full h-full object-cover opacity-90 grayscale-[0.2] hover:grayscale-0 transition-all duration-700"
+              />
+            </div>
+          </div>
+
+          {/* Right Column (40%) */}
+          <div className="w-full md:w-[40%] flex flex-col pt-2 md:sticky md:top-32">
+            <div className="max-std-anim space-y-10 text-google-grey">
+              <div className="space-y-6">
+                <h3 className="text-google-white text-3xl font-bold leading-tight tracking-tight">
+                  The ultimate command center for your plugin library.
+                </h3>
+                <p className="text-base leading-relaxed">
+                 Unlock Creator Mode. With 840 programmable triggers across three dynamic layouts, MAX gives you the architecture to map, organize, and launch your entire third-party collection instantly. Engineered for the relentless pace of scoring and elite post-production.
+                </p>
+              </div>
+
+              <div className="space-y-8">
+                {/* Removed orange tab border and padding-left */}
+                <h4 className="text-google-white font-bold text-lg tracking-wide py-1">
+                  Engineered Control: Scale, Logic, Depth
+                </h4>
+
+                {/* Removed padding-left to align with headers */}
+                <div className="space-y-6">
+                  <p className="text-base leading-relaxed">
+                    <span className="text-google-white font-semibold">Triple Layouts:</span> Switch seamlessly between three custom Projects. Dedicate layouts to specific phases of your mix or massive third-party arsenals.
+                  </p>
+
+                  <p className="text-base leading-relaxed">
+                    <span className="text-google-white font-semibold">Multi-Action Triggers:</span> Command up to four unique actions per button. MAX provides the architecture for advanced users to build deep, custom macro sequences.
+                  </p>
+
+                  <p className="text-base leading-relaxed">
+                    <span className="text-google-white font-semibold">Total Access:</span> Put your massive library to work. Bring your heaviest hitters to the surface and realize the full value of the tools you own.
+                  </p>
+                </div>
+
+                <p className="text-sm text-google-grey pt-2">
+                  (Full support for Third-Party AU and Logic Pro native plugins).
+                </p>
+
+                <div className="pt-10">
+                  {/* Updated Link with Animated Neon Border */}
+                  <div className="relative inline-block group p-[2px] rounded-full overflow-hidden transition-all duration-500 hover:scale-105 active:scale-95">
+                    <div className="absolute inset-[-1000%] animate-spin-slow bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]"></div>
+                    <a 
+                      href="https://buy.stripe.com/9B6fZh9lr15wb6Q0pB8bS02" 
+                      className="relative block px-8 py-3.5 bg-neutral-950 text-neutral-200 rounded-full font-medium tracking-wide hover:bg-neutral-900 transition-colors text-center"
+            >
+                      Buy MAX Now
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default MaxSection;import React, { useRef, useEffect, useCallback } from 'react';
+import { gsap } from 'gsap';
+
+const FRAME_COUNT = 120;
+const PRELOAD_COUNT = 20;
+
+const MaxSequenceCanvas: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  const imagesRef = useRef<HTMLImageElement[]>([]);
+  const sequence = useRef({ frame: 0 });
+  const lastFrame = useRef(-1);
+
+  const render = useCallback(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas?.getContext('2d');
+    if (!canvas || !ctx) return;
+
+    const frame = Math.round(sequence.current.frame);
+    const img = imagesRef.current[frame];
+
+    if (!img || !img.complete) return;
+
+    if (frame === lastFrame.current) return;
+    lastFrame.current = frame;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    const w = canvas.clientWidth;
+    const h = canvas.clientHeight;
+
+    const scale = Math.min(w / img.width, h / img.height);
+
+    const drawW = img.width * scale;
+    const drawH = img.height * scale;
+
+    const x = (w - drawW) / 2;
+    const y = (h - drawH) / 2;
+
+    ctx.drawImage(img, x, y, drawW, drawH);
+  }, []);
+
+  useEffect(() => {
+    imagesRef.current = [];
+
+    // preload first 20
+    for (let i = 0; i < PRELOAD_COUNT; i++) {
+      const img = new Image();
+      img.src = `/images/sequences/seq_max_2/output-${String(i + 1).padStart(4, '0')}.webp`;
+
+      img.onload = async () => {
+        try { await img.decode(); } catch {}
+        if (i === 0) render();
+      };
+
+      imagesRef.current.push(img);
+    }
+
+    // batch load remaining
+    let current = PRELOAD_COUNT;
+
+    const loadNextBatch = () => {
+      const batchSize = 10;
+
+      for (let i = 0; i < batchSize && current < FRAME_COUNT; i++, current++) {
+        const img = new Image();
+        img.src = `/images/sequences/seq_max_2/output-${String(current + 1).padStart(4, '0')}.webp`;
+        imagesRef.current[current] = img;
+      }
+
+      if (current < FRAME_COUNT) {
+        setTimeout(loadNextBatch, 100);
+      }
+    };
+
+    setTimeout(loadNextBatch, 500);
+
+    const ctx = gsap.context(() => {
+      gsap.to(sequence.current, {
+        frame: FRAME_COUNT - 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "+=100%",
+          scrub: 0.5,
+          pin: true,
+          anticipatePin: 1,
+          onUpdate: render,
+        }
+      });
+    }, sectionRef);
+
+    const resize = () => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+
+      const wrapper = canvas.parentElement;
+      if (!wrapper) return;
+
+      const dpr = window.devicePixelRatio || 1;
+
+      canvas.width = wrapper.clientWidth * dpr;
+      canvas.height = wrapper.clientHeight * dpr;
+
+      const ctxCanvas = canvas.getContext('2d');
+      if (ctxCanvas) ctxCanvas.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      lastFrame.current = -1;
+      render();
+    };
+
+    window.addEventListener('resize', resize);
+    resize();
+
+    return () => {
+      ctx.revert();
+      window.removeEventListener('resize', resize);
+    };
+  }, [render]);
+
+  return (
+    <section
+      ref={sectionRef}
+      className="w-full bg-[#0a0a0a] px-8 overflow-hidden flex flex-col items-center border-t border-white/5"
+    >
+      <div className="w-full max-w-6xl aspect-[16/10] bg-black/40 rounded-lg overflow-hidden border border-white/5">
+        <canvas ref={canvasRef} className="w-full h-full" />
+      </div>
+    </section>
+  );
+};
+
+export default MaxSequenceCanvas;import React, { useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
+
+const PricingSection: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(".pricing-reveal", {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%",
+        },
+        autoAlpha: 0,
+        y: 40,
+        scale: 0.98,
+        duration: 1.4,
+        stagger: 0.3,
+        ease: "expo.out"
+      });
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section id="pricing-plans" ref={sectionRef} className="w-full bg-black pt-12 pb-24 px-8 border-t border-white/5 relative overflow-hidden">
+      <style>{`
+        @keyframes spin-slow {
+          100% { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+          animation: spin-slow 4s linear infinite;
+        }
+      `}</style>
+
+      {/* Background Glow */}
+      {/* Layered Background Glow */}
+<div className="absolute inset-0 pointer-events-none z-0">
+  
+  {/* Cyan (top-right) */}
+  <div className="absolute top-[20%] right-[10%] w-[500px] h-[500px] bg-cyan-500/10 blur-[140px] rounded-full" />
+  
+  {/* Blue (center-left) */}
+  <div className="absolute top-[40%] left-[10%] w-[600px] h-[600px] bg-blue-500/10 blur-[160px] rounded-full" />
+  
+  {/* Orange (bottom-center hint for MAX) */}
+  <div className="absolute bottom-[10%] left-1/2 -translate-x-1/2 w-[500px] h-[400px] bg-orange-500/8 blur-[140px] rounded-full" />
+
+</div>
+
+      <div className="max-w-4xl mx-auto flex flex-col items-center relative z-10">
+        <h2 className="pricing-reveal text-xl md:text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent tracking-[0.3em] uppercase text-center mb-20">
+          CHOOSE YOUR VERSION
+        </h2>
+
+        <div className="w-full space-y-16">
+          
+          {/* Standard Version */}
+          <div className="pricing-reveal flex flex-col items-center text-center max-w-2xl mx-auto">
+            <h3 className="text-white text-3xl font-bold mb-4 tracking-tight">
+  Plugin Launcher <span className="text-cyan-400">Standard</span>
+</h3>
+<p className="text-white text-xl font-bold mb-8">£29.99</p>
+
+            <ul className="text-zinc-400 text-lg space-y-4 mb-12 list-none font-medium">
+              <li>• Preloaded with all Logic Pro plugins</li>
+              <li>• Plug-and-play setup</li>
+              <li>• One-time purchase</li>
+            </ul>
+
+            <div className="relative inline-block group p-[2px] rounded-full overflow-hidden transition-all duration-500 hover:scale-105 active:scale-95">
+              <div className="absolute inset-[-1000%] animate-spin-slow bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]"></div>
+              <a 
+                href="https://buy.stripe.com/fZu3cv55bbKadeYa0b8bS01" 
+                className="relative block px-8 py-3.5 bg-neutral-950 text-neutral-200 rounded-full font-medium tracking-wide hover:bg-neutral-900 transition-colors text-center"
+              >
+                Buy Standard Now
+              </a>
+            </div>
+          </div>
+
+          <div className="pricing-reveal w-24 h-[1px] bg-white/5 mx-auto"></div>
+
+          {/* MAX Version */}
+          <div className="pricing-reveal flex flex-col items-center text-center max-w-2xl mx-auto">
+            <h3 className="text-white text-3xl font-bold mb-4 tracking-tight">
+  Plugin Launcher <span className="text-orange-400">MAX</span>
+</h3>
+<div className="flex flex-col items-center gap-2 mb-8">
+  <p className="text-white text-xl font-bold">£49.99</p>
+  <span className="text-[10px] tracking-[0.2em] font-black text-orange-500 bg-orange-500/15 px-3 py-1.5 rounded-full border border-orange-500/20 uppercase">
+    Introductory price
+  </span>
+</div>
+
+            <ul className="text-zinc-400 text-lg space-y-4 mb-12 list-none font-medium">
+              <li>• Full customization for any plugin</li>
+              <li>• Includes everything in Standard</li>
+              <li>• Full Flexi-Deck Creator license</li>
+            </ul>
+
+            <div className="relative inline-block group p-[2px] rounded-full overflow-hidden transition-all duration-500 hover:scale-105 active:scale-95">
+              <div className="absolute inset-[-1000%] animate-spin-slow bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]"></div>
+              <a 
+                href="https://buy.stripe.com/9B6fZh9lr15wb6Q0pB8bS02" 
+                className="relative block px-8 py-3.5 bg-neutral-950 text-neutral-200 rounded-full font-medium tracking-wide hover:bg-neutral-900 transition-colors text-center"
+              >
+                Buy MAX Now
+              </a>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default PricingSection;import React, { useRef, useEffect, useCallback } from 'react';
+import { gsap } from 'gsap';
+
+const FRAME_COUNT = 90;
+const PRELOAD_COUNT = 20;
+
+const SequenceCanvas: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const imagesRef = useRef<HTMLImageElement[]>([]);
+  const sequence = useRef({ frame: 0 });
+  const lastFrame = useRef(-1);
+
+  const [imagesLoaded, setImagesLoaded] = React.useState(0);
+  const [isLoading, setIsLoading] = React.useState(true);
+
+  const render = useCallback(() => {
+  const canvas = canvasRef.current;
+  const ctx = canvas?.getContext('2d');
+  if (!canvas || !ctx) return;
+
+  const frame = Math.round(sequence.current.frame);
+  const img = imagesRef.current[frame];
+
+  // FIX: check image FIRST
+  if (!img || !img.complete) return;
+
+  // THEN check frame
+  if (frame === lastFrame.current) return;
+  lastFrame.current = frame;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  const w = canvas.clientWidth;
+  const h = canvas.clientHeight;
+
+  const scale = Math.min(w / img.width, h / img.height);
+
+  const drawW = img.width * scale;
+  const drawH = img.height * scale;
+
+  const x = (w - drawW) / 2;
+  const y = (h - drawH) / 2;
+
+  ctx.drawImage(img, x, y, drawW, drawH);
+}, []);
+
+  useEffect(() => {
+    imagesRef.current = [];
+    setImagesLoaded(0);
+    setIsLoading(true);
+
+    let loadedCount = 0;
+
+    const onLoad = () => {
+      loadedCount++;
+      setImagesLoaded(loadedCount);
+
+      if (loadedCount === FRAME_COUNT) setIsLoading(false);
+      if (loadedCount === 1) {
+  requestAnimationFrame(() => {
+    sequence.current.frame = 0;
+    lastFrame.current = -1;
+    render();
+  });
+}
+    };
+
+    for (let i = 0; i < PRELOAD_COUNT; i++) {
+      const img = new Image();
+      img.src = `/images/sequences/seq_standard_2/output-${String(i + 1).padStart(4, '0')}.webp`;
+
+      img.onload = async () => {
+        try { await img.decode(); } catch {}
+        onLoad();
+      };
+
+      img.onerror = onLoad;
+
+      imagesRef.current.push(img);
+    }
+let current = PRELOAD_COUNT;
+
+const loadNextBatch = () => {
+  const batchSize = 10;
+
+  for (let i = 0; i < batchSize && current < FRAME_COUNT; i++, current++) {
+    const img = new Image();
+    img.src = `/images/sequences/seq_standard_2/output-${String(current + 1).padStart(4, '0')}.webp`;
+    imagesRef.current[current] = img;
+  }
+
+  if (current < FRAME_COUNT) {
+    setTimeout(loadNextBatch, 100);
+  }
+};
+
+// start after initial load settles
+setTimeout(loadNextBatch, 500);
+    const timeout = setTimeout(() => setIsLoading(false), 10000);
+
+    const ctx = gsap.context(() => {
+      gsap.to(sequence.current, {
+        frame: FRAME_COUNT - 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "+=200%",
+          scrub: 0.5,
+          pin: true,
+          onUpdate: render,
+        }
+      });
+
+      gsap.from(".scrolly-anim", {
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 80%",
+        },
+        autoAlpha: 0,
+        y: 20,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power2.out"
+      });
+
+      const exitTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 25%",
+          end: "top 5%",
+          scrub: true,
+        }
+      });
+
+      exitTl.to([".scrolly-text-header", ".scrolly-text-p"], {
+        autoAlpha: 0,
+        filter: "blur(10px)",
+        y: -40,
+        stagger: 0.05,
+        ease: "power1.in"
+      }, 0);
+
+      exitTl.to(".scrolly-canvas-container", {
+        y: -100,
+        scale: 1.02,
+        ease: "power1.inOut"
+      }, 0.1);
+
+    }, containerRef);
+
+    const resize = () => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+
+      const wrapper = canvas.parentElement;
+      if (!wrapper) return;
+
+      const dpr = window.devicePixelRatio || 1;
+
+      canvas.width = wrapper.clientWidth * dpr;
+      canvas.height = wrapper.clientHeight * dpr;
+
+      const ctx = canvas.getContext('2d');
+      if (ctx) ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      lastFrame.current = -1;
+requestAnimationFrame(render);
+    };
+
+    window.addEventListener('resize', resize);
+    resize(); requestAnimationFrame(render);
+
+    return () => {
+      clearTimeout(timeout);
+      ctx.revert();
+      window.removeEventListener('resize', resize);
+    };
+  }, [render]);
+
+  const progress = Math.round((imagesLoaded / FRAME_COUNT) * 100);
+
+  return (
+    <section
+      ref={containerRef}
+      className="w-full bg-[#050505] px-8 overflow-hidden flex flex-col items-center border-t border-white/5"
+    >
+      <div className="text-center mb-6 max-w-5xl">
+        <span className="scrolly-anim text-sm tracking-[0.4em] font-medium text-google-grey uppercase mb-4 block">
+          PLUGIN LAUNCHER STANDARD
+        </span>
+
+        <h2 className="scrolly-anim text-4xl md:text-6xl font-bold text-google-white mb-4">
+          The Ultimate Plug-and-Play Solution.
+        </h2>
+
+        <p className="scrolly-anim text-google-grey text-lg md:text-xl max-w-3xl mx-auto">
+          Standard delivers your native Logic Pro plugins in a curated, touch-ready Project. <br />No configuration required—just pure, high-velocity workflow.
+        </p>
+      </div>
+
+      <div className="scrolly-anim w-full max-w-6xl aspect-video bg-black/40 rounded-lg overflow-hidden border border-white/5 relative">
+        {isLoading && (
+          <div className="absolute inset-0 flex items-center justify-center bg-black/80 z-10">
+            <span className="text-xs text-google-grey tracking-widest">
+              Loading {progress}%
+            </span>
+          </div>
+        )}
+        <canvas ref={canvasRef} className="w-full h-full" />
+      </div>
+    </section>
+  );
+};
+
+export default SequenceCanvas;import React, { useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
+
+const StandardSection: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const mediaRef = useRef<HTMLDivElement>(null);
+  const labelRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Entrance reveal for text
+      gsap.from(".std-anim", {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+        autoAlpha: 0,
+        y: 30,
+        duration: 1.2,
+        stagger: 0.1,
+        ease: "expo.out"
+      });
+
+      // Subtle parallax for the media column
+      gsap.to(mediaRef.current, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true
+        },
+        y: -50,
+        ease: "none"
+      });
+
+      // Subtle drift for the header label
+      gsap.to(labelRef.current, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true
+        },
+        x: 20,
+        ease: "none"
+      });
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section id="standard-details" ref={sectionRef} className="w-full bg-[radial-gradient(circle_at_top_right,_#0d0d0d_0%,_#050505_100%)] pt-12 pb-8 px-8 border-t border-white/5 overflow-hidden">
+      {/* Animation Styles */}
+      <style>{`
+        @keyframes spin-slow {
+          100% { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+          animation: spin-slow 4s linear infinite;
+        }
+      `}</style>
+
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-16 overflow-hidden">
+          <span ref={labelRef} className="inline-block text-sm tracking-[0.4em] font-medium text-google-grey uppercase">
+            PLUGIN LAUNCHER STANDARD
+          </span>
+        </div>
+
+        <div className="flex flex-col md:flex-row gap-20 items-start">
+          {/* Left Column (60%) - Stacked Media */}
+          <div ref={mediaRef} className="w-full md:w-[60%] flex flex-col gap-12">
+            <div className="std-anim w-full aspect-video bg-black rounded-lg overflow-hidden border border-white/5 relative group shadow-2xl">
+              <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700">
+                <source src="/images/movies/bcd_standard_3_plugins.mp4" type="video/mp4" />
+              </video>
+            </div>
+
+            <div className="std-anim w-full aspect-video bg-black rounded-lg overflow-hidden border border-white/5 shadow-xl">
+              <img
+                src="/images/launchers/logic_pro_standard_angle.png"
+                alt="Plugin Launcher Standard UI Detail"
+                className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-700"
+              />
+            </div>
+          </div>
+
+          {/* Right Column (40%) - Text Content */}
+          <div className="w-full md:w-[40%] flex flex-col pt-4 md:sticky md:top-32">
+            <div className="std-anim space-y-6 text-google-grey">
+              <h3 className="text-google-white text-2xl md:text-3xl font-bold leading-tight tracking-tight">
+  Zero friction. Pure speed. <br />
+  Replace deep drop-down menus <br />
+  with a touch-ready project.
+</h3>
+
+              <p className="text-base leading-relaxed">
+                Every native Logic Pro plugin and instrument is pre-mapped and ready to launch. Maintain your creative momentum and summon the exact tool you need, the moment you need it.
+              </p>
+
+              <div className="pt-2 space-y-6">
+                <div className="space-y-3">
+                  <h3 className="text-google-white text-xl font-bold tracking-tight">The Methodology.</h3>
+                  <p className="text-base leading-relaxed">
+                    The ultimate workflow is built on three simple steps: <br />
+                    <span className="text-google-white font-semibold">Browse. Click. Done.</span>
+                  </p>
+                </div>
+
+                <p className="text-base leading-relaxed">
+                  A single tap triggers a smart macro that bypasses the menu and loads your plugin instantly. <br />
+                  No scrolling. No typing. Just mixing.
+                </p>
+
+                <div className="pt-6">
+                  {/* Updated Link with Cyan Neon Border */}
+                  <div className="relative inline-block group p-[2px] rounded-full overflow-hidden transition-all duration-500 hover:scale-105 active:scale-95">
+                    <div className="absolute inset-[-1000%] animate-spin-slow bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]"></div>
+                    <a 
+                      href="https://buy.stripe.com/fZu3cv55bbKadeYa0b8bS01" 
+                      className="relative block px-8 py-3.5 bg-neutral-950 text-neutral-200 rounded-full font-medium tracking-wide hover:bg-neutral-900 transition-colors text-center"
+                    >
+                      Buy Standard Now
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default StandardSection;import React, { useEffect } from 'react';
+
+const Success: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-[#030303] flex flex-col items-center pt-24 pb-32 px-4 relative overflow-hidden">
+      
+      {/* ABSTRACT AURORA BACKGROUND - Mirroring the main site style */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute top-[10%] -right-[10%] w-[60%] h-[50%] bg-cyan-900/15 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[5%] -left-[10%] w-[50%] h-[50%] bg-orange-900/10 rounded-full blur-[100px]" />
+        <div className="absolute top-[40%] left-[20%] w-[30%] h-[30%] bg-blue-900/10 rounded-full blur-[80px]" />
+      </div>
+
+      <div className="relative z-10 max-w-6xl mx-auto w-full flex flex-col items-center">
+        
+        {/* Header Section */}
+        <div className="text-center mb-16">
+          <span className="inline-block px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-xs font-bold tracking-[0.2em] uppercase mb-6">
+            Payment Successful
+          </span>
+          <h1 className="text-4xl md:text-6xl font-bold text-google-white tracking-tight mb-4">
+            Flow Initiated.
+          </h1>
+          <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
+            Welcome to the movement. Your Flexi-Deck license and BCD **Project** download link are on their way to your inbox.
+          </p>
+        </div>
+
+        {/* Molly's Welcome Stage (Primary Focus) */}
+        <div className="w-full max-w-4xl aspect-video bg-black rounded-2xl border border-white/10 overflow-hidden shadow-[0_0_80px_rgba(0,0,0,0.6)] mb-20 relative group">
+          <video 
+            controls 
+            className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-700"
+            poster="/images/molly_welcome_poster.jpg"
+          >
+            <source src="/videos/Molly_BCD.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        {/* 2x2 Setup Video Layout */}
+        <div className="w-full">
+          <h3 className="text-2xl font-bold text-google-white mb-10 text-center tracking-tight">While you wait, let's get your workstation ready.</h3>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            {/* Card 1: Flexi-Deck Engine */}
+            <div className="p-1 bg-gradient-to-br from-white/10 to-transparent rounded-xl">
+              <div className="bg-[#0a0a0a] p-8 rounded-xl h-full border border-white/5 hover:border-cyan-500/30 transition-colors">
+                <div className="w-12 h-12 bg-cyan-500/10 text-cyan-400 rounded-lg flex items-center justify-center mb-6">
+                  <span className="font-bold">01</span>
+                </div>
+                <h4 className="text-xl font-bold text-white mb-3">Installing the Engine</h4>
+                <p className="text-zinc-400 leading-relaxed mb-6">Learn how to install the Flexi-Deck host and authorize your unique license key.</p>
+                <button className="text-cyan-400 font-bold hover:text-white transition-colors flex items-center gap-2">
+                  Watch Tutorial <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+              </div>
+            </div>
+
+            {/* Card 2: Loading Projects */}
+            <div className="p-1 bg-gradient-to-br from-white/10 to-transparent rounded-xl">
+              <div className="bg-[#0a0a0a] p-8 rounded-xl h-full border border-white/5 hover:border-cyan-500/30 transition-colors">
+                <div className="w-12 h-12 bg-cyan-500/10 text-cyan-400 rounded-lg flex items-center justify-center mb-6">
+                  <span className="font-bold">02</span>
+                </div>
+                <h4 className="text-xl font-bold text-white mb-3">Loading BCD Projects</h4>
+                <p className="text-zinc-400 leading-relaxed mb-6">How to import your BCD **Project** file and navigate the custom **Menus**.</p>
+                <button className="text-cyan-400 font-bold hover:text-white transition-colors flex items-center gap-2">
+                  Watch Tutorial <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+              </div>
+            </div>
+
+            {/* Card 3: Button Logic */}
+            <div className="p-1 bg-gradient-to-br from-white/10 to-transparent rounded-xl">
+              <div className="bg-[#0a0a0a] p-8 rounded-xl h-full border border-white/5 hover:border-cyan-500/30 transition-colors">
+                <div className="w-12 h-12 bg-cyan-500/10 text-cyan-400 rounded-lg flex items-center justify-center mb-6">
+                  <span className="font-bold">03</span>
+                </div>
+                <h4 className="text-xl font-bold text-white mb-3">Button & Macro Layout</h4>
+                <p className="text-zinc-400 leading-relaxed mb-6">A deep dive into how our **Buttons** use 4-slot **Macros** to trigger your plugins.</p>
+                <button className="text-cyan-400 font-bold hover:text-white transition-colors flex items-center gap-2">
+                  Watch Tutorial <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+              </div>
+            </div>
+
+            {/* Card 4: Support & Community */}
+            <div className="p-1 bg-gradient-to-br from-white/10 to-transparent rounded-xl">
+              <div className="bg-[#0a0a0a] p-8 rounded-xl h-full border border-white/5 hover:border-cyan-500/30 transition-colors">
+                <div className="w-12 h-12 bg-cyan-500/10 text-cyan-400 rounded-lg flex items-center justify-center mb-6">
+                  <span className="font-bold">04</span>
+                </div>
+                <h4 className="text-xl font-bold text-white mb-3">Community Support</h4>
+                <p className="text-zinc-400 leading-relaxed mb-6">Join the BCD Studio community for workflow tips and template updates.</p>
+                <button className="text-cyan-400 font-bold hover:text-white transition-colors flex items-center gap-2">
+                  Join Discord <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+};
+
+export default Success;import React, { useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
+
+const TechnicalDetails: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(".tech-reveal", {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 85%",
+        },
+        autoAlpha: 0,
+        y: 20,
+        duration: 1,
+        stagger: 0.1,
+        ease: "power2.out"
+      });
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section 
+      id="tech-specs" 
+      ref={sectionRef} 
+      className="relative w-full bg-gradient-to-b from-[#030303] via-[#0b1220] to-[#030303] py-24 px-8 border-t border-white/5 overflow-hidden"
+    >
+      {/* ABSTRACT BLURRED BACKGROUND - Matching WhyInvest */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        {/* Deep Cyan - Top Right this time for variety */}
+        <div className="absolute -top-[10%] -right-[10%] w-[50%] h-[50%] bg-cyan-900/15 rounded-full blur-[120px]" />
+        
+        {/* Deep Purple - Mid Left */}
+        <div className="absolute top-[20%] -left-[10%] w-[60%] h-[60%] bg-purple-900/20 rounded-full blur-[140px]" />
+        
+        {/* Deep Blue - Bottom Center */}
+        <div className="absolute bottom-[-10%] left-[25%] w-[50%] h-[50%] bg-blue-900/20 rounded-full blur-[120px]" />
+      </div>
+
+      {/* Container: Maintained your centering and max-width */}
+      <div className="relative z-10 max-w-4xl mx-auto text-center space-y-14 md:space-y-16">
+
+        {/* Main Title */}
+        <div className="space-y-3">
+          <span className="tech-reveal text-sm tracking-[0.4em] font-medium text-google-grey uppercase">
+            Technical Specifications
+          </span>
+          <h2 className="tech-reveal text-3xl md:text-5xl font-bold text-google-white tracking-tight">
+            The engine behind the speed.
+          </h2>
+        </div>
+
+        {/* Integration & Performance */}
+        <div className="space-y-5 md:space-y-6">
+          <h3 className="tech-reveal text-google-white text-lg font-medium uppercase tracking-widest">
+            Integration & Performance
+          </h3>
+          <ul className="tech-reveal space-y-3 text-google-grey text-base md:text-lg text-left max-w-2xl mx-auto">
+            <li className="flex gap-4">
+              <span className="text-cyan-500">•</span>
+              <span><strong>Native Performance:</strong> Powered by the Flexi-Deck engine (included), the launcher operates with minimal CPU impact and no UI clutter.</span>
+            </li>
+            <li className="flex gap-4">
+              <span className="text-cyan-500">•</span>
+              <span><strong>Auto-Pilot:</strong> Software launches automatically with Logic Pro and remains hidden until called, ensuring a zero-friction startup.</span>
+            </li>
+            <li className="flex gap-4">
+              <span className="text-cyan-500">•</span>
+              <span><strong>Deep Integration:</strong> Utilizes the macOS accessibility layer to command Logic Pro without the need for complex scripting.</span>
+            </li>
+          </ul>
+        </div>
+
+        {/* Separator */}
+        <div className="tech-reveal flex justify-center py-6">
+          <div className="w-16 h-[1px] bg-zinc-800"></div>
+        </div>
+
+        {/* Demo & Licensing */}
+        <div className="space-y-6">
+          <h3 className="tech-reveal text-google-white text-lg font-medium uppercase tracking-widest">
+            Licensing & Trial
+          </h3>
+          <ul className="tech-reveal space-y-4 text-google-grey text-lg text-left max-w-2xl mx-auto">
+            <li className="flex gap-4">
+              <span className="text-cyan-500">•</span>
+              <span><strong>30-Day Evaluation:</strong> Both versions include a 30-day trial with full access to the visual grid and plugin launching capabilities.</span>
+            </li>
+            <li className="flex gap-4">
+              <span className="text-cyan-500">•</span>
+              <span><strong>Standard Tier:</strong> Activates the Flexi-Deck Player mode for a streamlined, plug-and-play experience.</span>
+            </li>
+            <li className="flex gap-4">
+              <span className="text-cyan-500">•</span>
+              <span><strong>MAX Tier:</strong> Unlocks Creator Mode, allowing for total customization of layouts and advanced multi-action triggers.</span>
+            </li>
+          </ul>
+        </div>
+
+        {/* Separator */}
+        <div className="tech-reveal flex justify-center py-6">
+          <div className="w-16 h-[1px] bg-zinc-800"></div>
+        </div>
+
+        {/* System Requirements */}
+        <div className="space-y-6">
+          <h3 className="tech-reveal text-google-white text-lg font-medium uppercase tracking-widest">
+            System Requirements
+          </h3>
+          <div className="tech-reveal space-y-2 text-google-grey text-lg">
+            <p><strong>OS:</strong> macOS 13 Ventura or later</p>
+            <p><strong>DAW:</strong> Logic Pro 11.1 or later (required for enhanced plugin search speed)</p>
+            <p><strong>Hardware:</strong> Intel or Apple Silicon (M1, M2, M3, M4) Macs</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
+export default TechnicalDetails;
+// This file is intentionally left empty and should be deleted from the project.
+export default null;
+
+import React, { useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+const VideoOnlySection: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Animation for the container appearance
+      gsap.from(".video-only-anim", {
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 80%",
+          toggleActions: "play none none reverse"
+        },
+        autoAlpha: 0,
+        scale: 0.98,
+        duration: 0.6,
+        ease: "power3.out"
+      });
+    }, containerRef);
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section id="cinematic-break" ref={containerRef} className="w-full bg-[#000000] pt-8 pb-16 px-8 overflow-hidden border-t border-white/5">
+      <div className="max-w-7xl mx-auto">
+        <div className="video-only-anim relative group w-full aspect-video bg-zinc-950 rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_80px_rgba(0,0,0,0.8)]">
+          {/* Main Video */}
+          <video
+            ref={videoRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover opacity-90 transition-opacity duration-700 group-hover:opacity-100"
+          >
+            <source src="/images/movies/bcd_max_promo_10_sec.mp4" type="video/mp4" />
+          </video>
+
+          {/* Subtle vignette and scanline effect overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60 pointer-events-none"></div>
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%]"></div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default VideoOnlySection;
+import React, { useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
+
+const WhyInvest: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(".invest-reveal", {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 85%",
+        },
+        autoAlpha: 0,
+        y: 20,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power2.out"
+      });
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section 
+      id="why-invest-now" 
+      ref={sectionRef} 
+      className="relative w-full bg-gradient-to-b from-[#030303] via-[#0b1220] to-[#030303] pt-20 pb-12 px-8 border-t border-white/5 overflow-hidden"
+    >
+      {/* ABSTRACT BLURRED BACKGROUND */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] bg-cyan-900/15 rounded-full blur-[120px]" />
+        <div className="absolute top-[30%] -right-[10%] w-[60%] h-[60%] bg-purple-900/20 rounded-full blur-[140px]" />
+        <div className="absolute bottom-[0%] left-[10%] w-[45%] h-[45%] bg-blue-900/20 rounded-full blur-[100px]" />
+      </div>
+
+      <div className="relative z-10 max-w-5xl mx-auto text-center space-y-16">
+
+        {/* Section Heading */}
+        <div className="space-y-8">
+          <h3 className="invest-reveal text-3xl md:text-5xl text-white font-bold leading-tight tracking-tight">
+            Time is your most valuable asset.<br />
+            For professionals, Plugin Launcher <br className="hidden md:block" /> pays for itself in a single session.
+          </h3>
+          <p className="invest-reveal text-neutral-400 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+            Investing in Plugin Launcher is an investment <br />in your productivity, your creativity, and your vision.
+          </p>
+        </div>
+
+        {/* Updated Benefits List */}
+        <div className="space-y-16">
+          <h2 className="invest-reveal text-sm tracking-[0.4em] font-medium text-neutral-500 uppercase">
+            CORE PROFESSIONAL ADVANTAGES:
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 max-w-4xl mx-auto text-left">
+            
+            <div className="invest-reveal space-y-3">
+              <span className="text-white font-bold text-xl block">Zero-Friction Integration</span>
+              <p className="text-neutral-400 text-sm md:text-base leading-relaxed">
+                Auto-starts with Logic Pro and discreetly hides until called. Minimal CPU footprint ensures your system stays focused on audio.
+              </p>
+            </div>
+
+            <div className="invest-reveal space-y-3">
+              <span className="text-white font-bold text-xl block">Instant Visual Clarity</span>
+              <p className="text-neutral-400 text-sm md:text-base leading-relaxed">
+                See your entire library clearly organized and ready to launch, follow your creative vision and flow.
+              </p>
+            </div>
+
+            <div className="invest-reveal space-y-3">
+              <span className="text-white font-bold text-xl block">Responsive Architecture</span>
+              <p className="text-neutral-400 text-sm md:text-base leading-relaxed">
+                An interface that adapts to your screen. Intuitive pinch-to-zoom resizing ensures the project fits perfectly into your display setup.
+              </p>
+            </div>
+
+            <div className="invest-reveal space-y-3">
+              <span className="text-white font-bold text-xl block">Advanced Command (MAX Tier)</span>
+              <p className="text-neutral-400 text-sm md:text-base leading-relaxed">
+                Unlock the full power of Triple Layouts and Multi-Action Triggers to tame even the most expansive third-party collections.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        {/* Final Statement */}
+        <div className="pt-20">
+          <h2 className="invest-reveal text-white text-3xl md:text-5xl font-bold tracking-tighter leading-[1.1]">
+            Revolutionize your Logic Pro <br className="hidden md:block" /> workflow today.
+          </h2>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default WhyInvest;

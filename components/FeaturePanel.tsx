@@ -44,7 +44,7 @@ const FeaturePanel: React.FC = () => {
 
   return (
     <section id="panel-2-features" ref={containerRef} className="w-full bg-gradient-to-b from-[#0a0a0a] to-[#050505] py-24 px-8">
-      <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
+      <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
    <span className="feature-anim text-sm tracking-[0.4em] font-medium text-google-grey uppercase mb-4">
           WORKFLOW ACCELERATOR
         </span>
@@ -57,7 +57,7 @@ const FeaturePanel: React.FC = () => {
           Built for high-pressure sessions. Keep your focus locked. <br />Eliminate the menu-dive. Launch your entire library <br />from a single, touch-ready interface.
         </p>
 
-        <div className="feature-anim w-full max-w-5xl aspect-video bg-black rounded-lg overflow-hidden border border-white/5 shadow-2xl relative group">
+        <div className="feature-anim w-full aspect-video bg-black rounded-lg overflow-hidden border border-white/5 shadow-2xl relative group">
           <video ref={videoRef} loop muted playsInline className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
             <source src="/images/movies/bcd_promo_30_sec.mp4" type="video/mp4" />
           </video>
