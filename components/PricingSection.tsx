@@ -31,27 +31,34 @@ const PricingSection: React.FC = () => {
         .animate-spin-slow {
           animation: spin-slow 4s linear infinite;
         }
+        /* Simulation of high-quality analog film grain texture */
         .bg-grain {
-          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3%3Cfilter id='noiseFilter'%3%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3%3C/filter%3%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3%3C/svg%3E");
-          opacity: 0.04;
+          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3%3Cfilter id='noiseFilter'%3%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3%3C/filter%3%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3%3C/svg%3E");
+          opacity: 0.05; /* Distinctive noise */
+          filter: contrast(150%);
         }
       `}</style>
 
-      {/* Deep-Space Plasma Background */}
+      {/* Deep-Space Organic Plasma and Grain Background (NO CIRCLES) */}
       <div className="absolute inset-0 pointer-events-none z-0">
         
-        {/* The "Inspire" Blue Core (Center-Right) */}
-        <div className="absolute top-[20%] right-[-5%] w-[800px] h-[800px] bg-blue-600/30 blur-[150px] rounded-full" />
-        <div className="absolute top-[30%] right-[10%] w-[400px] h-[400px] bg-cyan-500/20 blur-[100px] rounded-full" />
-        
-        {/* Lavender/Deep Purple (Top-Left) */}
-        <div className="absolute top-[-10%] left-[-10%] w-[700px] h-[700px] bg-purple-900/40 blur-[180px] rounded-full" />
-        
-        {/* Warm Orange Hint (Bottom-Center for MAX) */}
-        <div className="absolute bottom-[-10%] left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-orange-900/20 blur-[140px] rounded-full" />
+        {/* Irregular, warped light fields using scale and rotation (non-geometric) */}
 
-        {/* Grain Overlay */}
+        {/* Shape 1: Deep Cyan/Blue (Top-Right Core) - Squashed, rotated rectangle */}
+        <div className="absolute top-[10%] right-[-10%] w-[900px] h-[600px] bg-sky-950/60 blur-[180px] scale-y-[0.7] rotate-[25deg]" />
+        
+        {/* Shape 2: Deep Lavender (Top-Left Blending) - Narrow, tall rectangle */}
+        <div className="absolute top-[-10%] left-[-15%] w-[600px] h-[900px] bg-purple-950/60 blur-[200px] scale-x-[0.6] rotate-[-15deg]" />
+        
+        {/* Shape 3: Secondary Ocean Blue (Center-Left) - Skewed form */}
+        <div className="absolute top-[30%] left-[10%] w-[800px] h-[400px] bg-blue-950/50 blur-[160px] skew-x-[10deg] rotate-[5deg]" />
+
+        {/* Shape 4: Warm Amber Hint (Bottom-Center for MAX) - Wide, shallow form */}
+        <div className="absolute bottom-[-15%] left-1/2 -translate-x-1/2 w-[1100px] h-[400px] bg-orange-950/40 blur-[170px] scale-y-[0.5]" />
+
+        {/* The Crucial Grain/Noise Overlay */}
         <div className="absolute inset-0 bg-grain" />
+
       </div>
 
       <div className="max-w-4xl mx-auto flex flex-col items-center relative z-10">
