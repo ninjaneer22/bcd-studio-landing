@@ -31,25 +31,32 @@ const PricingSection: React.FC = () => {
         .animate-spin-slow {
           animation: spin-slow 4s linear infinite;
         }
+        /* Simulation of the repeating grain texture */
+        .bg-grain {
+          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3%3Cfilter id='noiseFilter'%3%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3%3C/filter%3%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3%3C/svg%3E");
+          opacity: 0.03; /* Very subtle noise */
+        }
       `}</style>
 
-      {/* Layered Abstract Background Shapes */}
-<div className="absolute inset-0 pointer-events-none z-0">
-  {/* Cluster 1: Cyan/Blue (Top-Right) */}
-  <div className="absolute top-[10%] right-[15%] w-[450px] h-[450px] bg-cyan-600/10 blur-[120px] rounded-full" />
-  <div className="absolute top-[25%] right-[5%] w-[350px] h-[350px] bg-blue-500/15 blur-[100px] rounded-full" />
-  <div className="absolute top-[18%] right-[25%] w-[200px] h-[200px] bg-cyan-400/20 blur-[80px] rounded-full" />
+      {/* Deep-Space Plasma and Grain Background */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        
+        {/* Main Organic 'Plasma' Clusters (Heavily Blurred, Non-Geometric) */}
+        {/* Layer 1: Lavender/Purple (Top-Right) */}
+        <div className="absolute top-[5%] right-[10%] w-[600px] h-[600px] bg-purple-600/10 blur-[180px] rounded-[100px]" />
+        
+        {/* Layer 2: Deep Blue/Cyan Cluster (Center-Left) */}
+        <div className="absolute top-[35%] left-[5%] w-[650px] h-[650px] bg-blue-600/10 blur-[200px] rounded-[150px]" />
+        <div className="absolute top-[48%] left-[20%] w-[300px] h-[300px] bg-cyan-400/15 blur-[120px] rounded-[80px]" />
+        
+        {/* Layer 3: Orange/Red Hint (Bottom-Center for MAX) */}
+        <div className="absolute bottom-[5%] left-[55%] -translate-x-1/2 w-[550px] h-[400px] bg-orange-600/10 blur-[160px] rounded-[120px]" />
+        <div className="absolute bottom-[18%] left-[48%] -translate-x-1/2 w-[200px] h-[200px] bg-red-500/15 blur-[100px] rounded-[60px]" />
 
-  {/* Cluster 2: Blue (Center-Left) */}
-  <div className="absolute top-[35%] left-[5%] w-[550px] h-[550px] bg-blue-600/10 blur-[150px] rounded-full" />
-  <div className="absolute top-[50%] left-[15%] w-[400px] h-[400px] bg-blue-400/15 blur-[120px] rounded-full" />
-  <div className="absolute top-[42%] left-[25%] w-[250px] h-[250px] bg-blue-300/20 blur-[100px] rounded-full" />
+        {/* The Crucial Grain/Noise Overlay */}
+        <div className="absolute inset-0 bg-grain" />
 
-  {/* Cluster 3: Orange (Bottom-Center - Connecting to MAX) */}
-  <div className="absolute bottom-[5%] left-[55%] -translate-x-1/2 w-[500px] h-[350px] bg-orange-600/10 blur-[140px] rounded-full" />
-  <div className="absolute bottom-[15%] left-[45%] -translate-x-1/2 w-[300px] h-[300px] bg-orange-500/15 blur-[110px] rounded-full" />
-  <div className="absolute bottom-[20%] left-[52%] -translate-x-1/2 w-[150px] h-[150px] bg-red-500/20 blur-[90px] rounded-full" />
-</div>
+      </div>
 
       <div className="max-w-4xl mx-auto flex flex-col items-center relative z-10">
         <h2 className="pricing-reveal text-xl md:text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent tracking-[0.3em] uppercase text-center mb-20">
@@ -113,8 +120,8 @@ const PricingSection: React.FC = () => {
             </div>
           </div>
           
-        </div>
-        
+      0</div>
+      
       </div>
     </section>
   );
