@@ -23,7 +23,7 @@ const PricingSection: React.FC = () => {
   }, []);
 
   return (
-    <section id="pricing-plans" ref={sectionRef} className="w-full bg-black pt-12 pb-24 px-8 border-t border-white/5 relative overflow-hidden">
+    <section id="pricing-plans" ref={sectionRef} className="w-full bg-black pt-24 pb-24 px-8 border-t border-white/5 relative overflow-hidden">
       <style>{`
         @keyframes spin-slow {
           100% { transform: rotate(360deg); }
@@ -62,11 +62,11 @@ const PricingSection: React.FC = () => {
       </div>
 
       <div className="max-w-4xl mx-auto flex flex-col items-center relative z-10">
-        <h2 className="pricing-reveal text-xl md:text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent tracking-[0.3em] uppercase text-center mb-20">
+        <h2 className="pricing-reveal text-xl md:text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent tracking-[0.3em] uppercase text-center mb-6">
           CHOOSE YOUR VERSION
         </h2>
 
-        <div className="w-full space-y-16">
+        <div className="w-full space-y-24">
           
           {/* Standard Version */}
           <div className="pricing-reveal flex flex-col items-center text-center max-w-2xl mx-auto">
