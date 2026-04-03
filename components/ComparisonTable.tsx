@@ -41,6 +41,17 @@ const ComparisonTable: React.FC = () => {
       ref={sectionRef} 
       className="w-full bg-gradient-to-b from-[#080808] via-[#0b1220] to-[#080808] pt-24 md:pt-32 pb-20 px-6 md:px-12 border-t border-white/5"
     >
+      <style>{`
+        /* Hide scrollbar track for a cleaner fade look on mobile */
+        .custom-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .custom-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
+
       <div className="max-w-6xl mx-auto space-y-32">
 
         {/* Header Block */}
@@ -78,13 +89,22 @@ const ComparisonTable: React.FC = () => {
                   <td className="py-8 px-6 text-google-grey text-center align-top leading-relaxed text-base">Instant access to Logic Pro's native plugins and instruments.</td>
                   <td className="py-8 px-6 text-google-grey text-center align-top leading-relaxed text-base">A complete custom console with triple layouts and up to 840 triggers.</td>
                 </tr>
-                {/* ... other rows identical to yours ... */}
+                <tr className="table-row-reveal group hover:bg-white/[0.02] transition-colors">
+                  <td className="py-8 pr-8 text-google-white font-bold align-top text-base">Workflow Match</td>
+                  <td className="py-8 px-6 text-google-grey text-center align-top leading-relaxed text-base">Songwriters, producers, and stock-tool purists.</td>
+                  <td className="py-8 px-6 text-google-grey text-center align-top leading-relaxed text-base">Composers, mix engineers, and sound designers.</td>
+                </tr>
+                <tr className="table-row-reveal group hover:bg-white/[0.02] transition-colors">
+                  <td className="py-8 pr-8 text-google-white font-bold align-top text-base">Core Philosophy</td>
+                  <td className="py-8 px-6 text-google-grey text-center align-top leading-relaxed text-base">Pure Logic Focus. (Stock plugins only).</td>
+                  <td className="py-8 px-6 text-google-grey text-center align-top leading-relaxed text-base">Expansive Control. (Full AU and Native support).</td>
+                </tr>
               </tbody>
             </table>
           </div>
           
-          {/* Mobile Scroll Gradient Hint */}
-          <div className={`absolute right-0 top-0 bottom-0 w-16 bg-red-500/50 pointer-events-none transition-opacity duration-500 md:hidden ${showFade1 ? 'opacity-100' : 'opacity-0'}`} />
+          {/* Mobile Scroll Gradient Hint - Workflow Table */}
+          <div className={`absolute right-0 top-0 bottom-0 z-20 w-32 bg-gradient-to-l from-[#0b1220] via-[#0b1220]/90 to-transparent pointer-events-none transition-opacity duration-500 md:hidden ${showFade1 ? 'opacity-100' : 'opacity-0'}`} />
         </div>
 
         {/* Feature Comparison Table */}
@@ -126,8 +146,8 @@ const ComparisonTable: React.FC = () => {
             </table>
           </div>
 
-          {/* Mobile Scroll Gradient Hint */}
-          <div className={`absolute right-0 top-0 bottom-12 w-16 bg-gradient-to-l from-[#0b1220] to-transparent pointer-events-none transition-opacity duration-500 md:hidden ${showFade2 ? 'opacity-100' : 'opacity-0'}`} />
+          {/* Mobile Scroll Gradient Hint - Feature Table (Accounting for pb-12) */}
+          <div className={`absolute right-0 top-0 bottom-12 z-20 w-32 bg-gradient-to-l from-[#0b1220] via-[#0b1220]/90 to-transparent pointer-events-none transition-opacity duration-500 md:hidden ${showFade2 ? 'opacity-100' : 'opacity-0'}`} />
         </div>
 
       </div>
