@@ -84,7 +84,7 @@ const ComparisonTable: React.FC = () => {
           </div>
           
           {/* Mobile Scroll Gradient Hint */}
-          <div className={`absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#0b1220] to-transparent pointer-events-none transition-opacity duration-500 md:hidden ${showFade1 ? 'opacity-100' : 'opacity-0'}`} />
+          <div className={`absolute right-0 top-0 bottom-0 w-16 bg-red-500/50 pointer-events-none transition-opacity duration-500 md:hidden ${showFade1 ? 'opacity-100' : 'opacity-0'}`} />
         </div>
 
         {/* Feature Comparison Table */}
