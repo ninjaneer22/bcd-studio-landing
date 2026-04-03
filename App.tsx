@@ -11,6 +11,7 @@ import VideoOnlySection from './components/VideoOnlySection';
 import MaxIntroSection from './components/MaxIntroSection';
 import MaxSection from './components/MaxSection';
 import MaxSequenceCanvas from './components/MaxSequenceCanvas';
+import MaxButton from './components/MaxButton';
 import ComparisonTable from './components/ComparisonTable';
 import ArtistGallery from './components/ArtistGallery';
 import ARSection from './components/ARSection';
@@ -51,6 +52,7 @@ const App: React.FC = () => {
 <MaxIntroSection />       
               <MaxSection /> 
               <MaxSequenceCanvas />
+              <MaxButton />
               <ComparisonTable />
               <ArtistGallery />
               <ARSection />

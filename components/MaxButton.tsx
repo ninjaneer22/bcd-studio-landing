@@ -38,7 +38,7 @@ const MaxButton: React.FC = () => {
             playsInline
             className="w-full h-full object-cover opacity-90 transition-opacity duration-700 group-hover:opacity-100"
           >
-            <source src="/images/movies/4_macros_per_button.mp4" type="video/mp4" />
+            <source src="/images/movies/bcd_axis_spin.mp4" type="video/mp4" />
           </video>
 
           {/* Subtle vignette and scanline effect overlay */}
