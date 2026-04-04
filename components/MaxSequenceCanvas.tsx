@@ -86,6 +86,7 @@ const MaxSequenceCanvas: React.FC = () => {
           end: "+=100%",
           scrub: 0.5,
           pin: true,
+pinSpacing: false,
           anticipatePin: 1,
           onUpdate: render,
         }

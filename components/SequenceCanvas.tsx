@@ -109,6 +109,7 @@ setTimeout(loadNextBatch, 500);
           end: "+=200%",
           scrub: 0.5,
           pin: true,
+pinSpacing: false,
           onUpdate: render,
         }
       });
