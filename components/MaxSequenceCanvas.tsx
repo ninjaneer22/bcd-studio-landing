@@ -123,9 +123,9 @@ const MaxSequenceCanvas: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className="w-full min-h-[100svh] flex flex-col justify-center bg-[#0a0a0a] px-8 overflow-hidden border-t border-white/5"
+      className="w-full min-h-[100svh] flex flex-col justify-start pt-32 md:justify-center md:pt-0 items-center bg-[#0a0a0a] px-4 md:px-8 overflow-hidden border-t border-white/5"
     >
-      <div className="w-full max-w-7xl aspect-video bg-black/40 rounded-lg overflow-hidden border border-white/5 relative">
+      <div className="w-full max-w-7xl aspect-video bg-black/40 rounded-lg overflow-hidden border border-white/5 relative mx-auto">
         <canvas ref={canvasRef} className="w-full h-full" />
       </div>
     </section>

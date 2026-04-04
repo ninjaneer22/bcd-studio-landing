@@ -184,9 +184,9 @@ requestAnimationFrame(render);
   return (
     <section
       ref={containerRef}
-      className="w-full min-h-[100svh] flex flex-col justify-center bg-[#050505] px-8 overflow-hidden border-t border-white/5"
+      className="w-full min-h-[100svh] flex flex-col justify-start pt-32 md:justify-center md:pt-0 items-center bg-[#050505] px-4 md:px-8 overflow-hidden border-t border-white/5"
     >
-      <div className="text-center mb-6 max-w-5xl">
+      <div className="text-center mb-6 max-w-5xl mx-auto">
         <span className="scrolly-anim text-sm tracking-[0.4em] font-medium text-google-grey uppercase mb-4 block">
           PLUGIN LAUNCHER STANDARD
         </span>
@@ -200,7 +200,7 @@ requestAnimationFrame(render);
         </p>
       </div>
 
-      <div className="scrolly-anim w-full max-w-7xl aspect-video bg-black/40 rounded-lg overflow-hidden border border-white/5 relative">
+      <div className="scrolly-anim w-full max-w-7xl aspect-video bg-black/40 rounded-lg overflow-hidden border border-white/5 relative mx-auto">
         {isLoading && (
           <div className="absolute inset-0 flex items-center justify-center bg-black/80 z-10">
             <span className="text-xs text-google-grey tracking-widest">
