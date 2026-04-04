@@ -14,7 +14,7 @@ const MaxIntroSection: React.FC = () => {
         </h2>
 
         <p className="text-google-grey text-lg md:text-xl max-w-2xl mx-auto">
-          Engineered for massive third-party libraries and relentless deadlines. <br />One touch. Any plugin.
+          Engineered for massive third-party libraries and relentless deadlines.
         </p>
       </div>
 

@@ -54,7 +54,7 @@ const FeaturePanel: React.FC = () => {
         </h2>
 
         <p className="feature-anim text-google-grey text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
-          Built for high-pressure sessions. Keep your focus locked. <br />Eliminate the menu-dive. Launch your entire library <br />from a single, touch-ready interface.
+          Built for high-pressure sessions. Eliminate the menu-dive.  <br />Launch your entire library from a touch-ready interface.
         </p>
 
         <div className="feature-anim w-full aspect-video bg-black rounded-lg overflow-hidden border border-white/5 shadow-2xl relative group">

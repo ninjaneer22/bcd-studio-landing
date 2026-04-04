@@ -196,7 +196,7 @@ requestAnimationFrame(render);
         </h2>
 
         <p className="scrolly-anim text-google-grey text-lg md:text-xl max-w-3xl mx-auto">
-          Standard delivers your native Logic Pro plugins in a curated, touch-ready Project. <br />No configuration required—just pure, high-velocity workflow.
+          Standard organizes every native Logic Pro plugin into a beautifully curated Project <br />No configuration. Pure, high-velocity workflow.
         </p>
       </div>
 
