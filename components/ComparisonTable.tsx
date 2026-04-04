@@ -107,7 +107,7 @@ const ComparisonTable: React.FC = () => {
               TECHNICAL BREAKDOWN
             </span>
             <h2 className="table-row-reveal text-3xl md:text-5xl font-bold text-google-white tracking-tight">
-              Spec Sheet.
+              Compare Editions.
             </h2>
           </div>
 
