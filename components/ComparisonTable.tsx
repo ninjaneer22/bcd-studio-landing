@@ -39,7 +39,7 @@ const ComparisonTable: React.FC = () => {
     <section 
       id="comparison-panel" 
       ref={sectionRef} 
-      className="w-full bg-gradient-to-b from-[#080808] via-[#0b1220] to-[#080808] pt-24 md:pt-32 pb-20 px-6 md:px-12 border-t border-white/5"
+      className="w-full bg-gradient-to-b from-[#080808] via-[#0b1220] to-[#080808] pt-12 md:pt-20 pb-20 px-6 md:px-12 border-t border-white/5"
     >
       <style>{`
         /* Hide scrollbar track for a cleaner fade look on mobile */
@@ -54,9 +54,9 @@ const ComparisonTable: React.FC = () => {
 
       <div className="max-w-6xl mx-auto space-y-32">
 
-        {/* Header Block */}
-        <div className="text-center space-y-4">
-          <span className="table-row-reveal text-sm tracking-[0.4em] font-medium text-google-grey uppercase">
+        {/* Header Block - Increased space-y to 8 */}
+        <div className="text-center space-y-8">
+          <span className="table-row-reveal inline-block text-sm tracking-[0.4em] font-medium text-google-grey uppercase">
             CHOOSE YOUR WORKFLOW
           </span>
           <h2 className="table-row-reveal text-3xl md:text-5xl font-bold text-google-white tracking-tight">
