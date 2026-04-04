@@ -17,8 +17,11 @@ const ARCard: React.FC<ARCardProps> = ({ label, modelPath }) => {
   }, [modelPath]);
 
   return (
-    <div className="ar-reveal bg-zinc-900/70 backdrop-blur-md w-full max-w-[280px] aspect-[3/4] rounded-2xl p-6 overflow-hidden border border-white/10 shadow-2xl transition-transform duration-500 hover:scale-[1.03] flex flex-col items-center justify-between group">
-      <div className="flex-grow flex items-center justify-center w-full">
+    /* Changed justify-between to justify-around */
+    <div className="ar-reveal bg-zinc-900/70 backdrop-blur-md w-full max-w-[280px] aspect-[3/4] rounded-2xl p-6 overflow-hidden border border-white/10 shadow-2xl transition-transform duration-500 hover:scale-[1.03] flex flex-col items-center justify-around group">
+      
+      {/* Removed flex-grow to allow justify-around to distribute space evenly */}
+      <div className="flex items-center justify-center w-full">
         {modelUrl && (
           <div className="p-3 rounded-xl bg-zinc-200 shadow-inner">
             <QRCodeSVG
@@ -31,7 +34,8 @@ const ARCard: React.FC<ARCardProps> = ({ label, modelPath }) => {
         )}
       </div>
 
-      <div className="mt-6 text-center">
+      {/* Removed mt-6 to ensure the bottom gap matches the top gap */}
+      <div className="text-center">
         <p className="text-zinc-400 text-[10px] uppercase tracking-widest font-bold mb-2">
           Scan to View
         </p>
