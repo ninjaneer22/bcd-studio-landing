@@ -82,20 +82,19 @@ const ARSection: React.FC = () => {
         
         {/* Header */}
         <div className="flex flex-col items-center gap-5">
-          {/* Inside ARSection.tsx */}
-<h2 className="ar-reveal text-sm tracking-[0.4em] font-medium text-google-grey uppercase">
-  WANT A CLOSER LOOK?
-</h2>
+  <h2 className="ar-reveal text-sm tracking-[0.4em] font-medium text-google-grey uppercase">
+    WANT A CLOSER LOOK?
+  </h2>
 
-          <div className="ar-reveal space-y-3 max-w-3xl">
-            <h3 className="text-white text-2xl font-bold">
-              Experience Plugin Launcher in Augmented Reality
-            </h3>
-            <p className="text-zinc-300 text-lg md:text-xl leading-relaxed">
-              Scan with your iPhone or iPad to place Plugin Launcher in your Studio.
-            </p>
-          </div>
-        </div>
+  <div className="ar-reveal space-y-3 max-w-3xl">
+    <h3 className="text-white text-2xl font-bold">
+      Experience Plugin Launcher in Augmented Reality
+    </h3>
+    <p className="text-zinc-300 text-lg md:text-xl leading-relaxed">
+      Scan with your iPhone or iPad to place Plugin Launcher in your Studio.
+    </p>
+  </div>
+</div>
 
         {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 w-full place-items-center">
