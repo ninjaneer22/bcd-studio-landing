@@ -62,15 +62,15 @@ const ArtistCard: React.FC<{ artist: Artist }> = ({ artist }) => {
   };
 
   return (
-    <div className="w-full h-[320px] bg-[#111111]/80 backdrop-blur-sm p-8 md:p-10 rounded-sm relative overflow-hidden flex flex-col justify-between border border-white/5 transition-all duration-500 hover:bg-[#181818] hover:border-white/10 group shadow-2xl">
+    <div className="w-full h-[340px] bg-[#111111]/80 backdrop-blur-sm p-8 md:p-10 rounded-sm relative overflow-hidden flex flex-col justify-between border border-white/5 transition-all duration-500 hover:bg-[#181818] hover:border-white/10 group shadow-2xl">
       {/* Quote Block */}
       <div className="text-google-grey text-base md:text-lg leading-relaxed font-medium w-full whitespace-normal relative z-10">
         {formatQuote(artist.quote)}
       </div>
 
-      {/* Signature Block - Bottom Left Layout */}
-      <div className="flex items-center gap-5 mt-auto relative z-10">
-        <div className="relative w-14 h-14 md:w-16 md:h-16 flex-shrink-0">
+      {/* Signature Block - Now Left-Aligned for maximum text width */}
+      <div className="flex items-center gap-6 mt-auto w-full relative z-10">
+        <div className="relative w-16 h-16 flex-shrink-0">
           <div className="absolute inset-0 rounded-full border border-white/10 overflow-hidden shadow-2xl group-hover:border-white/30 transition-colors duration-500">
             <img
               src={artist.image}
@@ -79,11 +79,12 @@ const ArtistCard: React.FC<{ artist: Artist }> = ({ artist }) => {
             />
           </div>
         </div>
-        <div className="flex flex-col gap-0.5 overflow-hidden">
+        
+        <div className="flex flex-col gap-1 min-w-0 flex-1">
           <h4 className="text-google-white font-bold text-sm md:text-base tracking-wider uppercase truncate">
             {artist.name}
           </h4>
-          <p className="text-google-grey text-[9px] md:text-[10px] font-bold tracking-[0.15em] uppercase leading-tight line-clamp-2">
+          <p className="text-google-grey text-[10px] md:text-[11px] font-bold tracking-[0.15em] uppercase leading-tight whitespace-normal">
             {artist.title}
           </p>
         </div>
@@ -96,7 +97,6 @@ const ArtistGallery: React.FC = () => {
   const marqueeRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
 
-  // Duplicate list for infinite loop
   const marqueeList = [...artists, ...artists];
 
   useEffect(() => {
@@ -106,7 +106,7 @@ const ArtistGallery: React.FC = () => {
       gsap.to(trackRef.current, {
         xPercent: -50,
         repeat: -1,
-        duration: 70, // Slightly faster for the new tighter width
+        duration: 90, // Calibrated for wider cards
         ease: "none",
       });
     }, marqueeRef);
@@ -119,16 +119,8 @@ const ArtistGallery: React.FC = () => {
       id="artist-testimonials" 
       className="relative w-full bg-[#030303] pt-12 pb-24 overflow-hidden border-t border-white/5"
     >
-      {/* ABSTRACT AURORA BACKGROUND */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-[10%] left-[-5%] w-[45%] h-[50%] bg-blue-900/15 rounded-full blur-[120px]" />
-        <div className="absolute top-[40%] right-[5%] w-[50%] h-[55%] bg-purple-900/20 rounded-full blur-[140px]" />
-        <div className="absolute bottom-[-10%] left-[20%] w-[40%] h-[40%] bg-cyan-900/15 rounded-full blur-[100px]" />
-      </div>
-
-      {/* Subtle Texture Overlay */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-[1]" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
-
+      {/* Background blobs and grid excluded for brevity, keep your existing ones */}
+      
       <div className="px-10 mb-20 text-center relative z-10">
         <span className="text-sm tracking-[0.4em] font-medium text-google-grey uppercase">
           TRUSTED BY PROFESSIONALS
@@ -140,10 +132,10 @@ const ArtistGallery: React.FC = () => {
         <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#030303] to-transparent z-20 pointer-events-none"></div>
         <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#030303] to-transparent z-20 pointer-events-none"></div>
 
-        {/* The Track */}
+        {/* Updated card widths here (w-500px) */}
         <div ref={trackRef} className="flex whitespace-nowrap w-fit will-change-transform">
           {marqueeList.map((artist, idx) => (
-            <div key={`${artist.name}-${idx}`} className="flex-shrink-0 mx-6 md:mx-8 w-[380px] md:w-[420px]">
+            <div key={`${artist.name}-${idx}`} className="flex-shrink-0 mx-6 md:mx-10 w-[420px] md:w-[500px]">
               <ArtistCard artist={artist} />
             </div>
           ))}
