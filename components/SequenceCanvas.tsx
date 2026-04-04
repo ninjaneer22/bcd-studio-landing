@@ -184,7 +184,7 @@ requestAnimationFrame(render);
   return (
     <section
       ref={containerRef}
-      className="w-full bg-[#050505] px-8 overflow-hidden flex flex-col items-center border-t border-white/5"
+      className="w-full min-h-[100svh] flex flex-col justify-center bg-[#050505] px-8 overflow-hidden border-t border-white/5"
     >
       <div className="text-center mb-6 max-w-5xl">
         <span className="scrolly-anim text-sm tracking-[0.4em] font-medium text-google-grey uppercase mb-4 block">
