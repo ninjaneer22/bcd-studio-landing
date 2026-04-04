@@ -12,9 +12,9 @@ import MaxIntroSection from './components/MaxIntroSection';
 import MaxSection from './components/MaxSection';
 import MaxSequenceCanvas from './components/MaxSequenceCanvas';
 import MaxButton from './components/MaxButton';
+import ARSection from './components/ARSection';
 import ComparisonTable from './components/ComparisonTable';
 import ArtistGallery from './components/ArtistGallery';
-import ARSection from './components/ARSection';
 import WhyInvest from './components/WhyInvest';
 import PricingSection from './components/PricingSection';
 import TechnicalDetails from './components/TechnicalDetails';
@@ -53,9 +53,9 @@ const App: React.FC = () => {
               <MaxSection /> 
               <MaxSequenceCanvas />
               <MaxButton />
+<ARSection />
               <ComparisonTable />
               <ArtistGallery />
-              <ARSection />
               <WhyInvest />
               <PricingSection />
               <TechnicalDetails />
