@@ -69,12 +69,14 @@ const MaxSection: React.FC = () => {
         }
       `}</style>
 
-      <div className="relative z-10 max-w-7xl mx-auto">
-        <div className="text-center mb-24 overflow-hidden">
-          <span ref={labelRef} className="inline-block text-sm tracking-[0.4em] font-medium text-google-grey uppercase">
-            PLUGIN LAUNCHER MAX
-          </span>
-        </div>
+      <div className="text-center mb-24 overflow-hidden">
+  <span 
+    ref={labelRef} 
+    className="inline-block text-xl md:text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent tracking-[0.2em] uppercase"
+  >
+    PLUGIN LAUNCHER MAX
+  </span>
+</div>
 
         <div className="flex flex-col md:flex-row gap-20 items-start">
           {/* Left Column (60%) - Parallax Media */}

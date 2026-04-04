@@ -82,9 +82,10 @@ const ARSection: React.FC = () => {
         
         {/* Header */}
         <div className="flex flex-col items-center gap-5">
-          <h2 className="ar-reveal text-xl md:text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent tracking-[0.2em] uppercase">
-            WANT A CLOSER LOOK?
-          </h2>
+          {/* Inside ARSection.tsx */}
+<h2 className="ar-reveal text-sm tracking-[0.4em] font-medium text-google-grey uppercase">
+  WANT A CLOSER LOOK?
+</h2>
 
           <div className="ar-reveal space-y-3 max-w-3xl">
             <h3 className="text-white text-2xl font-bold">
