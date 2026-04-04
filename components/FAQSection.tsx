@@ -98,10 +98,10 @@ const FAQSection: React.FC = () => {
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16 space-y-4">
           <span className="faq-reveal text-sm tracking-[0.4em] font-medium text-google-grey uppercase">
-            Questions & Answers
+            The finer details
           </span>
           <h2 className="faq-reveal text-3xl md:text-5xl font-bold text-google-white tracking-tight">
-            The finer details.
+            Questions & Answers.
           </h2>
         </div>
 
