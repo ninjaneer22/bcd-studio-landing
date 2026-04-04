@@ -65,7 +65,7 @@ const WhyInvest: React.FC = () => {
             <div className="invest-reveal space-y-3">
               <span className="text-white font-bold text-xl block">Instant Visual Clarity</span>
               <p className="text-neutral-400 text-sm md:text-base leading-relaxed">
-                See your entire library clearly organized and ready to launch, follow your creative vision and flow.
+                See your entire library clearly organized and ready to launch. Find what you need, exactly when you need it.
               </p>
             </div>
 

@@ -79,7 +79,7 @@ const TechnicalDetails: React.FC = () => {
           <ul className="tech-reveal space-y-4 text-google-grey text-base md:text-lg text-left max-w-2xl mx-auto font-medium">
             <li className="flex gap-4">
               <span className="text-cyan-500">•</span>
-              <span><strong>30-Day Evaluation:</strong> Both versions include a 30-day trial with full access to the visual grid and plugin launching capabilities.</span>
+              <span><strong>30-Day Evaluation:</strong> Both versions include a 30-day trial with full access to the Project and plugin launching capabilities.</span>
             </li>
             <li className="flex gap-4">
               <span className="text-cyan-500">•</span>
