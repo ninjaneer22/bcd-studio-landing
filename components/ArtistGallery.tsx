@@ -106,7 +106,7 @@ const ArtistGallery: React.FC = () => {
       gsap.to(trackRef.current, {
         xPercent: -50,
         repeat: -1,
-        duration: 90, // Calibrated for wider cards
+        duration: 60, // Calibrated for wider cards
         ease: "none",
       });
     }, marqueeRef);
