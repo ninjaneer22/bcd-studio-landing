@@ -58,7 +58,7 @@ const ComparisonTable: React.FC = () => {
               FIND YOUR MATCH
             </span>
             <h2 className="table-row-reveal text-3xl md:text-5xl font-bold text-google-white tracking-tight">
-              Choose Your Workflow.
+              Compare Versions.
             </h2>
           </div>
 
@@ -103,11 +103,8 @@ const ComparisonTable: React.FC = () => {
         {/* PART 2: Feature Breakdown */}
         <div className="space-y-12">
           <div className="text-center space-y-8">
-            <span className="table-row-reveal inline-block text-sm tracking-[0.4em] font-medium text-google-grey uppercase">
-              TECHNICAL BREAKDOWN
-            </span>
             <h2 className="table-row-reveal text-3xl md:text-5xl font-bold text-google-white tracking-tight">
-              Compare Editions.
+              The Details.
             </h2>
           </div>
 
