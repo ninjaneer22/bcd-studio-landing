@@ -8,41 +8,40 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
   {
-    question: "Why is Logic Pro 11.1 required?",
-    answer: "Logic Pro 11.1 introduced an enhanced search architecture. Plugin Launcher utilizes these deep system improvements to identify and load plugins with significantly higher speed and reliability."
-  },
-  {
-    question: "Does the Standard version support third-party plugins?",
+    question: "Performance & Requirements: Why Logic 11.1?",
     answer: (
       <span>
-        Standard is optimized for Logic Pro’s native effects and instruments. For third-party Audio Units (AU) and expansive collections, you will need Plugin Launcher MAX.<br />
-        <span className="italic">Note: VST formats are not supported in Logic Pro, and therefore not supported by the launcher.</span>
+        Plugin Launcher is built on the advanced search architecture introduced in Logic 11.1, allowing it to identify and load plugins with significantly higher speed and reliability. Because it triggers macOS-level commands via the native accessibility layer rather than processing audio, it has <span className="text-google-white font-bold">zero impact on session latency</span> and negligible CPU overhead.
       </span>
     )
   },
   {
-    question: "What kind of updates can I expect?",
-    answer: "We provide regular updates to ensure seamless compatibility with new Logic Pro native plugins and instruments as Apple releases them."
+    question: "Standard vs. MAX: 3rd-Party & Customization",
+    answer: (
+      <span>
+        Standard is a “Player” experience, pre-mapped for every native Logic Pro effect and instrument for a plug-and-play workflow. <span className="text-google-white font-bold">MAX unlocks “Creator Mode,”</span> granting full support for your entire 3rd-party Audio Unit (AU) collection. While Standard uses a fixed, curated project, MAX allows total customization of layouts, button naming, and macro assignments.
+      </span>
+    )
   },
   {
-    question: "Can I customize the Plugin Launcher Standard version?",
-    answer: "Standard comes preloaded with Logic’s native categories for a plug-and-play experience. Full layout customization and button renaming are MAX exclusives."
+    question: "Future-Proofing: Logic Pro Updates",
+    answer: "We provide regular updates to ensure seamless compatibility with new Logic Pro native tools as Apple releases them. By utilizing Logic's 11.1 deep system improvements, the launcher is more resilient to DAW updates than traditional UI scripting, keeping your workflow stable through Apple’s release cycles."
   },
   {
-    question: "Can I upgrade to MAX later?",
-    answer: "Absolutely. If your studio grows, your license can too. You can upgrade from Standard to MAX at any time by simply paying the difference."
+    question: "MAX Tier: Multi-Action Macros & Triple Layouts",
+    answer: (
+      <span>
+        <span className="text-google-white font-bold">MAX is engineered for elite scoring and post-production.</span> It supports Triple Layouts—allowing you to switch between three custom 280-button projects instantly—and Multi-Action Triggers. A single button in MAX can execute up to four unique actions, such as loading a specific plugin and recalling a custom window configuration simultaneously.
+      </span>
+    )
   },
   {
-    question: "Do I need to purchase Flexi-Deck separately?",
-    answer: "No. Plugin Launcher is powered by the Flexi-Deck engine, which is included with every download. It runs as a lightweight host for your project."
-  },
-  {
-    question: "What is the difference between Player mode and Creator mode?",
-    answer: "Standard operates in Player Mode for a streamlined, focused workflow. MAX unlocks Creator Mode, giving you total control over layouts and multi-action triggers."
-  },
-  {
-    question: "Is there a demo I can try before purchase?",
-    answer: "Yes. Both versions include a 30-day demo period with limited features so you can experience the speed increase in your own sessions."
+    question: "Licensing & Growth: Flexi-Deck & Upgrades",
+    answer: (
+      <span>
+        Every download includes the high-performance Flexi-Deck engine; <span className="text-google-white font-bold">no separate purchase is required.</span> It runs as a lightweight host for your project. You can start with a 30-day evaluation of either version to experience the speed increase firsthand. If your studio grows, you can upgrade from Standard to MAX at any time by simply paying the difference.
+      </span>
+    )
   }
 ];
 
