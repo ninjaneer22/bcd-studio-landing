@@ -90,7 +90,7 @@ const MaxSection: React.FC = () => {
             {/* Media 2: UI Angle Image */}
             <div className="max-std-anim w-full aspect-video bg-black rounded-xl overflow-hidden border border-white/10 shadow-[0_0_80px_rgba(0,0,0,0.4)]">
               <img
-                src="/images/launchers/logic_pro_max_angle.png"
+                src="/images/launchers/logic_pro_max_angle.webp"
                 alt="Plugin Launcher MAX UI Detail"
                 className="w-full h-full object-cover opacity-90 grayscale-[0.2] hover:grayscale-0 transition-all duration-700"
               />

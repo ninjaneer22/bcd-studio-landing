@@ -78,7 +78,7 @@ const StandardSection: React.FC = () => {
 
             <div className="std-anim w-full aspect-video bg-black rounded-lg overflow-hidden border border-white/5 shadow-xl">
               <img
-                src="/images/launchers/logic_pro_standard_angle.png"
+                src="/images/launchers/logic_pro_standard_angle.webp"
                 alt="Plugin Launcher Standard UI Detail"
                 className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-700"
               />
