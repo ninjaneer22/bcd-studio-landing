@@ -49,10 +49,10 @@ const ComparisonTable: React.FC = () => {
         <div className="space-y-12">
           <div className="text-center space-y-8">
             <span className="table-row-reveal inline-block text-sm tracking-[0.4em] font-medium text-google-grey uppercase">
-              CHOOSE YOUR WORKFLOW
+              FIND YOUR MATCH
             </span>
             <h2 className="table-row-reveal text-3xl md:text-5xl font-bold text-google-white tracking-tight">
-              Find your match.
+              Choose Your Workflow.
             </h2>
           </div>
 
@@ -98,10 +98,10 @@ const ComparisonTable: React.FC = () => {
         <div className="space-y-12">
           <div className="text-center space-y-8">
             <span className="table-row-reveal inline-block text-sm tracking-[0.4em] font-medium text-google-grey uppercase">
-              SPEC SHEET
+              TECHNICAL BREAKDOWN
             </span>
             <h2 className="table-row-reveal text-3xl md:text-5xl font-bold text-google-white tracking-tight">
-              The full technical breakdown.
+              Spec Sheet.
             </h2>
           </div>
 
