@@ -88,21 +88,18 @@ const PricingSection: React.FC = () => {
 
           {/* MAX Version */}
           <div className="pricing-reveal flex flex-col items-center text-center max-w-2xl mx-auto">
-            <h3 className="text-white text-3xl font-bold mb-2 tracking-tight">
-              Plugin Launcher <span className="text-orange-400">MAX</span>
-            </h3>
-            <div className="flex flex-col items-center gap-2 mb-6">
-              <p className="text-white text-xl font-bold">£49.99</p>
-              <span className="text-[9px] tracking-[0.2em] font-black text-orange-500 bg-orange-500/15 px-3 py-1 rounded-full border border-orange-500/20 uppercase">
-                Introductory price
-              </span>
-            </div>
+  <h3 className="text-white text-3xl font-bold mb-2 tracking-tight">
+    Plugin Launcher <span className="text-orange-400">MAX</span>
+  </h3>
+  
+  {/* Removed the wrapper div and badge; added mb-6 to match Standard */}
+  <p className="text-white text-xl font-bold mb-6">£49.99</p>
 
-            <ul className="text-zinc-400 text-base space-y-3 mb-8 list-none font-medium">
-              <li>• Full customization for any plugin</li>
-              <li>• Includes everything in Standard</li>
-              <li>• Full Flexi-Deck Creator license</li>
-            </ul>
+  <ul className="text-zinc-400 text-base space-y-3 mb-8 list-none font-medium">
+    <li>• Full customization for any plugin</li>
+    <li>• Includes everything in Standard</li>
+    <li>• Full Flexi-Deck Creator license</li>
+  </ul>
 
             <div className="relative inline-block group p-[2px] rounded-full overflow-hidden transition-all duration-500 hover:scale-105 active:scale-95">
               <div className="absolute inset-[-1000%] animate-spin-slow bg-[conic-gradient(from_90deg_at_50%_50%,#fbbf24_0%,#ea580c_50%,#fbbf24_100%)]"></div>

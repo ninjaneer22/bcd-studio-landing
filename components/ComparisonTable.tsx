@@ -112,12 +112,9 @@ const ComparisonTable: React.FC = () => {
                   <tr className="border-b border-white/10">
                     <th className="py-6 text-sm tracking-[0.3em] font-bold text-google-grey uppercase w-1/4">Feature</th>
                     <th className="py-6 text-2xl font-black text-cyan-500 text-center w-3/8">Standard</th>
-                    <th className="py-6 text-2xl font-black text-orange-500 text-center w-3/8 pl-6">
-                      <div className="flex items-center justify-center gap-4">
-                        <span>MAX</span>
-                        <span className="text-[9px] tracking-[0.2em] font-black text-orange-500 bg-orange-500/10 px-3 py-1.5 rounded-full border border-orange-500/20 uppercase whitespace-nowrap">Recommended</span>
-                      </div>
-                    </th>
+                    <th className="py-6 text-2xl font-black text-orange-500 text-center w-3/8">
+  MAX
+</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-white/5">
