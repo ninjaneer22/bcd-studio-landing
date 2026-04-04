@@ -27,23 +27,18 @@ const TechnicalDetails: React.FC = () => {
       ref={sectionRef} 
       className="relative w-full bg-gradient-to-b from-[#030303] via-[#0b1220] to-[#030303] py-24 px-8 border-t border-white/5 overflow-hidden"
     >
-      {/* ABSTRACT BLURRED BACKGROUND - Matching WhyInvest */}
+      {/* ABSTRACT BLURRED BACKGROUND */}
       <div className="absolute inset-0 pointer-events-none z-0">
-        {/* Deep Cyan - Top Right this time for variety */}
         <div className="absolute -top-[10%] -right-[10%] w-[50%] h-[50%] bg-cyan-900/15 rounded-full blur-[120px]" />
-        
-        {/* Deep Purple - Mid Left */}
         <div className="absolute top-[20%] -left-[10%] w-[60%] h-[60%] bg-purple-900/20 rounded-full blur-[140px]" />
-        
-        {/* Deep Blue - Bottom Center */}
         <div className="absolute bottom-[-10%] left-[25%] w-[50%] h-[50%] bg-blue-900/20 rounded-full blur-[120px]" />
       </div>
 
-      {/* Container: Maintained your centering and max-width */}
-      <div className="relative z-10 max-w-4xl mx-auto text-center space-y-14 md:space-y-16">
+      {/* Container: space-y-16 matches PricingSection consistency */}
+      <div className="relative z-10 max-w-4xl mx-auto text-center space-y-16">
 
         {/* Main Title */}
-        <div className="space-y-3">
+        <div className="space-y-4">
           <span className="tech-reveal text-sm tracking-[0.4em] font-medium text-google-grey uppercase">
             Technical Specifications
           </span>
@@ -53,11 +48,11 @@ const TechnicalDetails: React.FC = () => {
         </div>
 
         {/* Integration & Performance */}
-        <div className="space-y-5 md:space-y-6">
+        <div className="space-y-6">
           <h3 className="tech-reveal text-google-white text-lg font-medium uppercase tracking-widest">
             Integration & Performance
           </h3>
-          <ul className="tech-reveal space-y-3 text-google-grey text-base md:text-lg text-left max-w-2xl mx-auto">
+          <ul className="tech-reveal space-y-4 text-google-grey text-base md:text-lg text-left max-w-2xl mx-auto font-medium">
             <li className="flex gap-4">
               <span className="text-cyan-500">•</span>
               <span><strong>Native Performance:</strong> Powered by the Flexi-Deck engine (included), the launcher operates with minimal CPU impact and no UI clutter.</span>
@@ -73,17 +68,15 @@ const TechnicalDetails: React.FC = () => {
           </ul>
         </div>
 
-        {/* Separator */}
-        <div className="tech-reveal flex justify-center py-6">
-          <div className="w-16 h-[1px] bg-zinc-800"></div>
-        </div>
+        {/* Reduced Separator (Removed py-6 wrapper) */}
+        <div className="tech-reveal w-16 h-[1px] bg-zinc-800 mx-auto"></div>
 
-        {/* Demo & Licensing */}
+        {/* Licensing & Trial */}
         <div className="space-y-6">
           <h3 className="tech-reveal text-google-white text-lg font-medium uppercase tracking-widest">
             Licensing & Trial
           </h3>
-          <ul className="tech-reveal space-y-4 text-google-grey text-lg text-left max-w-2xl mx-auto">
+          <ul className="tech-reveal space-y-4 text-google-grey text-base md:text-lg text-left max-w-2xl mx-auto font-medium">
             <li className="flex gap-4">
               <span className="text-cyan-500">•</span>
               <span><strong>30-Day Evaluation:</strong> Both versions include a 30-day trial with full access to the visual grid and plugin launching capabilities.</span>
@@ -99,17 +92,15 @@ const TechnicalDetails: React.FC = () => {
           </ul>
         </div>
 
-        {/* Separator */}
-        <div className="tech-reveal flex justify-center py-6">
-          <div className="w-16 h-[1px] bg-zinc-800"></div>
-        </div>
+        {/* Reduced Separator (Removed py-6 wrapper) */}
+        <div className="tech-reveal w-16 h-[1px] bg-zinc-800 mx-auto"></div>
 
         {/* System Requirements */}
         <div className="space-y-6">
           <h3 className="tech-reveal text-google-white text-lg font-medium uppercase tracking-widest">
             System Requirements
           </h3>
-          <div className="tech-reveal space-y-2 text-google-grey text-lg">
+          <div className="tech-reveal space-y-2 text-google-grey text-base md:text-lg font-medium">
             <p><strong>OS:</strong> macOS 13 Ventura or later</p>
             <p><strong>DAW:</strong> Logic Pro 11.1 or later (required for enhanced plugin search speed)</p>
             <p><strong>Hardware:</strong> Intel or Apple Silicon (M1, M2, M3, M4) Macs</p>
