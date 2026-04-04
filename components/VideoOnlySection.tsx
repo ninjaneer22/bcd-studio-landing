@@ -26,7 +26,7 @@ const VideoOnlySection: React.FC = () => {
   }, []);
 
   return (
-    <section id="cinematic-break" ref={containerRef} className="w-full bg-[#000000] pt-8 pb-16 px-8 overflow-hidden border-t border-white/5">
+    <section id="cinematic-break" ref={containerRef} className="w-full bg-[#000000] pt-16 pb-16 px-8 overflow-hidden border-t border-white/5">
       <div className="max-w-7xl mx-auto">
         <div className="video-only-anim relative group w-full aspect-video bg-zinc-950 rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_80px_rgba(0,0,0,0.8)]">
           {/* Main Video */}
