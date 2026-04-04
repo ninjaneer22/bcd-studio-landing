@@ -69,14 +69,18 @@ const MaxSection: React.FC = () => {
         }
       `}</style>
 
-      <div className="text-center mb-24 overflow-hidden">
-  <span 
-    ref={labelRef} 
-    className="inline-block text-xl md:text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent tracking-[0.2em] uppercase"
-  >
-    PLUGIN LAUNCHER MAX
-  </span>
-</div>
+      {/* Main Content Wrapper */}
+      <div className="relative z-10 max-w-7xl mx-auto">
+        
+        {/* Header Block */}
+        <div className="text-center mb-24 overflow-hidden">
+          <span 
+            ref={labelRef} 
+            className="inline-block text-xl md:text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent tracking-[0.2em] uppercase"
+          >
+            PLUGIN LAUNCHER MAX
+          </span>
+        </div>
 
         <div className="flex flex-col md:flex-row gap-20 items-start">
           {/* Left Column (60%) - Parallax Media */}
@@ -98,7 +102,7 @@ const MaxSection: React.FC = () => {
               />
             </div>
 
-            {/* Media 3: Button Explainer Video (NEW) */}
+            {/* Media 3: Button Explainer Video */}
             <div className="max-std-anim w-full aspect-video bg-black rounded-xl overflow-hidden border border-white/10 shadow-[0_0_80px_rgba(0,0,0,0.4)]">
               <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-90 transition-opacity duration-700">
                 <source src="/images/movies/4_macros_per_button.mp4" type="video/mp4" />
