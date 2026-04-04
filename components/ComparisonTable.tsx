@@ -68,8 +68,8 @@ const ComparisonTable: React.FC = () => {
                 <thead>
                   <tr className="border-b border-white/10">
                     <th className="py-6 text-sm tracking-[0.3em] font-bold text-google-grey uppercase w-1/4">Workflow Profile</th>
-                    <th className="py-6 text-2xl font-black text-cyan-500 text-center w-3/8">Standard</th>
-                    <th className="py-6 text-2xl font-black text-orange-500 text-center w-3/8">MAX</th>
+                    <th className="py-6 text-xl font-black text-cyan-500 text-center w-3/8">Standard</th>
+                    <th className="py-6 text-xl font-black text-orange-500 text-center w-3/8">MAX</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-white/5">
@@ -114,8 +114,8 @@ const ComparisonTable: React.FC = () => {
                 <thead>
                   <tr className="border-b border-white/10">
                     <th className="py-6 text-sm tracking-[0.3em] font-bold text-google-grey uppercase w-1/4">Feature</th>
-                    <th className="py-6 text-2xl font-black text-cyan-500 text-center w-3/8">Standard</th>
-                    <th className="py-6 text-2xl font-black text-orange-500 text-center w-3/8">MAX</th>
+                    <th className="py-6 text-xl font-black text-cyan-500 text-center w-3/8">Standard</th>
+                    <th className="py-6 text-xl font-black text-orange-500 text-center w-3/8">MAX</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-white/5">
