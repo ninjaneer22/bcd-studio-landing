@@ -23,6 +23,8 @@ import Footer from './components/Footer';
 
 // The new Success page
 import Success from './components/Success'; 
+// The hidden PA promo page
+import PaPromo from './components/pa-promo';
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -64,10 +66,14 @@ const App: React.FC = () => {
           } />
           
           {/* 2. THE SUCCESS PAGE ROUTE */}
-          {/* This is what people see at www.bcdstudio.pro/success */}
-          <Route path="/success" element={<Success />} />
+          {/* This is what people see at www.bcdstudio.pro/success */}
+          <Route path="/success" element={<Success />} />
 
-        </Routes>
+          {/* 3. THE HIDDEN PA PROMO ROUTE */}
+          {/* Accessible only via the direct link */}
+          <Route path="/pa-promo" element={<PaPromo />} />
+
+        </Routes>
         
         {/* Footer stays at the bottom of both pages */}
         <Footer />
