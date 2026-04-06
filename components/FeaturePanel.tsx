@@ -12,7 +12,7 @@ const FeaturePanel: React.FC = () => {
       gsap.from(".feature-anim", {
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 35%",
+          start: "top 80%",
           toggleActions: "play none none reverse"
         },
         opacity: 0,
@@ -24,7 +24,7 @@ const FeaturePanel: React.FC = () => {
 
       ScrollTrigger.create({
         trigger: containerRef.current,
-        start: "top 35%",
+        start: "top 80%",
         onEnter: () => {
           setTimeout(() => {
             videoRef.current?.play().catch(() => {});

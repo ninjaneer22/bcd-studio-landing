@@ -10,12 +10,14 @@ const Hero: React.FC = () => {
       const ctx = gsap.context(() => {
         const tl = gsap.timeline({
           scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top top",
-            end: "+=100%",
-            scrub: 1,
-            pin: true,
-          }
+  trigger: containerRef.current,
+  start: "top top",
+  end: "+=100%",
+  scrub: 1,
+  pin: true,
+  pinSpacing: true,
+  anticipatePin: 1,
+}
         });
 
         // TITLE
