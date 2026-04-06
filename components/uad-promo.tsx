@@ -22,12 +22,8 @@ const UADPromo: React.FC = () => {
   // Handles GSAP animations
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // 1. Animate text immediately on page load
       gsap.from(".feature-anim", {
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 35%",
-          toggleActions: "play none none reverse"
-        },
         autoAlpha: 0,
         y: 20,
         duration: 1,
@@ -35,14 +31,8 @@ const UADPromo: React.FC = () => {
         ease: "power2.out"
       });
 
-      ScrollTrigger.create({
-        trigger: containerRef.current,
-        start: "top 35%", 
-        onEnter: () => videoRef.current?.play().catch(() => { }),
-        onLeave: () => videoRef.current?.pause(),
-        onEnterBack: () => videoRef.current?.play().catch(() => { }),
-        onLeaveBack: () => videoRef.current?.pause(),
-      });
+      // 2. Play video immediately on page load
+      videoRef.current?.play().catch(() => { });
     }, containerRef);
     return () => ctx.revert();
   }, []);
