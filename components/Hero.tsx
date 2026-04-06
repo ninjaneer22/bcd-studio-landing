@@ -9,10 +9,18 @@ const Hero: React.FC = () => {
 
   useEffect(() => {
     // 👉 FORCE VIDEO TO START ASAP
-    const video = videoRef.current;
-    if (video) {
-      video.play().catch(() => {});
-    }
+    <video
+  ref={videoRef}
+  autoPlay
+  loop
+  muted
+  playsInline
+  preload="none"
+  poster="/images/hero-poster.webp"
+  className="w-full h-full object-cover scale-105"
+>
+  <source src="/images/movies/bcd_hero.mp4" type="video/mp4" />
+</video>
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
@@ -75,7 +83,7 @@ const Hero: React.FC = () => {
           loop
           muted
           playsInline
-          preload="auto"
+          preload="none"
           className="w-full h-full object-cover scale-105"
         >
           <source src="/images/movies/bcd_hero.mp4" type="video/mp4" />
