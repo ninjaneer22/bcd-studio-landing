@@ -46,7 +46,7 @@ const FeaturePanel: React.FC = () => {
     <section id="panel-2-features" ref={containerRef} className="w-full bg-gradient-to-b from-[#0a0a0a] to-[#050505] py-24 px-8">
       <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
    <span className="feature-anim text-sm tracking-[0.4em] font-medium text-google-grey uppercase mb-4">
-          WORKFLOW ACCELERATOR
+          STANDARD & MAX PLUGIN LAUNCHERS
         </span>
 
         <h2 className="feature-anim text-4xl md:text-6xl font-bold text-google-white tracking-tight mb-4">
@@ -54,7 +54,7 @@ const FeaturePanel: React.FC = () => {
         </h2>
 
         <p className="feature-anim text-google-grey text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
-          Built for high-pressure sessions. Eliminate the menu-dive.  <br />Launch your entire library from a touch-ready interface.
+          Built for high-pressure sessions. Eliminate the menu-dive.  <br />Launch any plugin from a touch-ready interface.
         </p>
 
         <div className="feature-anim w-full aspect-video bg-black rounded-lg overflow-hidden border border-white/5 shadow-2xl relative group">

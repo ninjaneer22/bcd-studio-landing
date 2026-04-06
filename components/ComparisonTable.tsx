@@ -104,7 +104,7 @@ const ComparisonTable: React.FC = () => {
         <div className="space-y-12">
           <div className="text-center space-y-8">
             <h2 className="table-row-reveal text-3xl md:text-5xl font-bold text-google-white tracking-tight">
-              The Details.
+              Details.
             </h2>
           </div>
 

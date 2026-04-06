@@ -101,7 +101,7 @@ const StandardSection: React.FC = () => {
           <div className="w-full md:w-[40%] flex flex-col pt-4 md:sticky md:top-32">
             <div className="std-anim space-y-6 text-google-grey">
               <h3 className="text-google-white text-2xl md:text-3xl font-bold leading-tight tracking-tight">
-                Zero friction. Pure speed. <br />
+                Pure speed. <br />
                 Replace deep drop-down menus <br />
                 with a touch-ready project.
               </h3>
