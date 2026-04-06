@@ -66,7 +66,7 @@ const PaPromo: React.FC = () => {
         </h2>
 
         <p className="feature-anim text-google-grey text-lg md:text-xl max-w-2xl mb-6 leading-relaxed">
-          The BCD touch-ready interface optimized for Plugin Alliance. <br />Instant access to your entire analog-modeled arsenal.
+          The BCD touch-ready interface optimized for Plugin Alliance. <br />Instant access to your entire arsenal.
         </p>
 
         <div className="feature-anim mb-10 block">
