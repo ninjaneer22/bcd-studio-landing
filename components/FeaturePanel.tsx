@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -12,10 +13,10 @@ const FeaturePanel: React.FC = () => {
       gsap.from(".feature-anim", {
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 80%",
+          start: "top 35%",
           toggleActions: "play none none reverse"
         },
-        opacity: 0,
+        autoAlpha: 0,
         y: 20,
         duration: 1,
         stagger: 0.1,
@@ -24,23 +25,13 @@ const FeaturePanel: React.FC = () => {
 
       ScrollTrigger.create({
         trigger: containerRef.current,
-        start: "top 80%",
-        onEnter: () => {
-          setTimeout(() => {
-            videoRef.current?.play().catch(() => {});
-          }, 200);
-        },
+        start: "top 35%", // Delay until the bottom of the section is well within the viewport
+        onEnter: () => videoRef.current?.play().catch(() => { }),
         onLeave: () => videoRef.current?.pause(),
-        onEnterBack: () => {
-          setTimeout(() => {
-            videoRef.current?.play().catch(() => {});
-          }, 200);
-        },
+        onEnterBack: () => videoRef.current?.play().catch(() => { }),
         onLeaveBack: () => videoRef.current?.pause(),
       });
-
     }, containerRef);
-
     return () => ctx.revert();
   }, []);
 
@@ -52,14 +43,9 @@ const FeaturePanel: React.FC = () => {
   };
 
   return (
-    <section
-      id="panel-2-features"
-      ref={containerRef}
-      className="w-full bg-gradient-to-b from-[#0a0a0a] to-[#050505] py-24 px-8"
-    >
+    <section id="panel-2-features" ref={containerRef} className="w-full bg-gradient-to-b from-[#0a0a0a] to-[#050505] py-24 px-8">
       <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
-
-        <span className="feature-anim text-sm tracking-[0.4em] font-medium text-google-grey uppercase mb-4">
+   <span className="feature-anim text-sm tracking-[0.4em] font-medium text-google-grey uppercase mb-4">
           STANDARD & MAX PLUGIN LAUNCHERS
         </span>
 
@@ -68,21 +54,11 @@ const FeaturePanel: React.FC = () => {
         </h2>
 
         <p className="feature-anim text-google-grey text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
-          Built for high-pressure sessions. Eliminate the menu-dive. <br />
-          Launch any plugin from a touch-ready interface.
+          Built for high-pressure sessions. Eliminate the menu-dive.  <br />Launch any plugin from a touch-ready interface.
         </p>
 
         <div className="feature-anim w-full aspect-video bg-black rounded-lg overflow-hidden border border-white/5 shadow-2xl relative group">
-
-          <video
-            ref={videoRef}
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            poster="/images/feature-poster.webp"
-            className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
-          >
+          <video ref={videoRef} loop muted playsInline className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
             <source src="/images/movies/bcd_promo_30_sec.mp4" type="video/mp4" />
           </video>
 
@@ -101,7 +77,6 @@ const FeaturePanel: React.FC = () => {
               </svg>
             )}
           </button>
-
         </div>
       </div>
     </section>
