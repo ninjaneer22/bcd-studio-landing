@@ -5,61 +5,47 @@ const Hero: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null); // ✅ moved inside
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    // 👉 FORCE VIDEO TO START ASAP
-    <video
-  ref={videoRef}
-  autoPlay
-  loop
-  muted
-  playsInline
-  preload="none"
-  poster="/images/hero-poster.webp"
-  className="w-full h-full object-cover scale-105"
->
-  <source src="/images/movies/bcd_hero.mp4" type="video/mp4" />
-</video>
+    const timeout = setTimeout(() => {
+      const ctx = gsap.context(() => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top top",
+            end: "+=100%",
+            scrub: 1,
+            pin: true,
+          }
+        });
 
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top top",
-          end: "+=100%",
-          scrub: 1,
-          pin: true,
-        }
-      });
-
-      tl.fromTo(".hero-title",
-        { scale: 3, autoAlpha: 0, z: 500 },
-        { scale: 1, autoAlpha: 1, z: 0, duration: 1.5, ease: "power3.out" },
-        0
-      );
-
-      gsap.set(".hero-subtitle", { autoAlpha: 0, y: 30 });
-
-      tl.to(".hero-subtitle",
-        { autoAlpha: 1, y: 0, duration: 1, ease: "power2.out" },
-        ">-=0.5"
-      );
-
-      tl.to(overlayRef.current, { opacity: 0.8, duration: 1.5 }, 0)
-        .fromTo(contentRef.current,
-          { autoAlpha: 1 },
-          { autoAlpha: 1, duration: 1.5 },
+        tl.fromTo(".hero-title",
+          { scale: 1.2, autoAlpha: 1 },
+          { scale: 1, autoAlpha: 1, duration: 1.2, ease: "power3.out" },
           0
-        )
-        .fromTo(".hero-brand-logo",
+        );
+
+        tl.fromTo(".hero-subtitle",
+          { autoAlpha: 0, y: 20 },
+          { autoAlpha: 1, y: 0, duration: 1, ease: "power2.out" },
+          0.3
+        );
+
+        tl.fromTo(".hero-brand-logo",
           { autoAlpha: 0, y: 20 },
           { autoAlpha: 1, y: 0, duration: 0.8, stagger: 0.2 },
-          "-=0.5"
+          0.5
         );
-    }, containerRef);
 
-    return () => ctx.revert();
+        tl.to(overlayRef.current, { opacity: 0.8, duration: 1.5 }, 0);
+
+      }, containerRef);
+
+      return () => ctx.revert();
+    }, 200);
+
+    return () => clearTimeout(timeout);
   }, []);
 
   const handleScrollDown = () => {
@@ -84,6 +70,7 @@ const Hero: React.FC = () => {
           muted
           playsInline
           preload="none"
+          poster="/images/hero-poster.webp"
           className="w-full h-full object-cover scale-105"
         >
           <source src="/images/movies/bcd_hero.mp4" type="video/mp4" />
@@ -103,14 +90,14 @@ const Hero: React.FC = () => {
           BROWSE. CLICK. DONE.
         </h1>
 
-        <p className="hero-subtitle text-google-white text-xl md:text-3xl tracking-widest mb-12 font-medium opacity-0">
+        <p className="hero-subtitle text-google-white text-xl md:text-3xl tracking-widest mb-12 font-medium">
           Load any plugin instantly.
         </p>
 
         <div className="flex flex-wrap justify-center items-center gap-12">
-          <img src="/images/logos/logo_logic.png" className="hero-brand-logo h-12 md:h-16 opacity-0" />
-          <img src="/images/logos/logo_studio1.png" className="hero-brand-logo h-12 md:h-16 opacity-0" />
-          <img src="/images/logos/logo_luna.png" className="hero-brand-logo h-12 md:h-16 opacity-0" />
+          <img src="/images/logos/logo_logic.png" className="hero-brand-logo h-12 md:h-16" />
+          <img src="/images/logos/logo_studio1.png" className="hero-brand-logo h-12 md:h-16" />
+          <img src="/images/logos/logo_luna.png" className="hero-brand-logo h-12 md:h-16" />
         </div>
       </div>
 
