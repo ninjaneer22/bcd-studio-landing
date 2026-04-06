@@ -7,8 +7,12 @@ const PaPromo: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMuted, setIsMuted] = React.useState(true);
 
-  // Blocks search engine indexing
+  // Blocks search engine indexing AND sets tab name
   useEffect(() => {
+    // Set the tab title
+    document.title = "BCD × Studio One";
+
+    // Block indexing
     const meta = document.createElement('meta');
     meta.name = "robots";
     meta.content = "noindex, nofollow";
@@ -16,6 +20,8 @@ const PaPromo: React.FC = () => {
 
     return () => {
       document.head.removeChild(meta);
+      // Revert to default title when leaving the page
+      document.title = "Plugin Launcher | Browse. Click. Done.";
     };
   }, []);
 
