@@ -26,8 +26,8 @@ import Success from './components/Success';
 // The hidden PA promo page
 import PaPromo from './components/pa-promo';
 // The new hidden promo pages
-import StudioOnePromo from './components/StudioOnePromo'; 
-import UADPromo from './components/UADPromo';
+import StudioOnePromo from './components/studio_one-promo'; 
+import UADPromo from './components/uad-promo';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
