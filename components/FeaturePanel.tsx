@@ -58,9 +58,17 @@ const FeaturePanel: React.FC = () => {
         </p>
 
         <div className="feature-anim w-full aspect-video bg-black rounded-lg overflow-hidden border border-white/5 shadow-2xl relative group">
-          <video ref={videoRef} loop muted playsInline className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
-            <source src="/images/movies/bcd_promo_30_sec.mp4" type="video/mp4" />
-          </video>
+          <video
+  ref={videoRef}
+  loop
+  muted
+  playsInline
+  preload="metadata"
+  poster="/images/feature-poster.webp"
+  className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+>
+  <source src="/images/movies/bcd_promo_30_sec.mp4" type="video/mp4" />
+</video>
 
           <button
             onClick={toggleMute}
