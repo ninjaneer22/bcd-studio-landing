@@ -10,7 +10,7 @@ const PaPromo: React.FC = () => {
   // Blocks search engine indexing AND sets tab name
   useEffect(() => {
     // Set the tab title
-    document.title = "BCD × Studio One";
+    document.title = "BCD × Plugin Alliance";
 
     // Block indexing
     const meta = document.createElement('meta');
