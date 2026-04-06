@@ -25,7 +25,9 @@ import Footer from './components/Footer';
 import Success from './components/Success'; 
 // The hidden PA promo page
 import PaPromo from './components/pa-promo';
-
+// The new hidden promo pages
+import StudioOnePromo from './components/StudioOnePromo'; 
+import UADPromo from './components/UADPromo';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
@@ -72,6 +74,12 @@ const App: React.FC = () => {
           {/* 3. THE HIDDEN PA PROMO ROUTE */}
           {/* Accessible only via the direct link */}
           <Route path="/pa-promo" element={<PaPromo />} />
+
+          {/* 4. THE HIDDEN STUDIO ONE PROMO ROUTE */}
+          <Route path="/studio-one-promo" element={<StudioOnePromo />} />
+
+          {/* 5. THE HIDDEN UAD PROMO ROUTE */}
+          <Route path="/uad-promo" element={<UADPromo />} />
 
         </Routes>
         
