@@ -1,11 +1,18 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const StudioOnePromo: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = React.useState(true);
 
-  // Blocks search engine indexing
+  // Blocks search engine indexing AND sets tab name
   useEffect(() => {
+    // Set the tab title
+    document.title = "BCD × Plugin Alliance";
+
+    // Block indexing
     const meta = document.createElement('meta');
     meta.name = "robots";
     meta.content = "noindex, nofollow";
@@ -13,7 +20,27 @@ const StudioOnePromo: React.FC = () => {
 
     return () => {
       document.head.removeChild(meta);
+      // Revert to default title when leaving the page
+      document.title = "Plugin Launcher | Browse. Click. Done.";
     };
+  }, []);
+
+  // Handles GSAP animations
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // 1. Animate text immediately on page load
+      gsap.from(".feature-anim", {
+        autoAlpha: 0,
+        y: 20,
+        duration: 1,
+        stagger: 0.1,
+        ease: "power2.out"
+      });
+
+      // 2. Play video immediately on page load
+      videoRef.current?.play().catch(() => { });
+    }, containerRef);
+    return () => ctx.revert();
   }, []);
 
   const toggleMute = () => {
@@ -24,22 +51,21 @@ const StudioOnePromo: React.FC = () => {
   };
 
   return (
-    <section className="w-full bg-gradient-to-b from-[#0a0a0a] to-[#050505] py-24 px-8 min-h-screen flex flex-col justify-center">
+    <section id="panel-2-features" ref={containerRef} className="w-full bg-gradient-to-b from-[#0a0a0a] to-[#050505] py-24 px-8">
       <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
-        
         <span className="text-sm tracking-[0.4em] font-medium text-google-grey uppercase mb-4">
           BCD × STUDIO ONE
         </span>
 
         <h2 className="text-4xl md:text-6xl font-bold text-google-white tracking-tight mb-4">
-          Unleash Your PreSonus Collection.
+          Unleash Your Stuio One Plugin Collection.
         </h2>
 
         <p className="text-google-grey text-lg md:text-xl max-w-2xl mb-6 leading-relaxed">
           The BCD touch-ready interface optimized for Studio One. <br />Instant access to your entire arsenal.
         </p>
 
-        <div className="mb-10 block">
+        <div className="feature-anim mb-10 block">
           <style>{`
             @keyframes spin-slow {
               100% { transform: rotate(360deg); }
@@ -60,9 +86,8 @@ const StudioOnePromo: React.FC = () => {
           </div>
         </div>
 
-        <div className="w-full aspect-video bg-black rounded-lg overflow-hidden border border-white/5 shadow-2xl relative group">
-          {/* Added native autoPlay attribute here */}
-          <video ref={videoRef} autoPlay loop muted playsInline className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+        <div className="feature-anim w-full aspect-video bg-black rounded-lg overflow-hidden border border-white/5 shadow-2xl relative group">
+          <video ref={videoRef} loop muted playsInline className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
             <source src="/images/movies/bcd_x_pa_30_sec_promo.mp4" type="video/mp4" />
           </video>
 

@@ -2,13 +2,17 @@ import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-const UADPromo: React.FC = () => {
+const UadPromo: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMuted, setIsMuted] = React.useState(true);
 
-  // Blocks search engine indexing
+  // Blocks search engine indexing AND sets tab name
   useEffect(() => {
+    // Set the tab title
+    document.title = "BCD × Plugin Alliance";
+
+    // Block indexing
     const meta = document.createElement('meta');
     meta.name = "robots";
     meta.content = "noindex, nofollow";
@@ -16,6 +20,8 @@ const UADPromo: React.FC = () => {
 
     return () => {
       document.head.removeChild(meta);
+      // Revert to default title when leaving the page
+      document.title = "Plugin Launcher | Browse. Click. Done.";
     };
   }, []);
 
@@ -56,7 +62,7 @@ const UADPromo: React.FC = () => {
         </h2>
 
         <p className="feature-anim text-google-grey text-lg md:text-xl max-w-2xl mb-6 leading-relaxed">
-          The BCD touch-ready interface optimized for LUNA and UAD. <br />Instant access to your entire arsenal.
+          The BCD touch-ready interface optimized for LUNA and UAD Plugins. <br />Instant access to your entire arsenal.
         </p>
 
         <div className="feature-anim mb-10 block">
@@ -106,4 +112,4 @@ const UADPromo: React.FC = () => {
   );
 };
 
-export default UADPromo;
+export default UadPromo;
