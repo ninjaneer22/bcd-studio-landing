@@ -58,7 +58,7 @@ const StudioOnePromo: React.FC = () => {
         </span>
 
         <h2 className="text-4xl md:text-6xl font-bold text-google-white tracking-tight mb-4">
-          Unleash Your Stuio One Plugin Collection.
+          Unleash Your Studio One Plugin Collection.
         </h2>
 
         <p className="text-google-grey text-lg md:text-xl max-w-2xl mb-6 leading-relaxed">
