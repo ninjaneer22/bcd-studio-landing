@@ -12,7 +12,8 @@ const ARCard: React.FC<ARCardProps> = ({ label, modelPath }) => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      setModelUrl(`${window.location.origin}${modelPath}`);
+      // Automatically appends the parameter to launch directly into AR mode
+      setModelUrl(`${window.location.origin}${modelPath}#arDirectReticle=true`);
     }
   }, [modelPath]);
 
@@ -22,21 +23,29 @@ const ARCard: React.FC<ARCardProps> = ({ label, modelPath }) => {
       {/* Nudged QR Section */}
       <div className="flex-grow flex items-center justify-center w-full -mt-12">
         {modelUrl && (
-          <div className="p-3 rounded-xl bg-zinc-200 shadow-inner">
+          // Wrapped the QR code in an anchor tag so mobile users can tap it
+          <a 
+            rel="ar" 
+            href={modelUrl} 
+            className="p-3 rounded-xl bg-zinc-200 shadow-inner cursor-pointer hover:bg-white transition-colors duration-300 active:scale-95 block"
+            title="Tap to launch AR"
+          >
             <QRCodeSVG
               value={modelUrl}
               size={180}
               level={"M"}
               includeMargin={false}
             />
-          </div>
+          </a>
         )}
       </div>
 
       {/* Balanced Bottom Section */}
-      <div className="text-center">
+      <div className="text-center pointer-events-none">
         <p className="text-zinc-400 text-[10px] uppercase tracking-widest font-bold mb-2">
-          Scan to View
+          {/* Swaps the text based on screen size */}
+          <span className="hidden md:inline">Scan to View</span>
+          <span className="inline md:hidden">Tap to View</span>
         </p>
         <div className="px-4 py-2 bg-zinc-800 text-white text-xs font-bold rounded-full uppercase tracking-wider group-hover:bg-blue-600 transition-colors">
           {label}
@@ -73,31 +82,31 @@ const ARSection: React.FC = () => {
       className="w-full py-20 flex items-center justify-center px-8 relative overflow-hidden bg-[#0b0f14] border-t border-white/5"
     >
       {/* Dot grid background */}
- <div
-  className="absolute inset-0 pointer-events-none"
-  style={{
-    backgroundImage: 'radial-gradient(rgba(120,130,160,0.18) 1px, transparent 1px)',
-    backgroundSize: '18px 18px'
-  }}
-/>
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: 'radial-gradient(rgba(120,130,160,0.18) 1px, transparent 1px)',
+          backgroundSize: '18px 18px'
+        }}
+      />
 
       <div className="max-w-6xl mx-auto flex flex-col items-center text-center justify-center gap-12 relative z-10">
         
         {/* Header */}
         <div className="flex flex-col items-center gap-5">
-  <h2 className="ar-reveal text-sm tracking-[0.4em] font-medium text-google-grey uppercase">
-    WANT A CLOSER LOOK?
-  </h2>
+          <h2 className="ar-reveal text-sm tracking-[0.4em] font-medium text-google-grey uppercase">
+            WANT A CLOSER LOOK?
+          </h2>
 
-  <div className="ar-reveal space-y-3 max-w-3xl">
-    <h3 className="text-white text-2xl font-bold">
-      Experience Plugin Launcher in Augmented Reality
-    </h3>
-    <p className="text-zinc-300 text-lg md:text-xl leading-relaxed">
-      Scan with your iPhone or iPad to place Plugin Launcher in your Studio.
-    </p>
-  </div>
-</div>
+          <div className="ar-reveal space-y-3 max-w-3xl">
+            <h3 className="text-white text-2xl font-bold">
+              Experience Plugin Launcher in Augmented Reality
+            </h3>
+            <p className="text-zinc-300 text-lg md:text-xl leading-relaxed">
+              Scan with your iPhone or iPad to place Plugin Launcher in your Studio.
+            </p>
+          </div>
+        </div>
 
         {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 w-full place-items-center">
