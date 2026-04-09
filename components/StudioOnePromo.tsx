@@ -10,7 +10,7 @@ const StudioOnePromo: React.FC = () => {
   // Blocks search engine indexing AND sets tab name
   useEffect(() => {
     // Set the tab title
-    document.title = "BCD × Plugin Alliance";
+    document.title = "BCD × Studio One";
 
     // Block indexing
     const meta = document.createElement('meta');
@@ -65,7 +65,7 @@ const StudioOnePromo: React.FC = () => {
           The BCD touch-ready interface optimized for Studio One. <br />Instant access to your entire arsenal.
         </p>
 
-        <div className="feature-anim mb-10 block">
+        <div className="feature-anim mb-10 flex flex-col items-center gap-6">
           <style>{`
             @keyframes spin-slow {
               100% { transform: rotate(360deg); }
@@ -75,13 +75,17 @@ const StudioOnePromo: React.FC = () => {
             }
           `}</style>
           
+          <p className="text-google-grey text-base">
+            For more information and updates on the release:
+          </p>
+
           <div className="relative inline-block group p-[2px] rounded-full overflow-hidden transition-all duration-500 hover:scale-105 active:scale-95">
             <div className="absolute inset-[-1000%] animate-spin-slow bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]"></div>
             <a 
-              href="https://www.bcd.center"
+              href="mailto:tony@bcd.center?subject=Plugin Alliance PA Promo - Keep me updated"
               className="relative block px-8 py-3 bg-neutral-950 text-neutral-200 rounded-full font-medium tracking-widest uppercase text-[10px] hover:bg-neutral-900 transition-colors text-center"
             >
-              Return to BCD Center
+              Contact
             </a>
           </div>
         </div>
@@ -106,6 +110,18 @@ const StudioOnePromo: React.FC = () => {
               </svg>
             )}
           </button>
+        </div>
+
+        <div className="feature-anim mt-16 block">
+          <div className="relative inline-block group p-[2px] rounded-full overflow-hidden transition-all duration-500 hover:scale-105 active:scale-95">
+            <div className="absolute inset-[-1000%] animate-spin-slow bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]"></div>
+            <a 
+              href="https://www.bcd.center"
+              className="relative block px-8 py-3 bg-neutral-950 text-neutral-200 rounded-full font-medium tracking-widest uppercase text-[10px] hover:bg-neutral-900 transition-colors text-center"
+            >
+              Return to BCD Center
+            </a>
+          </div>
         </div>
       </div>
     </section>
