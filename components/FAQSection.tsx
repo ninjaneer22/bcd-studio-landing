@@ -95,6 +95,15 @@ const FAQSection: React.FC = () => {
 
   return (
     <section id="faq-panel" ref={sectionRef} className="w-full bg-[#0a0a0a] py-24 px-8 border-t border-white/5">
+      {/* Ensuring the animation style is available if the FAQ is loaded independently of the Footer */}
+      <style>{`
+        @keyframes spin-slow {
+          100% { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+          animation: spin-slow 4s linear infinite;
+        }
+      `}</style>
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16 space-y-4">
           <span className="faq-reveal text-sm tracking-[0.4em] font-medium text-google-grey uppercase">
@@ -116,10 +125,19 @@ const FAQSection: React.FC = () => {
           ))}
         </div>
 
-        <div className="mt-24 text-center faq-reveal">
+        <div className="mt-24 flex flex-col items-center gap-6 faq-reveal">
           <p className="text-google-grey text-base">
-            Still looking for something? <a href="mailto:tony@bcd.center" className="text-cyan-500 hover:text-cyan-400 transition-colors underline underline-offset-4"><br />Contact our support team.</a>
+            Still looking for something?
           </p>
+          <div className="relative inline-block group p-[2px] rounded-full overflow-hidden transition-all duration-500 hover:scale-105 active:scale-95">
+            <div className="absolute inset-[-1000%] animate-spin-slow bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]"></div>
+            <a 
+              href="mailto:tony@bcd.center"
+              className="relative block px-8 py-3 bg-neutral-950 text-neutral-200 rounded-full font-medium tracking-widest uppercase text-[10px] hover:bg-neutral-900 transition-colors text-center"
+            >
+              Contact Support
+            </a>
+          </div>
         </div>
       </div>
     </section>
