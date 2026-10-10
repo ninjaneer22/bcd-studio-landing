@@ -22,7 +22,7 @@
 /* ---------- Testimonials (from bcd-page-cube-text.html) ---------- */
 .tm-section{--bg:#0b0b0d;--dim:#8a8a8f;--accent:#ff5a1f;position:relative;z-index:10;padding:14vh 24px 16vh;background:var(--bg);font-family:"Archivo",system-ui,sans-serif;color:#f2f2f0}
 .tm-inner{max-width:1240px;margin:0 auto}
-.tm-eyebrow{margin:0 0 10px;text-align:center;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--dim)}
+.tm-eyebrow{margin:0 0 16px;text-align:center;font-size:14px;letter-spacing:.4em;text-transform:uppercase;color:var(--dim)}
 .tm-title{margin:0 0 clamp(36px,6vw,72px);text-align:center;text-transform:uppercase;font-weight:800;font-stretch:112%;font-size:clamp(28px,5vw,56px);line-height:1;letter-spacing:-.01em;
  background:linear-gradient(180deg,#fff 0%,#dcdce2 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .tm-title span{color:var(--accent);-webkit-text-fill-color:var(--accent)}

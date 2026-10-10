@@ -86,10 +86,10 @@ const MaxCube: React.FC = () => {
             PLUGIN LAUNCHER MAX
           </span>
           <h2 className="text-4xl md:text-6xl font-bold text-google-white mb-4">
-            Put your library to work.
+            Your Custom Console.
           </h2>
           <p className="text-google-grey text-lg md:text-xl max-w-3xl mx-auto">
-            Bring your heaviest hitters to the surface <br />and realize the full value of the tools you own.
+            Engineered for massive third-party libraries and relentless deadlines.
           </p>
         </div>
 

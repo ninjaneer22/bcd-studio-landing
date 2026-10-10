@@ -56,11 +56,10 @@ const App: React.FC = () => {
               <StandardCube />
               <StandardSection />
               <VideoOnlySection />
-<MaxIntroSection />       
-              <MaxSection /> 
               <MaxCube />
+              <MaxSection />
+              <ARSection />
               <MaxButton />
-<ARSection />
               <ComparisonTable />
               <Testimonials />
               <WhyInvest />
