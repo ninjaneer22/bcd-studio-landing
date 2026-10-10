@@ -52,7 +52,7 @@ const Utilities: React.FC = () => {
         `<h3 class="name">${esc(p.name)}</h3>` +
         `<div class="r r2"><div><p class="tag">${esc(p.tag)}</p></div></div>` +
         `<div class="r r3"><div><p class="desc">${esc(p.desc)}</p></div></div>` +
-        `<div class="r r4"><div class="ctas"><button type="button" class="cta ghost" data-video="${p.key}">&#9654; Watch demo</button><a class="cta" href="${BUY_URL}" target="_blank" rel="noopener">Buy &middot; from £29</a></div></div></div>`;
+        `<div class="r r4"><div class="ctas"><button type="button" class="cta ghost" data-video="${p.key}">&#9654; Watch demo</button><span class="buy"><a class="buy-in" href="${BUY_URL}" target="_blank" rel="noopener">Buy &middot; from £29</a></span></div></div></div>`;
       stage.appendChild(el);
       return el;
     });
@@ -73,7 +73,7 @@ const Utilities: React.FC = () => {
       setT(LX, wx); setT(LY, wy);
     };
     const setLayout = () => {
-      const narrow = innerWidth < 760, c = narrow ? 1 : 2, r = narrow ? 4 : 2;
+      const n = PRODUCTS.length, narrow = innerWidth < 760, c = narrow ? 1 : 2, r = narrow ? n : Math.ceil(n / 2);   // grows with the list
       if (c === cols && r === rows) return;
       cols = c; rows = r; LX = mkLines(cols); LY = mkLines(rows);
       [...gx, ...gy, ...knobs].forEach((e) => e.remove()); gx = []; gy = []; knobs = [];
@@ -173,7 +173,7 @@ const Utilities: React.FC = () => {
       const r = tour.getBoundingClientRect(), total = r.height - innerHeight;
       if (total <= 0) return;
       const p = Math.min(1, Math.max(0, -r.top / total));
-      const idx = p < 0.08 ? null : Math.min(PRODUCTS.length - 1, Math.floor((p - 0.08) / 0.23));
+      const idx = p < 0.08 ? null : Math.min(PRODUCTS.length - 1, Math.floor((p - 0.08) / (0.92 / PRODUCTS.length)));
       if (idx !== lastIdx) { lastIdx = idx; setFocus(idx); }
     };
     const onResize = () => { setLayout(); render(); onScroll(); };
@@ -194,7 +194,7 @@ const Utilities: React.FC = () => {
         <Link to="/" className="ut-back">&larr; BCD</Link>
         <span>Logic Pro utilities</span>
       </header>
-      <section id="ut-tour" aria-label="BCD utilities">
+      <section id="ut-tour" aria-label="BCD utilities" style={{ height: `${Math.max(4, PRODUCTS.length) * 105 + 100}vh` }}>
         <div className="pin">
           <div className="top"><b>BCD Utilities</b><span>Scroll, click a panel, or drag the gutters</span></div>
           <div id="ut-stage" />
