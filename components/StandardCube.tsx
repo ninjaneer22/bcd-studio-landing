@@ -1,15 +1,16 @@
 // Standard launcher: scroll-driven 4-sided cube, replacing the 90-frame image sequence (SequenceCanvas).
-// Faces, in turning order: intro card, Logic Pro Plugins, Logic Pro Instruments, outro card.
+// Faces, in turning order: intro text, Logic Pro Plugins, Logic Pro Instruments, outro text. Images are used as supplied (no resampling).
 import React, { useEffect, useRef } from 'react';
 import './cube.css';
 
-const FACES: { src: string; alt: string; text?: boolean }[] = [
-  { src: '/images/cube/standard/side_1.png', alt: 'The interface your plugins deserve.', text: true },
-  { src: '/images/cube/standard/side_2.webp', alt: 'Plugin Launcher: Logic Pro Plugins' },
-  { src: '/images/cube/standard/side_3.webp', alt: 'Plugin Launcher: Logic Pro Instruments' },
-  { src: '/images/cube/standard/side_4.png', alt: 'Browse. Click. Done.', text: true },
+const FACES = [
+  { src: '/images/cube/standard/side_1.png', alt: 'The interface your plugins deserve.' },
+  { src: '/images/cube/standard/side_2.png', alt: 'Plugin Launcher Standard: Logic Pro Plugins' },
+  { src: '/images/cube/standard/side_3.png', alt: 'Plugin Launcher Standard: Logic Pro Instruments' },
+  { src: '/images/cube/standard/side_4.png', alt: 'Browse. Click. Done.' },
 ];
-const OFFSETS = [0, 90, 180, -90];          // each face's angle around the cube
+const OFFSETS = [0, 90, 180, -90];
+const RATIO = 1450 / 602;
 const clamp = (x: number, a = 0, b = 1) => Math.max(a, Math.min(b, x));
 const smooth = (x: number) => x * x * (3 - 2 * x);
 
@@ -21,13 +22,16 @@ const StandardCube: React.FC = () => {
     const section = sectionRef.current, cube = cubeRef.current;
     if (!section || !cube) return;
     const scene = cube.parentElement as HTMLElement;
-    const stage = section.querySelector('.sc-stage') as HTMLElement;
+    const stage = section.querySelector('.mc-stage') as HTMLElement;
 
-    // Crispness: keep the cube on whole device pixels. A fractional width or position makes the browser
-    // resample every face (soft text), so the size is rounded to a multiple of 16 (whole-pixel 16:9) and nudged onto the pixel grid.
+    // whole-pixel width/height and position so the browser doesn't resample the faces
     const snap = () => {
-      const w = Math.floor(Math.min(980, window.innerWidth * 0.66, (window.innerHeight - 340) * 16 / 9) / 16) * 16;
-      section.style.setProperty('--sc-w', `${Math.max(320, w)}px`);
+      // same cube height as the Standard cube, so both sections match
+      const sw = Math.max(320, Math.floor(Math.min(980, window.innerWidth * 0.66, (window.innerHeight - 340) * 16 / 9) / 16) * 16);
+      const h = Math.round(sw * 9 / 16);
+      const w = Math.min(Math.round(h * RATIO / 2) * 2, Math.floor(window.innerWidth * 0.86 / 2) * 2);
+      section.style.setProperty('--mc-w', `${w}px`);
+      section.style.setProperty('--mc-h', `${h}px`);
       scene.style.translate = '0px 0px';
       const s = scene.getBoundingClientRect(), st = stage.getBoundingClientRect();
       const dpr = window.devicePixelRatio || 1;
@@ -39,19 +43,22 @@ const StandardCube: React.FC = () => {
 
     const faces = Array.from(cube.querySelectorAll<HTMLElement>('.sc-face'));
     const shades = faces.map((f) => f.querySelector<HTMLElement>('.sc-shade'));
-
-    // target angle comes from the scroll position; the cube eases toward it so it glides instead of stepping
     const targetAngle = () => {
       const max = section.offsetHeight - window.innerHeight;
       const f = max > 0 ? clamp(-section.getBoundingClientRect().top / max) : 0;
       const p = f * 3, seg = Math.min(2, Math.floor(p)), t = p - seg;
-      return -90 * (seg + smooth(clamp((t - 0.15) / 0.7)));   // each face rests briefly, then turns over most of its stretch
+      return -90 * (seg + smooth(clamp((t - 0.15) / 0.7)));
     };
-
     let current = targetAngle(), raf = 0;
+    const flats = Array.from(section.querySelectorAll<HTMLElement>('.mc-flat img'));
     const paint = () => {
-      cube.style.transform = `translateZ(calc(var(--sc-w) / -2)) rotateY(${current.toFixed(3)}deg)`;
-      faces.forEach((_, i) => {                           // faces turned away get darker (a layer on top, so the image itself is never filtered)
+      // at rest, show the face as a plain flat image (no 3D transform) so it is as sharp as the file itself
+      const k = ((Math.round(-current / 90) % 4) + 4) % 4;
+      const settled = Math.abs(current + 90 * Math.round(-current / 90)) < 0.05;
+      cube.style.visibility = settled ? 'hidden' : 'visible';
+      flats.forEach((im, i) => { im.style.visibility = settled && i === k ? 'visible' : 'hidden'; });
+      cube.style.transform = `translateZ(calc(var(--mc-w) / -2)) rotateY(${current.toFixed(3)}deg)`;
+      faces.forEach((_, i) => {
         const depth = Math.cos((current + OFFSETS[i]) * Math.PI / 180);
         const shade = shades[i];
         if (shade) shade.style.opacity = String(clamp((1 - depth) * 0.55, 0, 0.6));
@@ -72,8 +79,8 @@ const StandardCube: React.FC = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="standard-cube" className="sc-section">
-      <div className="sc-stage">
+    <section ref={sectionRef} id="standard-cube" className="mc-section mc-std">
+      <div className="mc-stage">
         <div className="sc-head text-center max-w-5xl mx-auto">
           <span className="text-sm tracking-[0.4em] font-medium text-google-grey uppercase mb-4 block">
             PLUGIN LAUNCHER STANDARD
@@ -86,17 +93,19 @@ const StandardCube: React.FC = () => {
           </p>
         </div>
 
-        <div className="sc-scene">
+        <div className="mc-scene">
           <div className="sc-cube" ref={cubeRef}>
             {FACES.map((f, i) => (
-              <div className="sc-face sc-face--img" key={f.alt} style={{ transform: `rotateY(${OFFSETS[i]}deg) translateZ(calc(var(--sc-w) / 2))` }}>
-                <img className={f.text ? 'sc-img-contain' : 'sc-img-fill'} src={f.src} alt={f.alt} draggable={false} />
+              <div className="sc-face mc-face" key={f.alt} style={{ transform: `rotateY(${OFFSETS[i]}deg) translateZ(calc(var(--mc-w) / 2))` }}>
+                <img src={f.src} alt={f.alt} draggable={false} />
                 <div className="sc-shade" />
               </div>
             ))}
           </div>
+          <div className="mc-flat">
+            {FACES.map((f) => <img key={f.alt} src={f.src} alt="" draggable={false} />)}
+          </div>
         </div>
-
         <div className="sc-stack">
           {FACES.map((f) => <div key={f.alt} className="sc-stack-panel"><img src={f.src} alt={f.alt} loading="lazy" /></div>)}
         </div>

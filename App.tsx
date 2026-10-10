@@ -28,6 +28,7 @@ import PaPromo from './components/pa-promo';
 // The new hidden promo pages
 import StudioOnePromo from './components/StudioOnePromo'; 
 import UADPromo from './components/UadPromo';
+import Utilities from './components/Utilities';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
@@ -81,6 +82,7 @@ const App: React.FC = () => {
           {/* 5. THE HIDDEN UAD PROMO ROUTE */}
           <Route path="/UadPromo" element={<UADPromo />} />
 
+          <Route path="/utilities" element={<Utilities />} />
         </Routes>
         
         {/* Footer stays at the bottom of both pages */}

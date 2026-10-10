@@ -46,3 +46,6 @@
 .sc-face--img img{position:absolute;inset:0;width:100%;height:100%}
 .sc-img-fill{object-fit:fill}
 .sc-img-contain{object-fit:contain}
+
+.mc-std .mc-stage{background-image:url(/images/cube/standard/nebula.webp)}
+.mc-std .mc-face img,.mc-std .mc-flat img{object-fit:contain}

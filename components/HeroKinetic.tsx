@@ -11,7 +11,7 @@ const CFG = { cond: 62, wide: 125 };      // Archivo width-axis range
 const TOTAL = 3.6;                        // seconds for the words to arrive
 const BLUR_PX = 10;                       // backdrop blur while the words are on screen
 const PLAYS = 1;                          // the sequence plays this many times, then stops
-const START_DELAY = 2;                    // seconds the splash image shows on its own before the text starts
+const START_DELAY = 1;                    // seconds the splash image shows on its own before the text starts
 
 const SPEC = (c) => [
   { fin: { w: 900, wd: c.wide }, from: { w: 100, wd: c.cond }, dir: "up" },     // BCD: wide + heavy
@@ -180,7 +180,8 @@ const HeroKinetic: React.FC = () => {
       });
 
       /* EXIT: hold, then BROWSE. -> CLICK. -> DONE. -> BCD */
-      const HOLD = 1.2, T0 = total + 0.4 + HOLD;
+      const HOLD = 0.5, T0 = 0;                       // shorter hold; the exit then plays at double speed
+      const ex = gsap.timeline();
       const IO = "power3.inOut", IN = "power3.in";
       const fin0 = spec[0].fin;
       const gapY = A * 0.04;
@@ -188,28 +189,30 @@ const HeroKinetic: React.FC = () => {
       const L1 = layoutRows([[0], [2], [3]]);
       const L2 = layoutRows([[0], [3]], { 0: st.r });
 
-      tl.to(els[1].span, { xPercent: 100, duration: 0.5, ease: IN }, T0);
-      [0, 2, 3].forEach((j) => tl.to(els[j].line, { x: L1[j].x, y: L1[j].y, scale: L1[j].s, duration: 0.8, ease: IO }, T0 + 0.4));
+      ex.to(els[1].span, { xPercent: 100, duration: 0.5, ease: IN }, T0);
+      [0, 2, 3].forEach((j) => ex.to(els[j].line, { x: L1[j].x, y: L1[j].y, scale: L1[j].s, duration: 0.8, ease: IO }, T0 + 0.4));
 
       const T1 = T0 + 1.4;
-      tl.to(els[2].span, { yPercent: 100, duration: 0.45, ease: IN }, T1);
-      [0, 3].forEach((j) => tl.to(els[j].line, { x: L2[j].x, y: L2[j].y, scale: L2[j].s, duration: 0.8, ease: IO }, T1 + 0.25));
+      ex.to(els[2].span, { yPercent: 100, duration: 0.45, ease: IN }, T1);
+      [0, 3].forEach((j) => ex.to(els[j].line, { x: L2[j].x, y: L2[j].y, scale: L2[j].s, duration: 0.8, ease: IO }, T1 + 0.25));
       const pvB = { wd: fin0.wd };
-      tl.fromTo(pvB, { wd: fin0.wd }, { wd: st.wd, duration: 0.8, ease: IO, immediateRender: false,
+      ex.fromTo(pvB, { wd: fin0.wd }, { wd: st.wd, duration: 0.8, ease: IO, immediateRender: false,
         onUpdate: () => axes(els[0].span, { w: fin0.w, wd: pvB.wd }) }, T1 + 0.25);
 
       const T2 = T1 + 1.5;
       const bcdH = items[0].capH * L2[0].s;
-      tl.to(els[3].line, { y: L2[0].y + bcdH * 0.3, duration: 0.6, ease: IN }, T2);
-      tl.to(els[3].line, { autoAlpha: 0, duration: 0.15 }, T2 + 0.45);
+      ex.to(els[3].line, { y: L2[0].y + bcdH * 0.3, duration: 0.6, ease: IN }, T2);
+      ex.to(els[3].line, { autoAlpha: 0, duration: 0.15 }, T2 + 0.45);
 
       const T3 = T2 + 0.9;
-      tl.to(els[0].span, { yPercent: 100, duration: 0.6, ease: IN }, T3);
+      ex.to(els[0].span, { yPercent: 100, duration: 0.6, ease: IN }, T3);
       const pvC = { w: fin0.w };
-      tl.fromTo(pvC, { w: fin0.w }, { w: 100, duration: 0.6, ease: IN, immediateRender: false,
+      ex.fromTo(pvC, { w: fin0.w }, { w: 100, duration: 0.6, ease: IN, immediateRender: false,
         onUpdate: () => axes(els[0].span, { w: pvC.w, wd: st.wd }) }, T3);
 
-      tl.to({}, { duration: 0.3 }, T3 + 0.6);
+      ex.to({}, { duration: 0.3 }, T3 + 0.6);
+      tl.add(ex.timeScale(2), total + 0.4 + HOLD);
+
       if (REDUCED) { tl.pause(); tl.time(total + 0.4); gsap.set(cue, { autoAlpha: 0.85 }); return; }
       startCall = gsap.delayedCall(delay, () => tl.play(0));
     }
