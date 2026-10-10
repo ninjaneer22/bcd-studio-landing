@@ -1,0 +1,48 @@
+/* ---------- Standard cube ---------- */
+.sc-section{--sc-w:min(980px,66vw,calc((100vh - 340px) * 1.7778));position:relative;height:520vh;background:#050505;border-top:1px solid rgba(255,255,255,.05)}
+.sc-stage{background:#050505 url(/images/cube/standard/nebula.webp) center/cover no-repeat;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;overflow:hidden;padding:0 16px}
+.sc-head{position:relative;z-index:2}
+.sc-scene{width:var(--sc-w);margin-top:36px;aspect-ratio:16/9;perspective:calc(var(--sc-w) * 2.2);flex:none}
+.sc-cube{width:100%;height:100%;position:relative;transform-style:preserve-3d;transform:translateZ(calc(var(--sc-w) / -2))}
+.sc-face{position:absolute;inset:0;overflow:hidden;backface-visibility:hidden;background:#05050a;border-radius:4px;box-shadow:0 0 0 1px rgba(255,255,255,.06)}
+.sc-face--text{background:transparent;box-shadow:none;display:flex;align-items:center;justify-content:center}
+.sc-face--text p,.sc-stack-text{margin:0;text-align:center;text-transform:uppercase;font-family:"Inter",system-ui,sans-serif;font-weight:500;letter-spacing:.05em;color:#fff;text-shadow:0 0 2px rgba(255,255,255,.9),0 0 14px rgba(190,205,255,.55),0 0 34px rgba(120,140,255,.35)}
+.sc-face--text p{font-size:calc(var(--sc-w) * .034);padding:0 6%}
+.sc-stack-text{font-size:18px;padding:28px 12px}
+.sc-shade{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none}
+.sc-face--panel{box-shadow:none;background:transparent;overflow:visible}
+.sc-face--panel img.sc-panel-img,.sc-face--panel>img{position:absolute;left:4.5%;top:19%;width:91%;height:auto;object-fit:fill}
+.sc-title,.sc-caption{position:absolute;color:#fff;font-family:"Inter",system-ui,sans-serif;text-transform:uppercase;white-space:nowrap}
+.sc-title{left:4.5%;top:5.5%;font-weight:800;font-size:calc(var(--sc-w) * .032);letter-spacing:.005em}
+.sc-caption{right:4.5%;bottom:4.5%;font-weight:400;font-size:calc(var(--sc-w) * .03);letter-spacing:.02em}
+.sc-stack-panel{display:flex;flex-direction:column;gap:8px}
+.sc-stack-panel span{color:#fff;font:800 14px/1 "Inter",system-ui,sans-serif;text-transform:uppercase}
+.sc-face img{display:block;user-select:none}
+.sc-stack{display:none}
+@media (max-width:767px){
+  .sc-section{height:auto;padding:96px 0 64px}
+  .sc-stage{position:static;height:auto;gap:24px}
+  .sc-scene{display:none}
+  .sc-stack{display:flex;flex-direction:column;gap:16px;width:100%;max-width:32rem}
+  .sc-stack img{width:100%;border-radius:8px;display:block}
+}
+
+/* ---------- Max cube ---------- */
+.mc-section{--mc-w:min(1200px,70vw);--mc-h:calc(var(--mc-w) * .448);position:relative;height:520vh;background:#050505;border-top:1px solid rgba(255,255,255,.05)}
+.mc-stage{background:#050505 url(/images/cube/max/nebula.webp) center/cover no-repeat;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:0 16px;overflow:hidden}
+.mc-scene{margin-top:36px;width:var(--mc-w);height:var(--mc-h);perspective:calc(var(--mc-w) * 2.2);flex:none}
+.mc-scene .sc-cube{transform:translateZ(calc(var(--mc-w) / -2))}
+.mc-face{background:transparent;box-shadow:none;border-radius:0}
+.mc-face img{position:absolute;inset:0;width:100%;height:100%;object-fit:fill}
+@media (max-width:767px){
+  .mc-section{height:auto;padding:64px 0}
+  .mc-stage{position:static;height:auto;padding:0 16px}
+  .mc-scene{display:none}
+}
+.mc-scene{position:relative}
+.mc-flat{position:absolute;inset:0;pointer-events:none}
+.mc-flat img{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;visibility:hidden}
+.sc-face--img{background:transparent;box-shadow:none;border-radius:0}
+.sc-face--img img{position:absolute;inset:0;width:100%;height:100%}
+.sc-img-fill{object-fit:fill}
+.sc-img-contain{object-fit:contain}

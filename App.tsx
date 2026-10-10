@@ -3,18 +3,18 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // All your original components
-import Hero from './components/Hero';
+import Hero from './components/HeroKinetic';
 import FeaturePanel from './components/FeaturePanel';
-import SequenceCanvas from './components/SequenceCanvas';
+import StandardCube from './components/StandardCube';
 import StandardSection from './components/StandardSection';
 import VideoOnlySection from './components/VideoOnlySection';
 import MaxIntroSection from './components/MaxIntroSection';
 import MaxSection from './components/MaxSection';
-import MaxSequenceCanvas from './components/MaxSequenceCanvas';
+import MaxCube from './components/MaxCube';
 import MaxButton from './components/MaxButton';
 import ARSection from './components/ARSection';
 import ComparisonTable from './components/ComparisonTable';
-import ArtistGallery from './components/ArtistGallery';
+import Testimonials from './components/Testimonials';
 import WhyInvest from './components/WhyInvest';
 import PricingSection from './components/PricingSection';
 import TechnicalDetails from './components/TechnicalDetails';
@@ -50,16 +50,16 @@ const App: React.FC = () => {
             <>
               <Hero />
               <FeaturePanel />
-              <SequenceCanvas />
+              <StandardCube />
               <StandardSection />
               <VideoOnlySection />
 <MaxIntroSection />       
               <MaxSection /> 
-              <MaxSequenceCanvas />
+              <MaxCube />
               <MaxButton />
 <ARSection />
               <ComparisonTable />
-              <ArtistGallery />
+              <Testimonials />
               <WhyInvest />
               <PricingSection />
               <TechnicalDetails />
