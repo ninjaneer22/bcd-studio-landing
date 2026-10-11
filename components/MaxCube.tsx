@@ -109,7 +109,7 @@ const MaxCube: React.FC = () => {
           </div>
         </div>
         <div className="sc-stack">
-          {FACES.map((f) => <div key={f.alt} className="sc-stack-panel"><img src={f.src} alt={f.alt} loading="lazy" /></div>)}
+          {FACES.filter((_, i) => i === 1 || i === 2).map((f) => <div key={f.alt} className="sc-stack-panel"><img src={f.src} alt={f.alt} loading="lazy" /></div>)}
         </div>
       </div>
     </section>

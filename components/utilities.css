@@ -8,7 +8,7 @@
 
   /* the section: a tall track, with a pinned screen inside it */
   #ut-tour{height:520vh;position:relative}
-  .pin{position:sticky;top:0;height:100vh;overflow:hidden;
+  .pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;
        background:radial-gradient(80% 60% at 50% 0%,rgba(30,80,110,.30),transparent 70%),var(--bg)}
   /* film grain: one static noise tile over the whole screen, under the nav. Raise opacity for more, 0 to remove. */
   .pin::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.09;mix-blend-mode:normal;
@@ -64,6 +64,13 @@
   @container cell (min-height:360px) and (min-width:420px){ .r3{grid-template-rows:1fr;opacity:1} }
   @container cell (min-height:430px) and (min-width:440px){ .r4{grid-template-rows:1fr;opacity:1} }
   @container cell (min-height:360px) and (min-width:420px){ .shot{height:min(40cqh,calc(78cqw / var(--ar)))} }
+
+  /* phones: the focused cell is a tall, narrow card - show description and buttons there too */
+  @container cell (max-width:419px) and (min-height:330px){ .r3{grid-template-rows:1fr;opacity:1} .shot{height:min(26cqh,calc(78cqw / var(--ar)))} }
+  @container cell (max-width:439px) and (min-height:400px){ .r4{grid-template-rows:1fr;opacity:1} }
+
+  /* phones, overview: every card shows its picture, not just the first and last */
+  @media (max-width:760px){ @container cell (min-width:191px) and (min-height:120px) and (max-height:329px){ .shot{display:block;height:min(58cqh,calc(78cqw / var(--ar)))} .name{margin:.55em 0 0} } }
 
   /* draggable gutters + knob */
   .gut{position:absolute;background:var(--acc);opacity:0;transition:opacity .25s;pointer-events:none}
@@ -129,3 +136,7 @@
 /* nav now sits at the top, with a lighter outline */
 .ut #ut-nav{border-color:rgba(160,215,238,.36)}
 @media (max-width:760px){.ut #ut-nav{top:38px}.ut #ut-stage{top:96px}}
+
+.ut-bar .ut-back{display:inline-flex;align-items:center;line-height:0;padding:12px;margin:-12px}
+.ut .top{left:60px}
+@media (max-width:760px){.ut .top{left:56px}}

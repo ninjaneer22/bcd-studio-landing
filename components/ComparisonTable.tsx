@@ -137,7 +137,7 @@ const ComparisonTable: React.FC = () => {
                           href="https://buy.stripe.com/fZu3cv55bbKadeYa0b8bS01" 
                           className="relative block px-8 py-3 bg-neutral-950 text-neutral-200 rounded-full font-medium tracking-wide hover:bg-neutral-900 transition-colors text-center text-sm md:text-base"
                         >
-                          Buy Standard
+                          Buy<span className="hidden md:inline"> Standard</span>
                         </a>
                       </div>
                     </td>
@@ -148,7 +148,7 @@ const ComparisonTable: React.FC = () => {
                           href="https://buy.stripe.com/9B6fZh9lr15wb6Q0pB8bS02" 
                           className="relative block px-8 py-3 bg-neutral-950 text-neutral-200 rounded-full font-medium tracking-wide hover:bg-neutral-900 transition-colors text-center text-sm md:text-base"
                         >
-                          Buy MAX
+                          Buy<span className="hidden md:inline"> MAX</span>
                         </a>
                       </div>
                     </td>

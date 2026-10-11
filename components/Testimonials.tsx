@@ -1,5 +1,5 @@
 // Testimonials grid. Ported from bcd_website_new/bcd-page-cube-text.html (replaces the scrolling ArtistGallery marquee).
-import React, { useRef } from 'react';
+import React, { useMemo, useRef } from 'react';
 import './kinetic.css';
 import { useReveal } from './useReveal';
 
@@ -24,6 +24,12 @@ const items: T[] = [
 
 const Testimonials: React.FC = () => {
   const ref = useRef<HTMLElement>(null);
+  // a fresh random order on every page load
+  const order = useMemo(() => {
+    const a = [...items];
+    for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+    return a;
+  }, []);
   useReveal(ref, '.tm-rv');
   return (
   <section id="artist-testimonials" className="tm-section" ref={ref}>
@@ -31,7 +37,7 @@ const Testimonials: React.FC = () => {
       <p className="tm-eyebrow tm-rv">Testimonials</p>
       <h2 className="tm-title tm-rv">What The Producers Say.</h2>
       <div className="tm-grid">
-        {items.map((t) => (
+        {order.map((t) => (
           <figure className="tm-card tm-rv" key={t.name}>
             <span className="tm-q tm-q-o" aria-hidden="true">“</span>
             <span className="tm-q tm-q-c" aria-hidden="true">”</span>

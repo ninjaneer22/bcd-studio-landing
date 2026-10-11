@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 // The new routing tools you just installed
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
 // All your original components
 import Hero from './components/HeroKinetic';
@@ -19,6 +19,7 @@ import WhyInvest from './components/WhyInvest';
 import PricingSection from './components/PricingSection';
 import TechnicalDetails from './components/TechnicalDetails';
 import FAQSection from './components/FAQSection';
+import './components/mobile.css';
 import Footer from './components/Footer';
 
 // The new Success page
@@ -37,6 +38,13 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
+// A new page always opens at its top (otherwise /utilities opens wherever the home page was scrolled to)
+const ScrollToTop: React.FC = () => {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
+};
+
 const App: React.FC = () => {
   useEffect(() => {
     ScrollTrigger.refresh();
@@ -44,6 +52,7 @@ const App: React.FC = () => {
 
   return (
     <Router>
+      <ScrollToTop />
       <div className="relative bg-[#0a0a0a] min-h-screen">
         <Routes>
           

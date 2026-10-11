@@ -1,0 +1,79 @@
+/* Phone spacing only (<768px). Desktop is untouched: every rule lives inside this query.
+   One rhythm: sections ~44px top / 52px bottom, 24px side gutters, gaps inside sections roughly halved. */
+@media (max-width: 767px) {
+  :root {
+    --m-gap: 28px;       /* black space between one panel and the next */
+    --m-pad-top: 40px;   /* space inside a coloured panel, above its first line */
+    --m-pad-bottom: 44px;/* space inside a coloured panel, below its last element */
+    --m-side: 24px;
+  }
+  /* hero → feature panel */
+  #panel-2-features { padding: 32px var(--m-side) var(--m-gap) !important; }
+
+  /* cube sections (phone shows the two stacked images) */
+  .mc-section { padding: 0 0 var(--m-gap) !important; }
+  .mc-stage { gap: 20px !important; padding: var(--m-pad-top) 16px var(--m-pad-bottom) !important; }
+
+  /* Standard / Max detail panels */
+  #standard-details, #max-details { padding: 36px 24px 28px !important; }
+  #standard-details .mb-24, #max-details .mb-24 { margin-bottom: 24px !important; }
+  #standard-details .gap-20, #max-details .gap-20 { gap: 32px !important; }
+  #standard-details .gap-12, #max-details .gap-12 { gap: 20px !important; }
+
+  /* video breaks */
+  section#cinematic-break { padding-top: 20px !important; padding-bottom: 28px !important; }
+
+  /* AR */
+  #ar-interaction { padding: 44px 24px !important; }
+  #ar-interaction .gap-12 { gap: 24px !important; }
+
+  /* Find your match */
+  #comparison-panel { padding: 36px 16px 44px !important; }
+  #comparison-panel .space-y-12 > :not([hidden]) ~ :not([hidden]) { margin-top: 28px !important; }
+  #comparison-panel .space-y-8 > :not([hidden]) ~ :not([hidden]) { margin-top: 20px !important; }
+  #comparison-panel td, #comparison-panel th { padding-top: 16px !important; padding-bottom: 16px !important; }
+
+  /* benefits */
+  #why-invest-now { padding: 44px 24px 28px !important; }
+  #why-invest-now .space-y-16 > :not([hidden]) ~ :not([hidden]) { margin-top: 36px !important; }
+  #why-invest-now .space-y-8 > :not([hidden]) ~ :not([hidden]) { margin-top: 20px !important; }
+  #why-invest-now .gap-y-16 { row-gap: 28px !important; }
+
+  /* testimonials */
+  #artist-testimonials { padding: 44px 16px 48px !important; }
+  #artist-testimonials .tm-title { margin-bottom: 28px !important; }
+  #artist-testimonials .tm-card { padding: 64px 20px 24px !important; }
+
+  /* pricing */
+  #pricing-plans { padding: 44px 24px 48px !important; }
+  #pricing-plans .space-y-16 > :not([hidden]) ~ :not([hidden]) { margin-top: 36px !important; }
+  #pricing-plans h3.mb-16 { margin-bottom: 32px !important; }
+
+  /* technical details + FAQ */
+  #tech-specs, #faq-panel { padding: 52px 24px !important; }
+  #tech-specs .space-y-16 > :not([hidden]) ~ :not([hidden]) { margin-top: 36px !important; }
+  #tech-specs .space-y-6 > :not([hidden]) ~ :not([hidden]) { margin-top: 18px !important; }
+  #faq-panel .mb-16 { margin-bottom: 28px !important; }
+  #faq-panel .mt-24 { margin-top: 44px !important; }
+  #faq-panel button.py-8 { padding-top: 20px !important; padding-bottom: 20px !important; }
+
+  /* BCD loop + utilities band */
+  .bl { padding: 32px 12px 16px !important; }
+  .ub { padding: 52px 20px 56px !important; }
+
+  /* HIG pass: 44pt tap targets, 11pt minimum text, comparison table fits the screen */
+  [class*="text-[10px]"] { font-size: 11px !important; }
+  button[class*="text-[10px]"], a[class*="text-[10px]"] { min-height: 44px; display: inline-flex !important; align-items: center; justify-content: center; }
+  footer a[href="https://bcd.center/"] { min-height: 44px; padding: 0 16px; }
+  .kh-down { min-height: 44px; min-width: 44px; }
+  .ut #ut-nav button { padding: 13px 12px; min-height: 44px; }
+  .ut .cta, .ut .buy-in { min-height: 44px; }
+  .ut .buy-in { display: flex; align-items: center; justify-content: center; }
+  #comparison-panel table { min-width: 0 !important; table-layout: fixed; }
+  #comparison-panel th, #comparison-panel td { padding-left: 6px !important; padding-right: 6px !important; word-break: break-word; }
+  #comparison-panel th:first-child, #comparison-panel td:first-child { width: 34%; }
+  #comparison-panel th { font-size: 14px !important; letter-spacing: .08em !important; }
+  #comparison-panel .bg-gradient-to-l { display: none !important; }
+  #comparison-panel td a.block { padding: 0 !important; min-width: 64px; min-height: 44px; display: flex; align-items: center; justify-content: center; font-size: 14px !important; }
+  #comparison-panel td:has(a.block) { padding-left: 4px !important; padding-right: 4px !important; }
+}

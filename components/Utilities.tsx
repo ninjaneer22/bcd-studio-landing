@@ -8,20 +8,20 @@ const BUY_URL = 'https://flexi-deck.com/store.html#premium-libraries';
 
 const PRODUCTS = [
   { key: 'groups', name: 'Groups', ar: 812 / 900,
-    tag: 'Every group, one clean list.',
+    tag: 'Isolate any group. Instantly.',
     desc: 'Choose between 32 groups or 64 orchestral groups, already mapped out. Select a named group and its member channels are selected while everything else is hidden. A session of hundreds of channels becomes manageable with one click.',
     chips: ['32 or 64 groups', 'One-click select', 'Hide the rest', 'Logic Pro 11–12'],
     note: 'Requires channels assigned to a group, not a subgroup or folder stack.' },
   { key: 'stem', name: 'Stem Bouncer', ar: 900 / 999,
-    tag: 'Forty-eight stems, named in one pass.',
-    desc: 'Solos and bounces tracks with their effects to a folder you choose, then returns and repeats for the number of stems you set. Skip the deep export windows and process up to 48 stems in a single action.',
+    tag: 'Up to 48 Stems Bounced Sequentially.',
+    desc: 'Solos and bounces tracks with their effects to a folder you choose, then returns and repeats for the number of stems you set. Skip the deep export windows and process up to 48 stems in a single click action.',
     chips: ['Up to 48 stems', 'Fast bounce', 'Batch rename', 'Logic Pro 11–12'] },
   { key: 'gain', name: 'Gain', ar: 794 / 502,
-    tag: 'Exact steps, up or down.',
+    tag: 'Precise, repeatable region gain.',
     desc: 'Change gain on audio regions with a single click, from 0.1 dB to 10 dB in either direction, with the everyday edit, navigation and cutting tools right alongside.',
     chips: ['±0.1 to ±10 dB', 'One click', 'Edit tools', 'Logic Pro 11–12'] },
   { key: 'panner', name: 'Panner', ar: 1603 / 902,
-    tag: 'Twenty-four channels, left to right.',
+    tag: 'Widen your production in 2 clicks.',
     desc: 'Pans a run of channels in one go, in LR or LCR mode, starting from the selected Logic Pro channel. Manage up to 24 pairs or LCR groups at once.',
     chips: ['LR or LCR', 'Up to 24', 'Batch pan', 'Logic Pro 11–12'] },
 ];
@@ -69,7 +69,7 @@ const Utilities: React.FC = () => {
     const setT = (L: Line[], w: number[]) => { const s = w.reduce((a, b) => a + b, 0); let acc = 0; L.forEach((l, i) => { if (i === 0) { l.t = 0; return; } acc += w[i - 1]; l.t = acc / s; }); };
     const retarget = () => {
       const wx = Array(cols).fill(1), wy = Array(rows).fill(1);
-      if (focus !== null) { wx[focus % cols] = FW; wy[Math.floor(focus / cols)] = FW; }
+      if (focus !== null) { const F = cols < 2 ? 6 : FW; wx[focus % cols] = F; wy[Math.floor(focus / cols)] = F; }
       setT(LX, wx); setT(LY, wy);
     };
     const setLayout = () => {
@@ -191,7 +191,7 @@ const Utilities: React.FC = () => {
   return (
     <div className="ut" ref={rootRef}>
       <header className="ut-bar">
-        <Link to="/" className="ut-back">&larr; BCD</Link>
+        <Link to="/" className="ut-back" aria-label="Home" title="Home"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5" /><path d="M5.5 10v10h13V10" /><path d="M10 20v-5.5h4V20" /></svg></Link>
         <span>Logic Pro utilities</span>
       </header>
       <section id="ut-tour" aria-label="BCD utilities" style={{ height: `${Math.max(4, PRODUCTS.length) * 105 + 100}vh` }}>
@@ -209,7 +209,7 @@ const Utilities: React.FC = () => {
       )}
       {video && (
         <div className="ut-modal" onClick={() => setVideo(null)} role="dialog" aria-label="Demo video">
-          <video src={`/images/utilities/${video}.mp4`} controls autoPlay playsInline onClick={(e) => e.stopPropagation()} />
+          <video src={`/images/movies/utility_${video}.mp4`} controls autoPlay playsInline onClick={(e) => e.stopPropagation()} />
           <button type="button" className="ut-close" onClick={() => setVideo(null)} aria-label="Close video">&times;</button>
         </div>
       )}
