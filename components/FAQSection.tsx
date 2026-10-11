@@ -26,13 +26,13 @@ const faqs: FAQItem[] = [
   },
   {
     question: "Future-Proofing: Logic Pro Updates",
-    answer: "We provide regular updates to ensure seamless compatibility with new Logic Pro native tools as Apple releases them. he deep system improvements in Logic 11.1, the launcher is more resilient to DAW updates than traditional UI scripting, keeping your workflow stable through Apple’s release cycles."
+    answer: "We provide regular updates to keep the launcher compatible with new Logic Pro native tools as Apple releases them. Thanks to the deep system improvements in Logic 11.1, the launcher is also more resilient to DAW updates than traditional UI scripting, so your workflow stays stable through Apple’s release cycles."
   },
   {
     question: "MAX Tier: Multi-Action Macros & Triple Layouts",
     answer: (
       <span>
-        <span className="text-google-white font-bold">MAX is engineered for elite scoring and post-production.</span> It supports Triple Layouts—allowing you to switch between three custom 280-button projects instantly—and Multi-Action Triggers. A single button in MAX can execute up to four unique actions, such as loading a specific plugin and recalling a custom window configuration simultaneously.
+        <span className="text-google-white font-bold">MAX is engineered for elite scoring and post-production.</span> It supports Triple Layouts, which let you switch between three custom 280-button projects instantly, and Multi-Action Triggers. A single button in MAX can execute up to four unique actions, such as loading a specific plugin and recalling a custom window configuration simultaneously.
       </span>
     )
   },
