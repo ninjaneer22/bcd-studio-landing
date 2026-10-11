@@ -19,15 +19,6 @@
   ],
   "headers": [
     {
-      "source": "/omni/(.*)",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex, nofollow"
-        }
-      ]
-    },
-    {
       "source": "/pa-x7k2q9m4w3/(.*)",
       "headers": [
         {
