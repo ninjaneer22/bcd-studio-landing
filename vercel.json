@@ -12,14 +12,23 @@
       "permanent": false
     },
     {
-      "source": "/omni/pa",
-      "destination": "/omni/pa/",
+      "source": "/pa-temp",
+      "destination": "/pa-temp/",
       "permanent": false
     }
   ],
   "headers": [
     {
       "source": "/omni/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/pa-temp/(.*)",
       "headers": [
         {
           "key": "X-Robots-Tag",
