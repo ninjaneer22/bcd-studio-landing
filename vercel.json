@@ -4,5 +4,23 @@
       "source": "/(.*)",
       "destination": "/index.html"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/omni",
+      "destination": "/omni/",
+      "permanent": false
+    }
+  ],
+  "headers": [
+    {
+      "source": "/omni/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    }
   ]
 }
