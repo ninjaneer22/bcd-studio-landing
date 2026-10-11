@@ -17,7 +17,7 @@ const UtilitiesBand: React.FC = () => {
   return (
   <section id="utilities-band" className="ub" ref={ref}>
     <div className="ub-head text-center max-w-6xl mx-auto">
-      <span className="ub-rv text-sm tracking-[0.4em] font-medium text-google-grey uppercase mb-4 block">BCD UTILITIES</span>
+      <span className="ub-rv inline-block text-xl md:text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent tracking-[0.2em] uppercase mb-4">BCD UTILITIES</span>
       <h2 className="ub-rv font-bold text-google-white mb-4 md:whitespace-nowrap" style={{ fontSize: "clamp(1.75rem, 3.6vw, 3rem)", lineHeight: 1 }}>Automate the Routine. Master the Session.</h2>
       <p className="ub-rv text-google-grey text-lg md:text-xl max-w-4xl mx-auto" style={{ textWrap: "balance" }}>
         Four powerful workflow utilities designed to handle repetitive, multi‑step actions in Logic Pro, automating the session tasks that slow you down.

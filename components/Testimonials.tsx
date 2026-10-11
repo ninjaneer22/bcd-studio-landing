@@ -29,7 +29,7 @@ const Testimonials: React.FC = () => {
   <section id="artist-testimonials" className="tm-section" ref={ref}>
     <div className="tm-inner">
       <p className="tm-eyebrow tm-rv">Testimonials</p>
-      <h2 className="tm-title tm-rv">What Producers Say</h2>
+      <h2 className="tm-title tm-rv">What The Producers Say.</h2>
       <div className="tm-grid">
         {items.map((t) => (
           <figure className="tm-card tm-rv" key={t.name}>
