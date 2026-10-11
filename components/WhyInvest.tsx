@@ -1,22 +1,14 @@
 import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
+import { useReveal } from './useReveal';
 
 const WhyInvest: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  useReveal(sectionRef, '.invest-reveal');
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".invest-reveal", {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 85%",
-        },
-        autoAlpha: 0,
-        y: 20,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: "power2.out"
-      });
+      
     }, sectionRef);
     return () => ctx.revert();
   }, []);

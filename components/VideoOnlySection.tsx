@@ -1,26 +1,18 @@
 
 import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
+import { useReveal } from './useReveal';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const VideoOnlySection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  useReveal(containerRef, '.video-only-anim');
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Animation for the container appearance
-      gsap.from(".video-only-anim", {
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 80%",
-          toggleActions: "play none none reverse"
-        },
-        autoAlpha: 0,
-        scale: 0.98,
-        duration: 0.6,
-        ease: "power3.out"
-      });
+      
     }, containerRef);
     return () => ctx.revert();
   }, []);

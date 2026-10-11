@@ -160,7 +160,7 @@ const HeroKinetic: React.FC = () => {
       tl.to(bg, { filter: BLUR(), scale: 1.04, duration: 0.7, ease: "power2.out" }, 0);   // blurs as the text starts, stays blurred while it is on screen
 
       els.forEach((e, i) => {
-        const t = i * step, te = t + (i ? WAIT : 0), L = layout(i + 1), s = spec[i];
+        const t = i * step, te = t + (i ? (i === 1 ? WAIT + 0.1 : WAIT) : 0), L = layout(i + 1), s = spec[i];
         tl.set(e.line, { x: L[i].x, y: L[i].y, scale: L[i].s }, t);
         for (let j = 0; j < i; j++)
           tl.to(els[j].line, { x: L[j].x, y: L[j].y, scale: L[j].s, duration: MOVE, ease: "power3.inOut" }, t);
@@ -171,16 +171,16 @@ const HeroKinetic: React.FC = () => {
         if (s.dir === "down") from.yPercent = -100;
         if (s.dir === "left") from.xPercent = -100;
         if (s.dir === "right") from.xPercent = 100;
-        tl.fromTo(e.span, from, { xPercent: 0, yPercent: 0, duration: inDur * 0.85, ease: "power4.out", immediateRender: false }, te);
+        tl.fromTo(e.span, from, { xPercent: 0, yPercent: 0, duration: inDur * 0.85 * (i === 1 ? 0.6 : i === 2 ? 0.8 : 1), ease: "power4.out", immediateRender: false }, te);
 
         const pv = { ...s.from };
         axes(e.span, pv);
         tl.fromTo(pv, { w: s.from.w, wd: s.from.wd },
-          { w: s.fin.w, wd: s.fin.wd, duration: inDur, ease: "power3.out", immediateRender: false, onUpdate: () => axes(e.span, pv) }, te);
+          { w: s.fin.w, wd: s.fin.wd, duration: inDur * (i === 1 ? 0.6 : i === 2 ? 0.8 : 1), ease: "power3.out", immediateRender: false, onUpdate: () => axes(e.span, pv) }, te);
       });
 
       /* EXIT: hold, then BROWSE. -> CLICK. -> DONE. -> BCD */
-      const HOLD = 0.5, T0 = 0;                       // shorter hold; the exit then plays at double speed
+      const HOLD = 0, T0 = 0;                       // shorter hold; the exit then plays at double speed
       const ex = gsap.timeline();
       const IO = "power3.inOut", IN = "power3.in";
       const fin0 = spec[0].fin;
@@ -199,18 +199,21 @@ const HeroKinetic: React.FC = () => {
       ex.fromTo(pvB, { wd: fin0.wd }, { wd: st.wd, duration: 0.8, ease: IO, immediateRender: false,
         onUpdate: () => axes(els[0].span, { w: fin0.w, wd: pvB.wd }) }, T1 + 0.25);
 
-      const T2 = T1 + 1.5;
+      const T2 = T1 + 0.8;
       const bcdH = items[0].capH * L2[0].s;
-      ex.to(els[3].line, { y: L2[0].y + bcdH * 0.3, duration: 0.6, ease: IN }, T2);
-      ex.to(els[3].line, { autoAlpha: 0, duration: 0.15 }, T2 + 0.45);
+      ex.to(els[3].line, { y: L2[0].y + bcdH * 0.3, duration: 0.93, ease: IN }, T2);
+      ex.to(els[3].line, { autoAlpha: 0, duration: 0.2 }, T2 + 0.7);
 
-      const T3 = T2 + 0.9;
-      ex.to(els[0].span, { yPercent: 100, duration: 0.6, ease: IN }, T3);
-      const pvC = { w: fin0.w };
-      ex.fromTo(pvC, { w: fin0.w }, { w: 100, duration: 0.6, ease: IN, immediateRender: false,
-        onUpdate: () => axes(els[0].span, { w: pvC.w, wd: st.wd }) }, T3);
+      const T3 = T2 + 1.4;
+      // final BCD: rapid four-blink burst, then gone (replaces the mask-out)
+      const P = 0.12;
+      for (let k = 0; k < 4; k++) {
+        ex.set(els[0].line, { autoAlpha: 0 }, T3 + k * P);
+        ex.set(els[0].line, { autoAlpha: 1 }, T3 + k * P + P / 2);
+      }
+      ex.set(els[0].line, { autoAlpha: 0 }, T3 + 4 * P);
 
-      ex.to({}, { duration: 0.3 }, T3 + 0.6);
+      ex.to({}, { duration: 0.47 }, T3 + 0.53);
       tl.add(ex.timeScale(2), total + 0.4 + HOLD);
 
       if (REDUCED) { tl.pause(); tl.time(total + 0.4); gsap.set(cue, { autoAlpha: 0.85 }); return; }

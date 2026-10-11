@@ -20,11 +20,10 @@
 @keyframes kh-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
 
 /* ---------- Testimonials (from bcd-page-cube-text.html) ---------- */
-.tm-section{--bg:#0b0b0d;--dim:#8a8a8f;--accent:#ff5a1f;position:relative;z-index:10;padding:14vh 24px 16vh;background:var(--bg);font-family:"Archivo",system-ui,sans-serif;color:#f2f2f0}
+.tm-section{--bg:#0b0b0d;--dim:#8a8a8f;--accent:#ff5a1f;position:relative;z-index:10;padding:clamp(48px,7vh,80px) 24px clamp(48px,7vh,80px);background:var(--bg);font-family:"Archivo",system-ui,sans-serif;color:#f2f2f0}
 .tm-inner{max-width:1240px;margin:0 auto}
 .tm-eyebrow{margin:0 0 16px;text-align:center;font-size:14px;letter-spacing:.4em;text-transform:uppercase;color:var(--dim)}
-.tm-title{margin:0 0 clamp(36px,6vw,72px);text-align:center;text-transform:uppercase;font-weight:800;font-stretch:112%;font-size:clamp(28px,5vw,56px);line-height:1;letter-spacing:-.01em;
- background:linear-gradient(180deg,#fff 0%,#dcdce2 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tm-title{margin:0 0 clamp(36px,5vw,56px);text-align:center;font-family:'Inter',sans-serif;font-weight:700;font-size:clamp(1.875rem,3.2vw + .6rem,3rem);line-height:1.25;letter-spacing:-.025em;color:#fff}
 .tm-title span{color:var(--accent);-webkit-text-fill-color:var(--accent)}
 .tm-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
 .tm-card{grid-column:span 3;margin:0;position:relative;overflow:hidden;padding:104px 26px 30px;border-radius:24px;

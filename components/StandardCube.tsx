@@ -1,4 +1,5 @@
 // Standard launcher: scroll-driven 4-sided cube, replacing the 90-frame image sequence (SequenceCanvas).
+import { useReveal } from './useReveal';
 // Faces, in turning order: intro text, Logic Pro Plugins, Logic Pro Instruments, outro text. Images are used as supplied (no resampling).
 import React, { useEffect, useRef } from 'react';
 import './cube.css';
@@ -16,6 +17,7 @@ const smooth = (x: number) => x * x * (3 - 2 * x);
 
 const StandardCube: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  useReveal(sectionRef, '.sc-head > *');
   const cubeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

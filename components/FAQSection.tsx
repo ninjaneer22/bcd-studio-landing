@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
+import { useReveal } from './useReveal';
 
 interface FAQItem {
   question: string;
@@ -75,20 +76,11 @@ const AccordionItem: React.FC<{ item: FAQItem; isOpen: boolean; onClick: () => v
 const FAQSection: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
+  useReveal(sectionRef, '.faq-reveal');
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".faq-reveal", {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 85%",
-        },
-        autoAlpha: 0,
-        y: 20,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: "power2.out"
-      });
+      
     }, sectionRef);
     return () => ctx.revert();
   }, []);

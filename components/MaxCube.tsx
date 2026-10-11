@@ -1,4 +1,5 @@
 // Max launcher: scroll-driven 4-sided cube, replacing the 120-frame image sequence (MaxSequenceCanvas).
+import { useReveal } from './useReveal';
 // Faces, in turning order: intro text, plugin grid, blank LPM grid, outro text. Images are used as supplied (no resampling).
 import React, { useEffect, useRef } from 'react';
 import './cube.css';
@@ -16,6 +17,7 @@ const smooth = (x: number) => x * x * (3 - 2 * x);
 
 const MaxCube: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  useReveal(sectionRef, '.sc-head > *');
   const cubeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

@@ -1,22 +1,14 @@
 import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
+import { useReveal } from './useReveal';
 
 const TechnicalDetails: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  useReveal(sectionRef, '.tech-reveal');
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".tech-reveal", {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 85%",
-        },
-        autoAlpha: 0,
-        y: 20,
-        duration: 1,
-        stagger: 0.1,
-        ease: "power2.out"
-      });
+      
     }, sectionRef);
     return () => ctx.revert();
   }, []);

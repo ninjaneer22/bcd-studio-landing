@@ -1,23 +1,14 @@
 import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
+import { useReveal } from './useReveal';
 
 const PricingSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  useReveal(sectionRef, '.pricing-reveal');
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".pricing-reveal", {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 75%",
-        },
-        autoAlpha: 0,
-        y: 40,
-        scale: 0.98,
-        duration: 1.4,
-        stagger: 0.3,
-        ease: "expo.out"
-      });
+      
     }, sectionRef);
     return () => ctx.revert();
   }, []);

@@ -1,8 +1,10 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
+import { useReveal } from './useReveal';
 
 const ComparisonTable: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  useReveal(sectionRef, '.table-row-reveal');
   const [showFade1, setShowFade1] = useState(true);
   const [showFade2, setShowFade2] = useState(true);
 
@@ -17,17 +19,7 @@ const ComparisonTable: React.FC = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".table-row-reveal", {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-        },
-        autoAlpha: 0,
-        y: 20,
-        duration: 0.6,
-        stagger: 0.05,
-        ease: "power2.out"
-      });
+      
     }, sectionRef);
     return () => ctx.revert();
   }, []);

@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
+import { useReveal } from './useReveal';
 import { QRCodeSVG } from 'qrcode.react';
 
 interface ARCardProps {
@@ -57,20 +58,11 @@ const ARCard: React.FC<ARCardProps> = ({ label, modelPath }) => {
 
 const ARSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  useReveal(sectionRef, '.ar-reveal');
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".ar-reveal", {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-        },
-        autoAlpha: 0,
-        y: 30,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power3.out"
-      });
+      
     }, sectionRef);
     return () => ctx.revert();
   }, []);

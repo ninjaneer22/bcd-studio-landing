@@ -1,6 +1,7 @@
 // Testimonials grid. Ported from bcd_website_new/bcd-page-cube-text.html (replaces the scrolling ArtistGallery marquee).
-import React from 'react';
+import React, { useRef } from 'react';
 import './kinetic.css';
+import { useReveal } from './useReveal';
 
 type T = { name: string; role: string; img: string; quote: React.ReactNode };
 
@@ -21,14 +22,17 @@ const items: T[] = [
     quote: <>…a <b>lifesaver.</b> There was never a better way to speed up my workflow.</> },
 ];
 
-const Testimonials: React.FC = () => (
-  <section id="artist-testimonials" className="tm-section">
+const Testimonials: React.FC = () => {
+  const ref = useRef<HTMLElement>(null);
+  useReveal(ref, '.tm-rv');
+  return (
+  <section id="artist-testimonials" className="tm-section" ref={ref}>
     <div className="tm-inner">
-      <p className="tm-eyebrow">What producers say</p>
-      <h2 className="tm-title">Browse. Click. <span>Done.</span></h2>
+      <p className="tm-eyebrow tm-rv">Testimonials</p>
+      <h2 className="tm-title tm-rv">What Producers Say</h2>
       <div className="tm-grid">
         {items.map((t) => (
-          <figure className="tm-card" key={t.name}>
+          <figure className="tm-card tm-rv" key={t.name}>
             <span className="tm-q tm-q-o" aria-hidden="true">“</span>
             <span className="tm-q tm-q-c" aria-hidden="true">”</span>
             <div className="tm-head">
@@ -41,6 +45,7 @@ const Testimonials: React.FC = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default Testimonials;

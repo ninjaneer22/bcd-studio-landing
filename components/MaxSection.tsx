@@ -1,25 +1,17 @@
 import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
+import { useReveal } from './useReveal';
 
 const MaxSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  useReveal(sectionRef, '.max-std-anim');
   const mediaRef = useRef<HTMLDivElement>(null);
   const labelRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Entrance reveal
-      gsap.from(".max-std-anim", {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-        },
-        autoAlpha: 0,
-        y: 40,
-        duration: 1.4,
-        stagger: 0.15,
-        ease: "expo.out"
-      });
+      
 
       // Subtle parallax for the media column
       gsap.to(mediaRef.current, {
@@ -73,7 +65,7 @@ const MaxSection: React.FC = () => {
       <div className="relative z-10 max-w-7xl mx-auto">
         
         {/* Header Block */}
-        <div className="text-center mb-24 overflow-hidden">
+        <div className="max-std-anim text-center mb-24 overflow-hidden">
           <span 
             ref={labelRef} 
             className="inline-block text-xl md:text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent tracking-[0.2em] uppercase"

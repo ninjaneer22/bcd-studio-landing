@@ -1,27 +1,18 @@
 
 import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
+import { useReveal } from './useReveal';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const FeaturePanel: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  useReveal(containerRef, '.feature-anim');
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMuted, setIsMuted] = React.useState(true);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".feature-anim", {
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 35%",
-          toggleActions: "play none none reverse"
-        },
-        autoAlpha: 0,
-        y: 20,
-        duration: 1,
-        stagger: 0.1,
-        ease: "power2.out"
-      });
+      
 
       ScrollTrigger.create({
         trigger: containerRef.current,
@@ -43,7 +34,7 @@ const FeaturePanel: React.FC = () => {
   };
 
   return (
-    <section id="panel-2-features" ref={containerRef} className="w-full bg-gradient-to-b from-[#0a0a0a] to-[#050505] py-24 px-8">
+    <section id="panel-2-features" ref={containerRef} className="w-full bg-gradient-to-b from-[#0a0a0a] to-[#050505] pt-10 pb-24 px-8">
       <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
    <span className="feature-anim text-sm tracking-[0.4em] font-medium text-google-grey uppercase mb-4">
           STANDARD & MAX PLUGIN LAUNCHERS
