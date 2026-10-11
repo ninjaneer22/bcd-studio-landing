@@ -95,7 +95,7 @@ const TechnicalDetails: React.FC = () => {
           <div className="tech-reveal space-y-2 text-google-grey text-base md:text-lg font-medium">
             <p><strong>OS:</strong> macOS 13 Ventura or later</p>
             <p><strong>DAW:</strong> Logic Pro 11.1 or later (required for enhanced plugin search speed)</p>
-            <p><strong>Hardware:</strong> Intel or Apple Silicon (M1, M2, M3, M4) Macs</p>
+            <p><strong>Hardware:</strong> Intel &amp; Apple Silicon Macs</p>
           </div>
         </div>
 
