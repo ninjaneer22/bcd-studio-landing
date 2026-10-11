@@ -77,13 +77,6 @@ const WhyInvest: React.FC = () => {
 
           </div>
         </div>
-
-        {/* Final Statement */}
-        <div className="pt-20">
-          <h2 className="invest-reveal text-white text-3xl md:text-5xl font-bold tracking-tighter leading-[1.1]">
-            Revolutionize your Logic Pro <br className="hidden md:block" /> workflow today.
-          </h2>
-        </div>
       </div>
     </section>
   );

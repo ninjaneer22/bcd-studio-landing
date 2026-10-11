@@ -84,8 +84,8 @@ const StandardCube: React.FC = () => {
     <section ref={sectionRef} id="standard-cube" className="mc-section mc-std">
       <div className="mc-stage">
         <div className="sc-head text-center max-w-5xl mx-auto">
-          <span className="text-sm tracking-[0.4em] font-medium text-google-grey uppercase mb-4 block">
-            PLUGIN LAUNCHER STANDARD
+          <span className="text-sm tracking-[0.4em] font-medium text-white uppercase mb-4 block">
+            PLUGIN LAUNCHER <span className="text-cyan-400">STANDARD</span>
           </span>
           <h2 className="text-4xl md:text-6xl font-bold text-google-white mb-4">
             The Ultimate Plug-and-Play Solution.

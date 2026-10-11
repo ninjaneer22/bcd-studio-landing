@@ -61,8 +61,8 @@ const App: React.FC = () => {
               <ARSection />
               <MaxButton />
               <ComparisonTable />
-              <Testimonials />
               <WhyInvest />
+              <Testimonials />
               <PricingSection />
               <TechnicalDetails />
               <FAQSection />

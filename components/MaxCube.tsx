@@ -84,8 +84,8 @@ const MaxCube: React.FC = () => {
     <section ref={sectionRef} id="max-cube" className="mc-section">
       <div className="mc-stage">
         <div className="sc-head text-center max-w-5xl mx-auto">
-          <span className="text-sm tracking-[0.4em] font-medium text-google-grey uppercase mb-4 block">
-            PLUGIN LAUNCHER MAX
+          <span className="text-sm tracking-[0.4em] font-medium text-white uppercase mb-4 block">
+            PLUGIN LAUNCHER <span className="text-orange-400">MAX</span>
           </span>
           <h2 className="text-4xl md:text-6xl font-bold text-google-white mb-4">
             Your Custom Console.

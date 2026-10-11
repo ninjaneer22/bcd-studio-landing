@@ -44,9 +44,13 @@ const PricingSection: React.FC = () => {
 
       <div className="max-w-4xl mx-auto flex flex-col items-center relative z-10">
         {/* Swapped to Simple Grey Style */}
-        <h2 className="pricing-reveal text-sm tracking-[0.4em] font-medium text-google-grey uppercase text-center mb-12">
+        <h2 className="pricing-reveal text-sm tracking-[0.4em] font-medium text-google-grey uppercase text-center mb-4">
           CHOOSE YOUR VERSION
         </h2>
+
+        <h3 className="pricing-reveal text-white text-3xl md:text-5xl font-bold tracking-tighter leading-[1.1] text-center mb-16">
+          Revolutionize your Logic Pro <br className="hidden md:block" /> workflow today.
+        </h3>
 
         <div className="w-full space-y-16">
           
