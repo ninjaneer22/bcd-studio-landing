@@ -41,7 +41,7 @@ const FeaturePanel: React.FC = () => {
         </span>
 
         <h2 className="feature-anim text-4xl md:text-6xl font-bold text-google-white tracking-tight mb-4">
-          Every Plugin. One Touch.
+          Load your plugins instantly.
         </h2>
 
         <p className="feature-anim text-google-grey text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
