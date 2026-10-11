@@ -10,6 +10,11 @@
       "source": "/omni",
       "destination": "/omni/",
       "permanent": false
+    },
+    {
+      "source": "/omni/pa",
+      "destination": "/omni/pa/",
+      "permanent": false
     }
   ],
   "headers": [
