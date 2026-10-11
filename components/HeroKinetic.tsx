@@ -204,6 +204,15 @@ const HeroKinetic: React.FC = () => {
       ex.to(els[3].line, { y: L2[0].y + bcdH * 0.3, duration: 0.93, ease: IN }, T2);
       ex.to(els[3].line, { autoAlpha: 0, duration: 0.2 }, T2 + 0.7);
 
+      // just before the final BCD blinks out, relax it back towards its entry proportions, ending a touch (7.5%) taller than entry
+      const L0 = layoutRows([[0]]);
+      const TALL = 0.075, tt = Math.min(1, TALL / Math.max(0.001, st.r - 1));
+      const wdEnd = fin0.wd + tt * (st.wd - fin0.wd);
+      const pvC = { wd: st.wd };
+      ex.to(els[0].line, { x: L0[0].x, y: L0[0].y - items[0].capH * L0[0].s * TALL / 2, scale: L0[0].s * (1 + TALL), duration: 0.6, ease: IO }, T2 + 0.5);
+      ex.fromTo(pvC, { wd: st.wd }, { wd: wdEnd, duration: 0.6, ease: IO, immediateRender: false,
+        onUpdate: () => axes(els[0].span, { w: fin0.w, wd: pvC.wd }) }, T2 + 0.5);
+
       const T3 = T2 + 1.4;
       // final BCD: rapid four-blink burst, then gone (replaces the mask-out)
       const P = 0.12;
