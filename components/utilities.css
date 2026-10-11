@@ -140,3 +140,10 @@
 .ut-bar .ut-back{display:inline-flex;align-items:center;line-height:0;padding:12px;margin:-12px}
 .ut .top{left:60px}
 @media (max-width:760px){.ut .top{left:56px}}
+
+@media (min-width:761px){
+.ut-bar{left:21.5px;top:23.5px;align-items:center}
+.ut-bar .ut-back{display:flex;align-items:center;line-height:1}
+.ut-bar .ut-back svg{display:block}
+.ut .top{top:26px;align-items:center}
+}

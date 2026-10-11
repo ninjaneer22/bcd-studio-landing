@@ -56,7 +56,7 @@ const Utilities: React.FC = () => {
       stage.appendChild(el);
       return el;
     });
-    const navBtns = ([['Overview', null], ...PRODUCTS.map((p, k) => [p.name, k])] as [string, number | null][]).map(([label, k]) => {
+    const navBtns = ([['BCD Utilities', null], ...PRODUCTS.map((p, k) => [p.name, k])] as [string, number | null][]).map(([label, k]) => {
       const b = document.createElement('button'); b.textContent = label; b.dataset.k = k === null ? '' : String(k);
       b.addEventListener('click', () => setFocus(k)); nav.appendChild(b); return b;
     });
