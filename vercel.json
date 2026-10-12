@@ -15,11 +15,25 @@
       "source": "/pa-x7k2q9m4w3",
       "destination": "/pa-x7k2q9m4w3/",
       "permanent": false
+    },
+    {
+      "source": "/pa2-r4h8c2v9d6",
+      "destination": "/pa2-r4h8c2v9d6/",
+      "permanent": false
     }
   ],
   "headers": [
     {
       "source": "/pa-x7k2q9m4w3/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/pa2-r4h8c2v9d6/(.*)",
       "headers": [
         {
           "key": "X-Robots-Tag",
