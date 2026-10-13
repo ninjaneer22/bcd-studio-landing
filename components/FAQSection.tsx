@@ -20,7 +20,7 @@ const faqs: FAQItem[] = [
     question: "Standard vs. MAX: 3rd-Party & Customization",
     answer: (
       <span>
-        Standard is a “Player” experience, pre-mapped for every native Logic Pro effect and instrument for a plug-and-play workflow. <span className="text-google-white font-bold">MAX unlocks “Creator Mode,”</span> granting full support for your entire 3rd-party Audio Unit (AU) collection. While Standard uses a fixed, curated project, MAX allows total customization of layouts, button naming, and macro assignments.
+        <span className="text-google-white font-bold">Standard is ready to use; MAX is yours to shape.</span> Standard comes pre-mapped for every native Logic Pro effect and instrument. MAX adds your third-party Audio Units and lets you customize layouts, button names and macros.
       </span>
     )
   },
