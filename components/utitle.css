@@ -1,0 +1,16 @@
+/* ---------- BCD UTILITIES title: outline in, fill up, fill lifts off, mask out. Same footprint as the old loop band. ---------- */
+.utt{background:#0a0a0a;padding:39px 24px 17px;display:flex;justify-content:center}
+.utt-crop{position:relative;width:100%;max-width:1200px;aspect-ratio:16/4;overflow:hidden;border-radius:18px;border:1px solid rgba(255,255,255,.06);
+  background:#0b0d0e url(/images/utilities/gradient.webp) center/cover no-repeat;container-type:inline-size}
+.utt-title{position:absolute;inset:0;margin:0;display:flex;align-items:center;justify-content:center;white-space:nowrap;text-transform:uppercase;
+  font-family:"Avenir Next","Avenir Next LT Pro","Avenir","Inter",system-ui,sans-serif;font-weight:700;font-size:9.6cqw;line-height:1;letter-spacing:.045em;--sw:max(1.5px,.17cqw)}
+.utt-w{display:inline-flex}
+.utt-w+.utt-w{margin-left:.34em}
+.utt-w.utt-bcd{--c:#ff5a1f}
+.utt-w.utt-utl{--c:#efede8}
+.utt-mask{display:inline-flex;overflow:hidden;padding:.1em .07em}
+.utt-l{display:inline-block;position:relative;will-change:transform}
+.utt-o,.utt-f{display:block;font-style:normal}
+.utt-o{color:transparent;-webkit-text-stroke:var(--sw) var(--c)}
+.utt-f{position:absolute;left:0;top:0;color:var(--c);-webkit-text-stroke:var(--sw) var(--c)}
+@media (max-width:640px){.utt{padding:40px 12px 56px}.utt-crop{aspect-ratio:16/7}}

@@ -31,7 +31,7 @@ import StudioOnePromo from './components/StudioOnePromo';
 import UADPromo from './components/UadPromo';
 import Utilities from './components/Utilities';
 import UtilitiesBand from './components/UtilitiesBand';
-import BcdLoop from './components/BcdLoop';
+import UtilitiesTitle from './components/UtilitiesTitle';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
@@ -75,7 +75,7 @@ const App: React.FC = () => {
               <PricingSection />
               <TechnicalDetails />
               <FAQSection />
-              <BcdLoop />
+              <UtilitiesTitle />
               <UtilitiesBand />
             </>
           } />
