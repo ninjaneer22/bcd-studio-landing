@@ -26,7 +26,7 @@ const faqs: FAQItem[] = [
   },
   {
     question: "Future-Proofing: Logic Pro Updates",
-    answer: "We provide regular updates to keep the launcher compatible with new Logic Pro native tools as Apple releases them. Thanks to the deep system improvements in Logic 11.1, the launcher is also more resilient to DAW updates than traditional UI scripting, so your workflow stays stable through Apple’s release cycles."
+    answer: "We update the launcher regularly to support new Logic Pro native tools as Apple releases them."
   },
   {
     question: "MAX Tier: Multi-Action Macros & Triple Layouts",
