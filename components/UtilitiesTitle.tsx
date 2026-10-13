@@ -6,7 +6,7 @@ import { gsap } from 'gsap';
 import './utitle.css';
 
 const WORDS: [string, string][] = [['BCD', 'utt-bcd'], ['UTILITIES', 'utt-utl']];
-const FAM = '"Avenir Next","Avenir Next LT Pro","Avenir","Inter",system-ui,sans-serif';
+const FAM = '"Avenir Next","Avenir Next LT Pro","Avenir","UttFallback",system-ui,sans-serif';
 
 const UtilitiesTitle: React.FC = () => {
   const rootRef = useRef<HTMLElement>(null);
