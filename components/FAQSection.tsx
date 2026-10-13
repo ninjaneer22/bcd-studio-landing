@@ -40,7 +40,7 @@ const faqs: FAQItem[] = [
     question: "Licensing & Growth: Flexi-Deck & Upgrades",
     answer: (
       <span>
-        Every download includes the high-performance Flexi-Deck engine; <span className="text-google-white font-bold">no separate purchase is required.</span> It runs as a lightweight host for your project. You can start with a 30-day evaluation of either version to experience the speed increase firsthand. If your studio grows, you can upgrade from Standard to MAX at any time by simply paying the difference.
+        Every download includes the Flexi-Deck engine, so <span className="text-google-white font-bold">there's nothing else to buy.</span> It runs quietly in the background as a lightweight host for your project. Start with Standard and upgrade to MAX whenever you like. You only pay the difference.
       </span>
     )
   }
