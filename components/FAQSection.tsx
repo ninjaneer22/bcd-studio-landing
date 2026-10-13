@@ -32,7 +32,7 @@ const faqs: FAQItem[] = [
     question: "MAX Tier: Multi-Action Macros & Triple Layouts",
     answer: (
       <span>
-        <span className="text-google-white font-bold">MAX is engineered for elite scoring and post-production.</span> It supports Triple Layouts, which let you switch between three custom 280-button projects instantly, and Multi-Action Triggers. A single button in MAX can execute up to four unique actions, such as loading a specific plugin and recalling a custom window configuration simultaneously.
+        <span className="text-google-white font-bold">MAX is engineered for elite scoring and post-production.</span> Triple Layouts let you switch instantly between three custom 280-button projects, and Multi-Action Triggers let a single button run up to four actions in one click.
       </span>
     )
   },
