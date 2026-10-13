@@ -46,12 +46,12 @@ const UtilitiesTitle: React.FC = () => {
         <h2 className="utt-title utt-heat" ref={heatRef} aria-hidden="true"><span>BCD</span><span>UTILITIES</span></h2>
         <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
           <filter id="utt-thermal" colorInterpolationFilters="sRGB" x="-10%" y="-40%" width="120%" height="180%">
-            <feGaussianBlur in="SourceAlpha" stdDeviation="8.8" />
+            <feGaussianBlur in="SourceAlpha" stdDeviation="11" />
             <feColorMatrix type="matrix" values="0 0 0 1 0  0 0 0 1 0  0 0 0 1 0  0 0 0 1 0" />
             <feComponentTransfer>
-              <feFuncR type="table" tableValues="0 .2 .95 1 1" />
-              <feFuncG type="table" tableValues="0 .35 .35 .8 1" />
-              <feFuncB type="table" tableValues="0 1 .25 .1 .8" />
+              <feFuncR type="table" tableValues="0 .15 1 1 1" />
+              <feFuncG type="table" tableValues="0 .3 .3 .85 1" />
+              <feFuncB type="table" tableValues="0 1 .12 .05 .8" />
               <feFuncA type="table" tableValues="0 .85 1 1 1" />
             </feComponentTransfer>
           </filter>
