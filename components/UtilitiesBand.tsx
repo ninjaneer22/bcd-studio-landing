@@ -34,7 +34,7 @@ const UtilitiesBand: React.FC = () => {
       ))}
     </ul>
     <div className="ub-cta ub-rv">
-      <span className="ub-ring"><Link to="/utilities" className="ub-ring-in">See the utilities</Link></span>
+      <span className="ub-ring"><Link to="/utilities" className="ub-ring-in">Find out more</Link></span>
     </div>
   </section>
   );
