@@ -10,6 +10,6 @@
 .utt-u{color:transparent;-webkit-text-stroke:max(1.5px,.17cqw) #efede8}
 .utt-veil{position:absolute;inset:0;backdrop-filter:blur(4.5px);-webkit-backdrop-filter:blur(4.5px);
   -webkit-mask-image:var(--m);mask-image:var(--m);pointer-events:none}
-.utt-heat{pointer-events:none;mix-blend-mode:screen;opacity:.9;filter:url(#utt-thermal);-webkit-mask-image:var(--m);mask-image:var(--m)}
+.utt-heat{pointer-events:none;mix-blend-mode:screen;opacity:.75;filter:url(#utt-thermal);-webkit-mask-image:var(--m);mask-image:var(--m)}
 .utt-heat span{color:#000}
 @media (max-width:640px){.utt{padding:40px 12px 56px}.utt-crop{aspect-ratio:16/7}}
