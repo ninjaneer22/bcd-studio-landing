@@ -10,6 +10,8 @@ const StandardSection: React.FC = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // parallax and drift are desktop-only so the title stays centred on phones
+      if (!window.matchMedia('(min-width: 768px)').matches) return;
       // Entrance reveal for text
       
 
@@ -59,10 +61,10 @@ const StandardSection: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         
         {/* Upgraded Hero-Style Header */}
-        <div className="std-anim text-center mb-24 overflow-hidden">
+        <div className="std-anim text-center mb-14 md:mb-24 overflow-hidden">
           <span 
             ref={labelRef} 
-            className="inline-block text-xl md:text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent tracking-[0.2em] uppercase"
+            className="inline-block pl-[0.2em] text-xl md:text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent tracking-[0.2em] uppercase"
           >
             PLUGIN LAUNCHER STANDARD
           </span>
