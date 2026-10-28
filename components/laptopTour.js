@@ -53,7 +53,7 @@ export function startLaptop(stage, cards, assets) {
     const target = p00.clone().addScaledVector(Rv, S.u).addScaledVector(Dv, S.v);
     const fov = THREE.MathUtils.degToRad(camera.fov);
     // on narrow screens zoom in so most of the screen shows (the sides are cropped a little)
-    const wEff = Math.min(S.w, Math.max(0.28, (camera.aspect / 1.6) * 1.3));
+    const wEff = Math.min(S.w, Math.max(0.28, (camera.aspect / 1.6) * 1.59));
     const dist = (wEff * W) / (2 * Math.tan(fov / 2) * camera.aspect);
     const yaw = THREE.MathUtils.degToRad(S.yaw), pit = THREE.MathUtils.degToRad(S.pitch);
     const dir = N.clone().multiplyScalar(Math.cos(yaw) * Math.cos(pit)).addScaledVector(R, Math.sin(yaw) * Math.cos(pit)).addScaledVector(U, Math.sin(pit));
