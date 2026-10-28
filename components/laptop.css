@@ -1,0 +1,10 @@
+.lt-section { position: relative; background: #000; }
+.lt-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; background: #0b0b0d center/cover no-repeat; }
+.lt-stage canvas { position: absolute; inset: 0; display: block; opacity: 0; transition: opacity .6s ease; }
+.lt-stage.ready canvas { opacity: 1; }
+.lt-fallback { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; }
+.lt-fallback img { max-width: 92%; max-height: 80%; border-radius: 10px; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+.lt-stage.nogl .lt-fallback { display: flex; }
+.lt-list { margin-top: -100vh; margin-top: -100svh; position: relative; pointer-events: none; }
+.lt-step { height: 75vh; }
+.lt-step.last { height: 150vh; }
