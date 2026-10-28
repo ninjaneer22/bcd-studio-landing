@@ -3,8 +3,8 @@ import './laptop.css';
 
 const BASE = '/images/laptop/';
 const STEPS = [
-  { tex: 'fx', x: 1200, y: 775, wpx: 2760, yaw: -24, pitch: 9 },
-  { tex: 'inst', x: 1200, y: 775, wpx: 2760, yaw: 24, pitch: -6 },
+  { tex: 'fx', x: 1200, y: 750, wpx: 3000, yaw: -24, pitch: 9 },
+  { tex: 'inst', x: 1200, y: 750, wpx: 3000, yaw: 24, pitch: -6 },
   { tex: 'maxa', x: 1200, y: 750, wpx: 3200, yaw: -18, pitch: 8 },
   { tex: 'maxa', x: 700, y: 720, wpx: 1650, yaw: 14, pitch: -4 },
   { tex: 'maxb', x: 1200, y: 750, wpx: 3100, yaw: 20, pitch: -7 },
