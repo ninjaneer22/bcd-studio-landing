@@ -33,7 +33,7 @@ export function startLaptop(stage, cards, assets) {
   const texCache = new Map();
   function getTex(url) {
     if (texCache.has(url)) return texCache.get(url);
-    const t = loader.load(url);
+    const t = loader.load(url, () => { t.userData.ok = true; if (baseMat && baseMat.map === t) { baseMat.color.set(0xffffff); } if (overMat && overMat.map === t) { overMat.color.set(0xffffff); } });
     t.colorSpace = THREE.SRGBColorSpace;
     t.flipY = false;
     t.anisotropy = renderer.capabilities.getMaxAnisotropy();
@@ -43,6 +43,7 @@ export function startLaptop(stage, cards, assets) {
     return t;
   }
 
+  function setMap(m, url) { const t = getTex(url); m.map = t; m.color.set(t.userData.ok ? 0xffffff : 0x000000); m.needsUpdate = true; }
   let frame = null, baseMat = null, overMat = null, curTex = null;
   let active = -1, tween = null, fade = null, pending = 0, visible = true, disposed = false;
   const S = { u: 0.5, v: 0.5, w: 1.2, yaw: 0, pitch: 0 };
@@ -83,12 +84,12 @@ export function startLaptop(stage, cards, assets) {
     if (fade) fade.kill();
     const quick = instant || reduce;
     if (s.tex !== curTex) {
-      if (quick) { baseMat.map = getTex(s.tex); baseMat.needsUpdate = true; overMat.opacity = 0; curTex = s.tex; }
+      if (quick) { setMap(baseMat, s.tex); overMat.opacity = 0; curTex = s.tex; }
       else {
-        overMat.map = getTex(s.tex); overMat.needsUpdate = true; overMat.opacity = 0;
+        setMap(overMat, s.tex); overMat.opacity = 0;
         const t = s.tex;
         fade = gsap.to(overMat, { opacity: 1, duration: 0.55, delay: 0.15, ease: 'power1.inOut',
-          onComplete: () => { baseMat.map = getTex(t); baseMat.needsUpdate = true; overMat.opacity = 0; curTex = t; } });
+          onComplete: () => { setMap(baseMat, t); overMat.opacity = 0; curTex = t; } });
       }
     }
     if (quick) { Object.assign(S, { u: s.u, v: s.v, w: s.w, yaw: s.yaw, pitch: s.pitch }); apply(); }
@@ -112,8 +113,8 @@ export function startLaptop(stage, cards, assets) {
     const N = new THREE.Vector3().crossVectors(R, U).normalize();
     frame = { p00, Rv, Dv, W: Rv.length(), R, U, N };
     // screen materials: base + a fading overlay for crossfades
-    baseMat = new THREE.MeshBasicMaterial({ toneMapped: false });
-    overMat = new THREE.MeshBasicMaterial({ toneMapped: false, transparent: true, opacity: 0, depthWrite: false });
+    baseMat = new THREE.MeshBasicMaterial({ toneMapped: false, color: 0x000000 });
+    overMat = new THREE.MeshBasicMaterial({ toneMapped: false, transparent: true, opacity: 0, depthWrite: false, color: 0x000000 });
     disp.material = baseMat;
     const over = new THREE.Mesh(disp.geometry, overMat);
     over.matrixAutoUpdate = false;
@@ -129,7 +130,7 @@ export function startLaptop(stage, cards, assets) {
     g2.addColorStop(0, 'rgba(255,255,255,0)'); g2.addColorStop(0.62, 'rgba(255,255,255,.05)'); g2.addColorStop(0.7, 'rgba(255,255,255,0)'); g2.addColorStop(1, 'rgba(255,255,255,0)');
     gx.fillStyle = g2; gx.fillRect(0, 0, 256, 160);
     const gt = new THREE.CanvasTexture(gc); gt.flipY = false;
-    const gl = new THREE.Mesh(disp.geometry, new THREE.MeshBasicMaterial({ map: gt, transparent: true, opacity: 0.2, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false }));
+    const gl = new THREE.Mesh(disp.geometry, new THREE.MeshBasicMaterial({ map: gt, transparent: true, opacity: 0.12, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false }));
     gl.matrixAutoUpdate = false;
     gl.matrix.copy(disp.matrixWorld).premultiply(new THREE.Matrix4().makeTranslation(N.x * 0.0012, N.y * 0.0012, N.z * 0.0012));
     gl.renderOrder = 3;
@@ -148,7 +149,7 @@ export function startLaptop(stage, cards, assets) {
     sh.scale.set((box.max.x - box.min.x) * 1.7, (box.max.z - box.min.z) * 1.7, 1);
     scene.add(sh);
     curTex = STOPS[0].tex;
-    baseMat.map = getTex(curTex); baseMat.needsUpdate = true;
+    setMap(baseMat, curTex);
     resize();
     jump(pending, true);
     STOPS.forEach((s) => getTex(s.tex));
