@@ -12,7 +12,6 @@ import MaxIntroSection from './components/MaxIntroSection';
 import MaxSection from './components/MaxSection';
 import MaxCube from './components/MaxCube';
 import MaxButton from './components/MaxButton';
-import ARSection from './components/ARSection';
 import ComparisonTable from './components/ComparisonTable';
 import Testimonials from './components/Testimonials';
 import WhyInvest from './components/WhyInvest';
@@ -67,7 +66,6 @@ const App: React.FC = () => {
               <VideoOnlySection />
               <MaxCube />
               <MaxSection />
-              <ARSection />
               <MaxButton />
               <ComparisonTable />
               <WhyInvest />
