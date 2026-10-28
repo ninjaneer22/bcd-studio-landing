@@ -5,9 +5,9 @@ const BASE = '/images/laptop/';
 const STEPS = [
   { tex: 'fx', x: 1200, y: 750, wpx: 3000, yaw: -24, pitch: 9 },
   { tex: 'inst', x: 1200, y: 750, wpx: 3000, yaw: 24, pitch: -6 },
-  { tex: 'maxa', x: 1200, y: 750, wpx: 3200, yaw: -18, pitch: 8 },
-  { tex: 'maxa', x: 700, y: 720, wpx: 1650, yaw: 14, pitch: -4 },
-  { tex: 'maxb', x: 1200, y: 750, wpx: 3100, yaw: 20, pitch: -7 },
+  { tex: 'm3', x: 1200, y: 750, wpx: 3000, yaw: -18, pitch: 8 },
+  { tex: 'm4', x: 1200, y: 750, wpx: 3000, yaw: 16, pitch: -5 },
+  { tex: 'm5', x: 1200, y: 750, wpx: 3000, yaw: -20, pitch: 6 },
 ];
 
 const LaptopMenus: React.FC = () => {
@@ -29,7 +29,7 @@ const LaptopMenus: React.FC = () => {
         const mod: any = await import('./laptopTour.js');
         if (gone) return;
         const tex: Record<string, string> = {};
-        ['fx', 'inst', 'maxa', 'maxb'].forEach((k) => (tex[k] = `${BASE}${k}.webp`));
+        ['fx', 'inst', 'm3', 'm4', 'm5'].forEach((k) => (tex[k] = `${BASE}${k}.webp`));
         dispose = mod.startLaptop(stage, Array.from(list.children), { glb: `${BASE}laptop.glb`, tex });
       } catch {
         stage.classList.add('nogl');
