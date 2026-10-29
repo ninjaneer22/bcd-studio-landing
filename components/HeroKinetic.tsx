@@ -160,7 +160,7 @@ const HeroKinetic: React.FC = () => {
       tl.to(bg, { filter: BLUR(), scale: 1.04, duration: 0.7, ease: "power2.out" }, 0);   // blurs as the text starts, stays blurred while it is on screen
 
       els.forEach((e, i) => {
-        const t = i * step, te = t + (i ? (i === 1 ? WAIT + 0.1 : WAIT) : 0), L = layout(i + 1), s = spec[i];
+        const t = i * step, te = t + (i ? (i === 1 ? 0.08 : WAIT) : 0), L = layout(i + 1), s = spec[i];
         tl.set(e.line, { x: L[i].x, y: L[i].y, scale: L[i].s }, t);
         for (let j = 0; j < i; j++)
           tl.to(els[j].line, { x: L[j].x, y: L[j].y, scale: L[j].s, duration: MOVE, ease: "power3.inOut" }, t);
