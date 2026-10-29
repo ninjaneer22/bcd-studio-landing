@@ -11,7 +11,7 @@
 .kh-line.bcd{z-index:3}
 .kh-mask{display:block;position:relative;overflow:hidden}
 .kh-mask span{display:block;line-height:1;white-space:nowrap;
-  background:linear-gradient(180deg,#ffffff 0%,#f3f3f6 30%,#dcdce2 62%,#c4c4cc 100%);
+  background:linear-gradient(180deg,#e4e5e8 0%,#8f9299 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
 .kh-line.bcd .kh-mask span{background:none;color:var(--accent);-webkit-text-fill-color:var(--accent)}
 .kh-down{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:30;background:none;border:0;color:#E8EAED;cursor:pointer;padding:10px 14px;font:600 12px/1 "Archivo",system-ui,sans-serif;letter-spacing:.32em;text-transform:uppercase;opacity:0;visibility:hidden}
