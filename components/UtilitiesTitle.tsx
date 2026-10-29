@@ -127,14 +127,14 @@ const UtilitiesTitle: React.FC = () => {
             <h2 className="utt-hl"><span className="utt-ln"><span className="utt-w">BCD</span> <span className="utt-w">UTILITIES</span></span></h2>
           </div>
         </div>
-        <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
-          <defs>
-            <filter id="utt-hb0" x="-5%" y="0" width="110%" height="100%"><feGaussianBlur stdDeviation="3.5 0" /></filter>
-            <filter id="utt-hb1" x="-10%" y="0" width="120%" height="100%"><feGaussianBlur stdDeviation="11 0" /></filter>
-            <filter id="utt-hb2" x="-15%" y="0" width="130%" height="100%"><feGaussianBlur stdDeviation="29 0" /></filter>
-          </defs>
-        </svg>
       </div>
+    <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
+      <defs>
+        <filter id="utt-hb0" x="-5%" y="0" width="110%" height="100%"><feGaussianBlur stdDeviation="3.5 0" /></filter>
+        <filter id="utt-hb1" x="-10%" y="0" width="120%" height="100%"><feGaussianBlur stdDeviation="11 0" /></filter>
+        <filter id="utt-hb2" x="-15%" y="0" width="130%" height="100%"><feGaussianBlur stdDeviation="29 0" /></filter>
+      </defs>
+    </svg>
     </section>
   );
 };

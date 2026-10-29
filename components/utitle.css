@@ -1,14 +1,14 @@
 @font-face{font-family:"UttFallback";src:url(/fonts/figtree-700.woff2) format("woff2");font-weight:700;font-display:swap}
 /* ---------- BCD UTILITIES poster: heavy white type on black, streaky blur bands + glitch bursts ---------- */
-.utt{background:#0a0a0a;padding:39px 24px 17px;display:flex;justify-content:center}
-.utt-crop{position:relative;width:100%;max-width:1200px;aspect-ratio:16/5.2;overflow:hidden;container-type:inline-size;background:#0a0a0a}
+.utt{background:#0a0a0a;padding:28px 24px 4px;display:flex;justify-content:center}
+.utt-crop{position:relative;width:100%;max-width:1200px;aspect-ratio:16/3.5;overflow:hidden;container-type:inline-size;background:#0a0a0a}
 .utt-poster{--paper:#0a0a0a;--ink:#efede8;position:absolute;inset:0;overflow:hidden;color:var(--ink)}
 .utt-guides{position:absolute;inset:0;pointer-events:none}
 .utt-guides i{position:absolute;top:0;bottom:0;width:1px;background:rgba(110,170,230,.16)}
-.utt-head{position:absolute;inset:0;padding-top:10.5cqw;pointer-events:none}
+.utt-head{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
 .utt-hl{margin:0;font-family:"Avenir Next","Avenir Next LT Pro","Avenir","UttFallback",system-ui,sans-serif;font-weight:700;text-transform:uppercase;
   font-size:10.6cqw;line-height:1.05;letter-spacing:.04em;-webkit-text-stroke:.15cqw currentColor}
-.utt-ln{display:block;white-space:nowrap;margin-left:4.5cqw}
+.utt-ln{display:block;white-space:nowrap;text-align:center;padding-left:.04em}
 .utt-w{display:inline-block}
 /* clean headline gets holes cut where a blur band sits, so the band replaces the type rather than doubling it */
 .utt-base{--g0:linear-gradient(#000 0 var(--t0,-50px),transparent var(--t0,-50px) var(--b0,-50px),#000 var(--b0,-50px) 100%);
@@ -24,10 +24,8 @@
 .utt-cp.r{color:#ff2f2f;mix-blend-mode:screen}
 .utt-cp.c{color:#00dcff;mix-blend-mode:screen}
 @media (max-width:672px){
-  .utt{padding:40px 12px 56px}
-  .utt-crop{aspect-ratio:3/2.1}
-  .utt-head{padding-top:14cqw}
+  .utt{padding:28px 12px 8px}
+  .utt-crop{aspect-ratio:3/1.7}
   .utt-hl{font-size:14.5cqw}
   .utt-w{display:block}
-  .utt-ln{margin-left:5cqw}
 }
