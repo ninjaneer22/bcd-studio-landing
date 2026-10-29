@@ -4,8 +4,17 @@
 import React, { useEffect, useRef } from 'react';
 import './utitle.css';
 
-type Band = { el: HTMLDivElement; bi: HTMLDivElement; cps: HTMLElement[]; seed: number; tmp: { y: number; h: number; dx: number; lvl: number } | null };
+type Band = { lvl: number; el: HTMLDivElement; bi: HTMLDivElement; cps: HTMLElement[]; seed: number; tmp: { y: number; h: number; dx: number; lvl: number } | null };
 type Slice = { el: HTMLDivElement; bi: HTMLDivElement };
+
+// Horizontal-only blur built from stacked text-shadows: SVG/CSS filters on HTML are unreliable in Safari, shadows are not.
+const SIG = [3.5, 11, 29];
+const RGB: Record<string, string> = { r: '255,47,47', c: '0,220,255', k: '239,237,232' };
+const smear = (sig: number, rgb: string) => {
+  const N = 10, step = sig * 0.3, ks = Array.from({ length: N * 2 + 1 }, (_, i) => i - N), ws = ks.map((k) => Math.exp(-0.5 * (k * 0.3) ** 2)), sum = ws.reduce((a, b) => a + b, 0);
+  return ks.map((k, i) => `${(k * step).toFixed(1)}px 0 ${(step * 0.8).toFixed(1)}px rgba(${rgb},${Math.min(1, (ws[i] / sum) * 1.9).toFixed(3)})`).join(',');
+};
+const SH = SIG.map((sg) => ({ r: smear(sg, RGB.r), c: smear(sg, RGB.c), k: smear(sg, RGB.k) }));
 
 const rnd = (a: number, b: number) => a + Math.random() * (b - a);
 const GAP = [1800, 3800], DUR = [320, 640], SLICES = 4;
@@ -33,7 +42,7 @@ const UtilitiesTitle: React.FC = () => {
       const bi = document.createElement('div'); bi.className = 'utt-bi';
       const cps = ['r', 'c', 'k'].map((k) => { const c = clone(k); bi.appendChild(c); return c; });
       el.appendChild(bi); poster.appendChild(el); made.push(el);
-      bands.push({ el, bi, cps, seed: Math.random() * 10, tmp: null });
+      bands.push({ lvl: -1, el, bi, cps, seed: Math.random() * 10, tmp: null });
     }
     const slices: Slice[] = [];
     for (let j = 0; j < 6; j++) {
@@ -59,7 +68,7 @@ const UtilitiesTitle: React.FC = () => {
       b.el.style.display = on ? 'block' : 'none';
       if (on) {
         b.el.style.top = y + 'px'; b.el.style.height = h + 'px'; b.bi.style.top = -y + 'px';
-        b.bi.style.filter = `url(#utt-hb${lvl})`;
+        if (b.lvl !== lvl) { b.lvl = lvl; b.cps[0].style.textShadow = SH[lvl].r; b.cps[1].style.textShadow = SH[lvl].c; b.cps[2].style.textShadow = SH[lvl].k; }
         const f = Math.min(1, Math.abs(dx) / 40 + .25);
         b.cps[0].style.transform = `translateX(${-dx - 3}px)`; b.cps[1].style.transform = `translateX(${dx + 3}px)`; b.cps[2].style.transform = `translateX(${dx * .15}px)`;
         b.cps[0].style.opacity = b.cps[1].style.opacity = String(f);
@@ -128,13 +137,6 @@ const UtilitiesTitle: React.FC = () => {
           </div>
         </div>
       </div>
-    <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
-      <defs>
-        <filter id="utt-hb0" x="-5%" y="0" width="110%" height="100%"><feGaussianBlur stdDeviation="3.5 0" /></filter>
-        <filter id="utt-hb1" x="-10%" y="0" width="120%" height="100%"><feGaussianBlur stdDeviation="11 0" /></filter>
-        <filter id="utt-hb2" x="-15%" y="0" width="130%" height="100%"><feGaussianBlur stdDeviation="29 0" /></filter>
-      </defs>
-    </svg>
     </section>
   );
 };

@@ -21,6 +21,7 @@
 .utt-slice{position:absolute;left:0;right:0;overflow:hidden;z-index:3;display:none}
 .utt-bi{position:absolute;left:0;width:100%}
 .utt-cp{position:absolute;inset:0;-webkit-mask-image:none;mask-image:none}
+.utt-band .utt-cp{color:transparent!important;-webkit-text-stroke:0}
 .utt-cp.r{color:#ff2f2f;mix-blend-mode:screen}
 .utt-cp.c{color:#00dcff;mix-blend-mode:screen}
 @media (max-width:672px){
