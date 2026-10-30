@@ -45,4 +45,4 @@
 @media(max-width:640px){.tm-grid{gap:14px}.tm-card,.tm-card:nth-child(n+5),.tm-card:last-child{grid-column:1 / -1}.tm-q-o,.tm-q-c{font-size:200px}}
 
 /* phones: show the whole 16:9 film instead of a tight centre crop */
-@media(max-width:640px){.kh-bg{background-size:contain;background-color:#000}.kh-bg video{object-fit:contain}.kh-hero{height:56.25vw;min-height:0}.kh-bg{inset:0}.kh-hero::after{height:8vw}}
+@media(max-width:640px){.kh-bg{background-size:contain;background-color:#000}.kh-bg video{object-fit:contain}.kh-hero{height:56.25vw;min-height:0}.kh-bg{inset:0}.kh-hero::after{height:8vw}.kh-down{display:none!important}}
