@@ -1,32 +1,9 @@
-@font-face{font-family:"UttFallback";src:url(/fonts/figtree-700.woff2) format("woff2");font-weight:700;font-display:swap}
-/* ---------- BCD UTILITIES poster: heavy white type on black, streaky blur bands + glitch bursts ---------- */
+/* ---------- BCD UTILITIES banner: PA 3.0 slit-scan type on black ---------- */
 .utt{background:#0a0a0a;padding:28px 24px 4px;display:flex;justify-content:center}
-.utt-crop{position:relative;width:100%;max-width:1200px;aspect-ratio:16/3.5;overflow:hidden;container-type:inline-size;background:#0a0a0a}
-.utt-poster{--paper:#0a0a0a;--ink:#efede8;position:absolute;inset:0;overflow:hidden;color:var(--ink)}
-.utt-guides{position:absolute;inset:0;pointer-events:none}
-.utt-guides i{position:absolute;top:0;bottom:0;width:1px;background:rgba(110,170,230,.16)}
-.utt-head{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
-.utt-hl{margin:0;font-family:"Avenir Next","Avenir Next LT Pro","Avenir","UttFallback",system-ui,sans-serif;font-weight:700;text-transform:uppercase;
-  font-size:10.6cqw;line-height:1.05;letter-spacing:.04em;-webkit-text-stroke:.15cqw currentColor}
-.utt-ln{display:block;white-space:nowrap;text-align:center;padding-left:.04em}
-.utt-w{display:inline-block}
-/* clean headline gets holes cut where a blur band sits, so the band replaces the type rather than doubling it */
-.utt-base{--g0:linear-gradient(#000 0 var(--t0,-50px),transparent var(--t0,-50px) var(--b0,-50px),#000 var(--b0,-50px) 100%);
-  --g1:linear-gradient(#000 0 var(--t1,-50px),transparent var(--t1,-50px) var(--b1,-50px),#000 var(--b1,-50px) 100%);
-  --g2:linear-gradient(#000 0 var(--t2,-50px),transparent var(--t2,-50px) var(--b2,-50px),#000 var(--b2,-50px) 100%);
-  --g3:linear-gradient(#000 0 var(--t3,-50px),transparent var(--t3,-50px) var(--b3,-50px),#000 var(--b3,-50px) 100%);
-  -webkit-mask-image:var(--g0),var(--g1),var(--g2),var(--g3);-webkit-mask-composite:source-in;
-  mask-image:var(--g0),var(--g1),var(--g2),var(--g3);mask-composite:intersect}
-.utt-band{position:absolute;left:0;right:0;overflow:hidden;z-index:2;display:none;border-block:1px solid var(--paper)}
-.utt-slice{position:absolute;left:0;right:0;overflow:hidden;z-index:3;display:none}
-.utt-bi{position:absolute;left:0;width:100%}
-.utt-cp{position:absolute;inset:0;-webkit-mask-image:none;mask-image:none}
-.utt-band .utt-cp{color:transparent!important;-webkit-text-stroke:0}
-.utt-cp.r{color:#ff2f2f;mix-blend-mode:screen}
-.utt-cp.c{color:#00dcff;mix-blend-mode:screen}
-@media (max-width:672px){
+.utt-crop{position:relative;width:100%;max-width:1200px;aspect-ratio:16/3.6;overflow:hidden;background:#0a0a0a}
+.utt-crop canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.utt-scan{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0,rgba(0,0,0,.22) 1px,transparent 1px,transparent 3px);mix-blend-mode:multiply}
+@media (max-width:559px){
   .utt{padding:28px 12px 8px}
-  .utt-crop{aspect-ratio:3/1.7}
-  .utt-hl{font-size:14.5cqw}
-  .utt-w{display:block}
+  .utt-crop{aspect-ratio:2/1}
 }
