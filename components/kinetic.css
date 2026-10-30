@@ -43,3 +43,6 @@
 .tm-card blockquote b{color:#fff;font-weight:700}
 @media(max-width:1000px){.tm-card,.tm-card:nth-child(n+5){grid-column:span 6}.tm-card:last-child{grid-column:3 / span 8}}
 @media(max-width:640px){.tm-grid{gap:14px}.tm-card,.tm-card:nth-child(n+5),.tm-card:last-child{grid-column:1 / -1}.tm-q-o,.tm-q-c{font-size:200px}}
+
+/* phones: show the whole 16:9 film instead of a tight centre crop */
+@media(max-width:640px){.kh-bg{background-size:contain;background-color:#000}.kh-bg video{object-fit:contain}}
