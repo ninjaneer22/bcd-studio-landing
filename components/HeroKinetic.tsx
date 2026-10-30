@@ -268,6 +268,7 @@ const HeroKinetic: React.FC = () => {
       <div className="kh-wrap">
         <div className="kh-sq" ref={sqRef} />
       </div>
+      <div className="kh-scan" aria-hidden="true" />
       <button className="kh-down" ref={cueRef} onClick={handleScrollDown}>
         <span>Scroll down</span>
       </button>

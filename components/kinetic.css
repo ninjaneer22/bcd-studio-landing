@@ -14,6 +14,7 @@
   background:linear-gradient(180deg,#e4e5e8 0%,#8f9299 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
 .kh-line.bcd .kh-mask span{background:none;color:var(--accent);-webkit-text-fill-color:var(--accent)}
+.kh-scan{position:absolute;inset:0;z-index:2;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0,rgba(0,0,0,.22) 1px,transparent 1px,transparent 3px);mix-blend-mode:multiply}
 .kh-down{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:30;background:none;border:0;color:#E8EAED;cursor:pointer;padding:10px 14px;font:600 12px/1 "Archivo",system-ui,sans-serif;letter-spacing:.32em;text-transform:uppercase;opacity:0;visibility:hidden}
 .kh-down:hover{color:#fff}
 .kh-down span{display:inline-block;animation:kh-bounce 1.8s ease-in-out infinite}
