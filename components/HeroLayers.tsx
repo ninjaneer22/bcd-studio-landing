@@ -136,7 +136,7 @@ const HeroLayers: React.FC = () => {
         d.style.cssText = 'left:' + x * W + 'px;top:' + y * PH + 'px;font-size:' + fz + 'px;text-align:' + al + ';transform:translateZ(' + ZL + 'px);opacity:0';
         d.querySelector('.more').addEventListener('click', (ev) => { ev.preventDefault(); gsap.to(window, { duration: 1, scrollTo: { y: href, autoKill: true }, ease: 'power2.inOut' }); });
         rot.appendChild(d); return d; };
-      const lS = lbl('STANDARD', mobile ? .09 : .07, mobile ? -.5 : .1, mobile ? 'left' : 'right', 'The Native<br>Console.', '#standard-cube'), lM = lbl('MAX', mobile ? .91 : .925, mobile ? -.5 : .1, mobile ? 'right' : 'left', 'The Ultimate<br>Bespoke Console.', '#max-cube');
+      const lS = lbl('STANDARD', mobile ? .09 : .07, mobile ? -.5 : .1, mobile ? 'left' : 'right', 'The Native Console.', '#standard-cube'), lM = lbl('MAX', mobile ? .91 : .925, mobile ? -.5 : .1, mobile ? 'right' : 'left', 'The Ultimate Bespoke<br>Console.', '#max-cube');
       if (mobile) { lM.style.transform = 'translateZ(' + ZL + 'px) translateX(-100%)'; } else { lS.style.transform = 'translateZ(' + ZL + 'px) translateX(-100%)'; }
       an(rig, [{ opacity: 0, transform: 'translateZ(-420px) translateY(40px)' }, { opacity: 1, transform: 'translateZ(0) translateY(0)' }], { delay: T(6.0), duration: T(1.1), easing: 'cubic-bezier(.2,.7,.2,1)' });
       const EA = 'cubic-bezier(.45,0,.55,1)';
