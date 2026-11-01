@@ -192,7 +192,7 @@ requestAnimationFrame(render);
         </span>
 
         <h2 className="scrolly-anim text-4xl md:text-6xl font-bold text-google-white mb-4">
-          The Ultimate Plug-and-Play Solution.
+          The Native Console.
         </h2>
 
         <p className="scrolly-anim text-google-grey text-lg md:text-xl max-w-3xl mx-auto">
