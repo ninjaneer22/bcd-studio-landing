@@ -110,7 +110,7 @@ const MaxSection: React.FC = () => {
             <div className="max-std-anim space-y-10 text-google-grey">
               <div className="space-y-6">
                 <h3 className="text-google-white text-3xl font-bold leading-tight tracking-tight">
-                  The ultimate command center for your plugin library.
+                  Command center for your plugin library.
                 </h3>
                 <p className="text-base leading-relaxed">
                   Unlock Creator Mode. With 840 programmable triggers across three dynamic layouts, MAX gives you the architecture to map, organize, and launch your entire third-party collection instantly. Engineered for the relentless pace of scoring and elite post-production.
