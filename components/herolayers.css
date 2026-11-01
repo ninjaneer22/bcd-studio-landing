@@ -30,4 +30,14 @@
 .hy-frame .kscrim{background:radial-gradient(ellipse 60% 62% at 50% 50%,rgba(0,0,0,.34),rgba(0,0,0,.12) 70%,transparent);opacity:0;z-index:19;pointer-events:none}
 .hy-down{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:50;background:none;border:0;color:#E8EAED;cursor:pointer;padding:10px 14px;font:600 12px/1 "Archivo",system-ui,sans-serif;letter-spacing:.32em;text-transform:uppercase;opacity:0;visibility:hidden}
 .hy-down:hover{color:#fff}
-@media(max-width:640px){.hy-hero{height:auto;aspect-ratio:9/16;min-height:0}.hy-hero::after{height:6vh}.hy-down{display:none!important}}
+.hy-frame .lt{display:block}
+.hy-frame .ltag{display:block;margin-top:.7em;font-size:.72em;letter-spacing:.04em;line-height:1.35;opacity:.8}
+.hy-frame .more{pointer-events:inherit;position:relative;display:inline-block;margin-top:.9em;padding:1.5px;border-radius:999px;overflow:hidden;text-decoration:none;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.hy-frame .more:hover{transform:scale(1.07)}.hy-frame .more:active{transform:scale(.95)}
+.hy-frame .more i{position:absolute;inset:-1000%;background:conic-gradient(from 90deg at 50% 50%,#7dd3fc 0%,#0369a1 50%,#7dd3fc 100%);animation:hy-spin 4s linear infinite}
+.hy-frame .lbl:last-of-type .more i{background:conic-gradient(from 90deg at 50% 50%,#fbbf24 0%,#ea580c 50%,#fbbf24 100%)}
+.hy-frame .more b{position:relative;display:block;padding:.4em 1.3em;border-radius:999px;background:#0a0a0a;color:#e5e5e5;font:500 .62em/1.2 'Archivo',sans-serif;letter-spacing:.06em;text-shadow:none}
+.hy-frame .more:hover b{background:#171717}
+@keyframes hy-spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.hy-frame .more i{animation:none}}
+@media(max-width:640px){.hy-frame .more b{font-size:.85em}.hy-hero{height:auto;aspect-ratio:9/16;min-height:0}.hy-hero::after{height:6vh}.hy-down{display:none!important}}
