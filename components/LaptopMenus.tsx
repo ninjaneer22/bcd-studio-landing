@@ -29,7 +29,7 @@ const LaptopMenus: React.FC = () => {
         const mod: any = await import('./laptopTour.js');
         if (gone) return;
         const tex: Record<string, string> = {};
-        ['fx', 'inst', 'm3', 'm4', 'm5'].forEach((k) => (tex[k] = `${BASE}${k}.webp`));
+        ['fx', 'inst', 'm3', 'm4', 'm5'].forEach((k) => (tex[k] = `${BASE}${k === 'm4' ? 'm4-v2' : k}.webp`));
         dispose = mod.startLaptop(stage, Array.from(list.children), { glb: `${BASE}laptop-v2.glb`, tex });
       } catch {
         stage.classList.add('nogl');
