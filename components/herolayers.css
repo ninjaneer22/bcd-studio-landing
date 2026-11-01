@@ -1,7 +1,7 @@
 .hy-hero{--bg:#0b0b0d;position:relative;width:100%;height:min(100vh,56.25vw);min-height:420px;overflow:hidden;background:#000;isolation:isolate}
 .hy-hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:12vh;background:linear-gradient(to bottom,transparent,var(--bg));pointer-events:none;z-index:40}
 .hy-frame{position:absolute;inset:0;overflow:hidden;--tc:#fff4dc;--g1:rgba(255,190,90,.9);--g2:rgba(255,150,40,.7);--g3:rgba(255,120,20,.45)}
-.hy-frame .layer{position:absolute;inset:0}
+.hy-frame .layer{position:absolute;inset:0;pointer-events:none}
 .hy-frame .hshot{position:absolute;inset:-1%;opacity:0;will-change:transform,opacity}
 .hy-frame .hshot img{width:100%;height:100%;object-fit:cover;display:block}
 .hy-frame .dim{background:#000;opacity:0}
