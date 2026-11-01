@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
 // All your original components
-import Hero from './components/HeroKinetic';
+import Hero from './components/HeroLayers';
 import FeaturePanel from './components/FeaturePanel';
 import StandardCube from './components/StandardCube';
 import StandardSection from './components/StandardSection';
