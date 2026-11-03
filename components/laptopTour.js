@@ -70,6 +70,8 @@ export function startLaptop(stage, cards, assets) {
     renderer.domElement.style.width = w + 'px';
     renderer.domElement.style.height = h + 'px';
     camera.aspect = w / h;
+    // phones: the laptop sat too low with a big empty band above it, so lift the picture by ~20% of the height
+    if (camera.aspect < 1) camera.setViewOffset(w, h, 0, Math.round(h * 0.20), w, h); else camera.clearViewOffset();
     camera.updateProjectionMatrix();
     apply();
   }
