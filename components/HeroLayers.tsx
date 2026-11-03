@@ -109,12 +109,12 @@ const HeroLayers: React.FC = () => {
       const dim = el('layer dim', 12), flash = el('layer flash', 15); el('layer vig', 16);
       const pan = el('layer panels', 12);
       const TG = [[.22, .4072, .077, .0141], [.5, .4197, .109, .0334]];
-      const RL = 0.1245836109260493, RT = 0.03726169844020797, RW = 0.7495003331112592, RH = 0.6256499133448874, AR = 1.300693240901213;
+      const RL = 0.09911111111111111, RT = 0.02727051375700024, RW = 0.8017777777777777, RH = 0.5678110542975408, AR = 1.095690284879474;
       const p = document.createElement('div'); p.className = 'panel';
-      p.innerHTML = '<img class="lap" alt="" src="' + IMG + 'laptop.webp"><div class="scr" style="left:' + RL * 100 + '%;top:' + RT * 100 + '%;width:' + RW * 100 + '%;height:' + RH * 100 + '%">' +
+      p.innerHTML = '<img class="lap" alt="" src="' + IMG + 'laptop-v3.webp"><div class="scr" style="left:' + RL * 100 + '%;top:' + RT * 100 + '%;width:' + RW * 100 + '%;height:' + RH * 100 + '%">' +
         '<img alt="" src="' + IMG + 'scr_standard_menu.webp"><img class="loaded" alt="" src="' + IMG + 'scr_standard_loaded_dd.webp">' +
         '<img class="loaded mm" alt="" src="' + IMG + 'scr_max_menu.webp"><img class="loaded ml" alt="" src="' + IMG + 'scr_max_loaded.webp">' +
-        '<div class="hl"></div><div class="rip"></div><svg class="cur" viewBox="0 0 26 26"><path d="M3 2 L3 21 L8 16.5 L11.5 24 L15 22.5 L11.5 15.2 L18.5 15 Z" fill="#fff" stroke="#000" stroke-width="1.6" stroke-linejoin="round"/></svg></div>';
+        '<div class="hl"></div><div class="rip"></div><svg class="cur" viewBox="0 0 26 26"><path d="M3 2 L3 21 L8 16.5 L11.5 24 L15 22.5 L11.5 15.2 L18.5 15 Z" fill="#fff" stroke="#000" stroke-width="1.6" stroke-linejoin="round"/></svg></div><img class="smask" alt="" src="' + IMG + 'laptop-v3-mask.webp" style="position:absolute;pointer-events:none;left:' + RL * 100 + '%;top:' + RT * 100 + '%;width:' + RW * 100 + '%;height:' + RH * 100 + '%">';
       pan.appendChild(p);
       const scrim = el('layer kscrim', 19);
       const kw = document.createElement('div'); kw.className = 'kw'; const sq = document.createElement('div'); sq.className = 'ksq'; kw.appendChild(sq); frame.appendChild(kw);
@@ -127,8 +127,8 @@ const HeroLayers: React.FC = () => {
       kinetic(sq, kw, scrim, mobile, fw, fh);
       an(flash, [{ opacity: 0 }, { opacity: .95, offset: .15 }, { opacity: 0 }], { delay: T(4.48), duration: T(.7), easing: 'linear' });
       an(dim, [{ opacity: 0 }, { opacity: .2 }], { delay: T(5.2), duration: T(.9), easing: 'linear' });
-      const W = mobile ? fw * .94 : fw * .6, PH = W / AR;
-      const rig = document.createElement('div'); rig.className = 'rig'; rig.style.cssText = 'left:' + ((fw - W) / 2) + 'px;top:' + (mobile ? fh * .42 : fh * .25) + 'px;width:' + W + 'px;height:' + PH + 'px;opacity:0';
+      const W = mobile ? fw * .94 : fw * .57, PH = W / AR;
+      const rig = document.createElement('div'); rig.className = 'rig'; rig.style.cssText = 'left:' + ((fw - W) / 2) + 'px;top:' + (mobile ? fh * .52 : fh * .25) + 'px;width:' + W + 'px;height:' + PH + 'px;opacity:0';
       const rot = document.createElement('div'); rot.className = 'rot'; rot.style.cssText = 'left:0;top:0;width:100%;height:100%';
       p.style.cssText = 'width:' + W + 'px;left:0;top:0;opacity:1'; rot.appendChild(p); rig.appendChild(rot); pan.appendChild(rig);
       const ZL = mobile ? 150 : 220, fz = W * (mobile ? .045 : .026);
@@ -136,10 +136,10 @@ const HeroLayers: React.FC = () => {
         d.style.cssText = 'left:' + x * W + 'px;top:' + y * PH + 'px;font-size:' + fz + 'px;text-align:' + al + ';transform:translateZ(' + ZL + 'px);opacity:0';
         d.querySelector('.more').addEventListener('click', (ev) => { ev.preventDefault(); gsap.to(window, { duration: 1, scrollTo: { y: href, autoKill: true }, ease: 'power2.inOut' }); });
         rot.appendChild(d); return d; };
-      const lS = lbl(mobile ? 'STANDARD' : 'STANDARD', mobile ? .5 : .07, mobile ? 0 : .1, mobile ? 'center' : 'right', 'The Native Console.', '#standard-cube'), lM = lbl('MAX', mobile ? .5 : .925, mobile ? 0 : .1, mobile ? 'center' : 'left', mobile ? 'The Ultimate Bespoke Console.' : 'The Ultimate Bespoke<br>Console.', '#max-cube');
+      const lS = lbl(mobile ? 'STANDARD' : 'STANDARD', mobile ? .5 : .018, mobile ? 0 : .1, mobile ? 'center' : 'right', 'The Native Console.', '#standard-cube'), lM = lbl('MAX', mobile ? .5 : .98, mobile ? 0 : .1, mobile ? 'center' : 'left', mobile ? 'The Ultimate Bespoke Console.' : 'The Ultimate Bespoke<br>Console.', '#max-cube');
       if (mobile) {
         // one line each, centred horizontally and in the gap between the DONE type and the laptop
-        [lS, lM].forEach((d) => { d.firstChild.innerHTML = 'PLUGIN LAUNCHER ' + (d === lS ? 'STANDARD' : 'MAX'); d.style.transform = 'translateZ(' + ZL + 'px) translateX(-50%)'; const Yt = (.196 * fh + .42 * fh) / 2 - .018 * fh, y0 = fh / 2 + (Yt - fh / 2) / (1400 / (1400 - ZL)); d.style.top = (y0 - d.offsetHeight / 2 - .42 * fh) + 'px'; });
+        [lS, lM].forEach((d) => { d.firstChild.innerHTML = 'PLUGIN LAUNCHER ' + (d === lS ? 'STANDARD' : 'MAX'); d.style.transform = 'translateZ(' + ZL + 'px) translateX(-50%)'; const Yt = (.24 * fh + .52 * fh) / 2 - .018 * fh, y0 = fh / 2 + (Yt - fh / 2) / (1400 / (1400 - ZL)); d.style.top = (y0 - d.offsetHeight / 2 - .52 * fh) + 'px'; });
       } else { lS.style.transform = 'translateZ(' + ZL + 'px) translateX(-100%)'; }
       an(rig, [{ opacity: 0, transform: 'translateZ(-420px) translateY(40px)' }, { opacity: 1, transform: 'translateZ(0) translateY(0)' }], { delay: T(6.0), duration: T(1.1), easing: 'cubic-bezier(.2,.7,.2,1)' });
       const EA = 'cubic-bezier(.45,0,.55,1)';

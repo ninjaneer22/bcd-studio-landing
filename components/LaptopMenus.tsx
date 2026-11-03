@@ -30,7 +30,7 @@ const LaptopMenus: React.FC = () => {
         if (gone) return;
         const tex: Record<string, string> = {};
         ['fx', 'inst', 'm3', 'm4', 'm5'].forEach((k) => (tex[k] = `${BASE}${k === 'm4' ? 'm4-v2' : k}.webp`));
-        dispose = mod.startLaptop(stage, Array.from(list.children), { glb: `${BASE}laptop-v2.glb`, tex });
+        dispose = mod.startLaptop(stage, Array.from(list.children), { glb: `${BASE}laptop-v3.glb`, tex });
       } catch {
         stage.classList.add('nogl');
       }

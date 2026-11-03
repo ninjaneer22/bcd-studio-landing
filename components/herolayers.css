@@ -40,4 +40,4 @@
 .hy-frame .more:hover b{background:#171717}
 @keyframes hy-spin{to{transform:rotate(360deg)}}
 @media(prefers-reduced-motion:reduce){.hy-frame .more i{animation:none}}
-@media(max-width:640px){.hy-frame .more b{font-size:.85em}.hy-hero{height:auto;aspect-ratio:9/16;min-height:0}.hy-hero::after{height:6vh}.hy-down{display:none!important}}
+@media(max-width:640px){.hy-frame .more b{font-size:.85em}.hy-hero{height:auto;aspect-ratio:9/19;min-height:0}.hy-hero::after{height:6vh}.hy-down{display:none!important}}
