@@ -11,7 +11,8 @@ import VideoOnlySection from './components/VideoOnlySection';
 import MaxIntroSection from './components/MaxIntroSection';
 import MaxSection from './components/MaxSection';
 import MaxCube from './components/MaxCube';
-import LaptopMenus from './components/LaptopMenus';
+// Laptop sequence removed from the home page (it repeated the Standard and MAX screens). To restore: re-enable this import and <LaptopMenus /> after <MaxSection />.
+// import LaptopMenus from './components/LaptopMenus';
 import ComparisonTable from './components/ComparisonTable';
 import Testimonials from './components/Testimonials';
 import WhyInvest from './components/WhyInvest';
@@ -66,7 +67,6 @@ const App: React.FC = () => {
               <VideoOnlySection />
               <MaxCube />
               <MaxSection />
-              <LaptopMenus />
               <ComparisonTable />
               <WhyInvest />
               <Testimonials />
