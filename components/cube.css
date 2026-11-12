@@ -49,3 +49,10 @@
 
 .mc-std .mc-stage{background-image:url(/images/cube/standard/nebula.webp)}
 .mc-std .mc-face img,.mc-std .mc-flat img{object-fit:contain}
+
+/* desktop only: studio backgrounds for the revolving cube sections (mobile keeps the nebula) */
+@media (min-width:768px){
+  .sc-stage{background-image:url(/images/cube/standard/studio_standard.webp)}
+  .mc-stage{background-image:url(/images/cube/max/studio_max.webp)}
+  .mc-std .mc-stage{background-image:url(/images/cube/standard/studio_standard.webp)}
+}
