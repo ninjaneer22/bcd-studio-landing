@@ -3,35 +3,75 @@ import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { useReveal } from './useReveal';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import './explainer.css';
+
+// Live captions for the explainer video. Times are seconds into the 15s loop.
+const STEPS = [
+  { word: 'Browse.', at: 1.5 },
+  { word: 'Click.', at: 5.4 },
+  { word: 'Done.', at: 8.0 },
+];
+const ALL_LIT_AT = 11.5; // from here to the loop point all three words are at full strength
 
 const FeaturePanel: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   useReveal(containerRef, '.feature-anim');
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isMuted, setIsMuted] = React.useState(true);
+  const boxRef = useRef<HTMLDivElement>(null);
+  const stepRefs = useRef<(HTMLLIElement | null)[]>([]);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      
+    const video = videoRef.current, box = boxRef.current;
+    if (!video || !box) return;
 
+    const paint = (t: number) => {
+      STEPS.forEach((s, i) => {
+        const el = stepRefs.current[i];
+        if (!el) return;
+        const on = t >= s.at, next = STEPS[i + 1];
+        el.classList.toggle('on', on);
+        el.classList.toggle('now', on && (!next || t < next.at));
+      });
+      box.classList.toggle('all', t >= ALL_LIT_AT);
+    };
+
+    // Reduced motion: no playback, just the poster with all three words showing
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { paint(99); return; }
+
+    // Smaller file on phones
+    video.src = window.matchMedia('(max-width: 700px)').matches
+      ? '/images/movies/bcd_explainer_logic_720p.mp4'
+      : '/images/movies/bcd_explainer_logic_1080p.mp4';
+
+    // Captions follow the video clock, only while it is playing
+    let raf = 0;
+    const tick = () => { paint(video.currentTime); raf = requestAnimationFrame(tick); };
+    const start = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(tick); };
+    const stop = () => cancelAnimationFrame(raf);
+    video.addEventListener('playing', start);
+    video.addEventListener('pause', stop);
+
+    // If the browser refuses to autoplay, still show the words over the poster
+    const play = () => { video.play().catch(() => paint(99)); };
+
+    const ctx = gsap.context(() => {
       ScrollTrigger.create({
-        trigger: containerRef.current,
-        start: "top 35%", // Delay until the bottom of the section is well within the viewport
-        onEnter: () => videoRef.current?.play().catch(() => { }),
-        onLeave: () => videoRef.current?.pause(),
-        onEnterBack: () => videoRef.current?.play().catch(() => { }),
-        onLeaveBack: () => videoRef.current?.pause(),
+        trigger: box,
+        start: 'center 65%', // start once most of the video is on screen
+        onEnter: play,
+        onLeave: () => video.pause(),
+        onEnterBack: play,
+        onLeaveBack: () => video.pause(),
       });
     }, containerRef);
-    return () => ctx.revert();
-  }, []);
 
-  const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted;
-      setIsMuted(!isMuted);
-    }
-  };
+    return () => {
+      stop();
+      video.removeEventListener('playing', start);
+      video.removeEventListener('pause', stop);
+      ctx.revert();
+    };
+  }, []);
 
   return (
     <section id="panel-2-features" ref={containerRef} className="w-full bg-gradient-to-b from-[#0a0a0a] to-[#050505] pt-10 pb-24 px-8">
@@ -48,34 +88,25 @@ const FeaturePanel: React.FC = () => {
           Built for high-pressure sessions. Eliminate the menu-dive.  <br />Launch any plugin from a touch-ready interface.
         </p>
 
-        <div className="feature-anim w-full aspect-video bg-black rounded-lg overflow-hidden border border-white/5 shadow-2xl relative group">
-          <video
-  ref={videoRef}
-  loop
-  muted
-  playsInline
-  preload="metadata"
-  poster="/images/feature-poster.webp"
-  className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
->
-  <source src="/images/movies/bcd_promo_30_sec.mp4" type="video/mp4" />
-</video>
-
-          <button
-            onClick={toggleMute}
-            className="absolute bottom-6 right-6 p-3 rounded-full bg-black/50 backdrop-blur-md border border-white/10 text-google-white hover:bg-white/10 hover:scale-110 transition-all duration-300 z-10"
-            aria-label={isMuted ? "Unmute video" : "Mute video"}
-          >
-            {isMuted ? (
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 9.75L19.5 12m0 0l2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
-              </svg>
-            ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
-              </svg>
-            )}
-          </button>
+        <div ref={boxRef} className="feature-anim pl-explainer">
+          <div className="pl-frame shadow-2xl">
+            <video
+              ref={videoRef}
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              poster="/images/explainer-poster.webp"
+              aria-label="Plugin Launcher in Logic Pro: browse the list, click Beat Breaker, and the plugin opens."
+            />
+            <div className="pl-scrim" />
+            <div className="pl-tag">Shown in Logic Pro 13</div>
+          </div>
+          <ol className="pl-steps" aria-label="How it works">
+            {STEPS.map((s, i) => (
+              <li key={s.word} ref={(el) => { stepRefs.current[i] = el; }}>{s.word}</li>
+            ))}
+          </ol>
         </div>
       </div>
     </section>
