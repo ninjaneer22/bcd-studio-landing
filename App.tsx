@@ -32,6 +32,7 @@ import StudioOnePromo from './components/StudioOnePromo';
 import UADPromo from './components/UadPromo';
 import Utilities from './components/Utilities';
 import NotFound from './components/NotFound';
+import SiteHeader from './components/SiteHeader';
 import UtilitiesBand from './components/UtilitiesBand';
 import UtilitiesTitle from './components/UtilitiesTitle';
 import { gsap } from 'gsap';
@@ -64,6 +65,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <ScrollToTop />
+      <SiteHeader />
       <div className="relative bg-[#0a0a0a] min-h-screen">
         <Routes>
           
