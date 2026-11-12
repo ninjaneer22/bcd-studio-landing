@@ -1,6 +1,6 @@
 /* ---------- Standard cube ---------- */
 .sc-section{--sc-w:min(980px,66vw,calc((100vh - 340px) * 1.7778));position:relative;height:520vh;background:#050505;border-top:1px solid rgba(255,255,255,.05)}
-.sc-stage{background:#050505 url(/images/cube/standard/nebula.webp) center/cover no-repeat;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;overflow:hidden;padding:0 16px}
+.sc-stage{background:#050505 url(/images/cube/standard/nebula.webp) center/cover no-repeat;position:sticky;top:56px;height:calc(100vh - 56px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;overflow:hidden;padding:0 16px}
 .sc-head{position:relative;z-index:2}
 .sc-scene{width:var(--sc-w);margin-top:36px;aspect-ratio:16/9;perspective:calc(var(--sc-w) * 2.2);flex:none}
 .sc-cube{width:100%;height:100%;position:relative;transform-style:preserve-3d;transform:translateZ(calc(var(--sc-w) / -2))}
@@ -29,7 +29,7 @@
 
 /* ---------- Max cube ---------- */
 .mc-section{--mc-w:min(1200px,70vw);--mc-h:calc(var(--mc-w) * .448);position:relative;height:520vh;background:#050505;border-top:1px solid rgba(255,255,255,.05)}
-.mc-stage{background:#050505 url(/images/cube/max/nebula.webp) center/cover no-repeat;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:0 16px;overflow:hidden}
+.mc-stage{background:#050505 url(/images/cube/max/nebula.webp) center/cover no-repeat;position:sticky;top:56px;height:calc(100vh - 56px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:0 16px;overflow:hidden}
 .mc-scene{margin-top:36px;width:var(--mc-w);height:var(--mc-h);perspective:calc(var(--mc-w) * 2.2);flex:none}
 .mc-scene .sc-cube{transform:translateZ(calc(var(--mc-w) / -2))}
 .mc-face{background:transparent;box-shadow:none;border-radius:0}

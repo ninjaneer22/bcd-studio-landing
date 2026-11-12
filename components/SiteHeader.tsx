@@ -44,7 +44,8 @@ const SiteHeader: React.FC = () => {
           <a href="/#pricing-plans" className="buy-btn sh-buy" onClick={(e) => goTo(e, '#pricing-plans')}>Buy</a>
         </nav>
       </header>
-      {pathname !== '/' && <div style={{ height: HEADER_H }} aria-hidden="true" />}
+      {/* Pushes the page down so the header never covers content (black on the home page to blend with the hero) */}
+      <div style={{ height: HEADER_H, background: pathname === '/' ? '#000' : undefined }} aria-hidden="true" />
     </>
   );
 };

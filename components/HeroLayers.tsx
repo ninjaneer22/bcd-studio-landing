@@ -204,7 +204,7 @@ const HeroLayers: React.FC = () => {
   }, []);
 
   const handleScrollDown = () => {
-    gsap.to(window, { duration: 1, scrollTo: { y: '#panel-2-features', autoKill: true }, ease: 'power2.inOut' });
+    gsap.to(window, { duration: 1, scrollTo: { y: '#panel-2-features', offsetY: 56, autoKill: true }, ease: 'power2.inOut' });
   };
 
   return (
