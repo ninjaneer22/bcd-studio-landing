@@ -26,7 +26,7 @@ const Success: React.FC = () => {
             Flow Initiated.
           </h1>
           <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
-            Welcome to the movement. Your Flexi-Deck license and BCD **Project** download link are on their way to your inbox.
+            Welcome to the movement. Your Flexi-Deck license and BCD Project download link are on their way to your inbox.
           </p>
         </div>
 
@@ -69,7 +69,7 @@ const Success: React.FC = () => {
                   <span className="font-bold">02</span>
                 </div>
                 <h4 className="text-xl font-bold text-white mb-3">Loading BCD Projects</h4>
-                <p className="text-zinc-400 leading-relaxed mb-6">How to import your BCD **Project** file and navigate the custom **Menus**.</p>
+                <p className="text-zinc-400 leading-relaxed mb-6">How to import your BCD Project file and navigate the custom Menus.</p>
                 <button className="text-cyan-400 font-bold hover:text-white transition-colors flex items-center gap-2">
                   Watch Tutorial <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </button>
@@ -83,7 +83,7 @@ const Success: React.FC = () => {
                   <span className="font-bold">03</span>
                 </div>
                 <h4 className="text-xl font-bold text-white mb-3">Button & Macro Layout</h4>
-                <p className="text-zinc-400 leading-relaxed mb-6">A deep dive into how our **Buttons** use 4-slot **Macros** to trigger your plugins.</p>
+                <p className="text-zinc-400 leading-relaxed mb-6">A deep dive into how our Buttons use 4-slot Macros to trigger your plugins.</p>
                 <button className="text-cyan-400 font-bold hover:text-white transition-colors flex items-center gap-2">
                   Watch Tutorial <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </button>

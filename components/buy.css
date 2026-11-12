@@ -1,0 +1,5 @@
+/* The one filled button style on the site: used for Buy buttons only. Everything else stays an outline pill. */
+.buy-btn{display:inline-block;padding:14px 32px;border-radius:9999px;background:#E8EAED;color:#0a0a0a;font-weight:600;font-size:15px;letter-spacing:.02em;line-height:1.2;text-align:center;text-decoration:none;white-space:nowrap;transition:background-color .25s,transform .25s}
+.buy-btn:hover{background:#fff;transform:scale(1.04)}
+.buy-btn:active{transform:scale(.97)}
+.buy-btn:focus-visible{outline:2px solid #fff;outline-offset:3px}

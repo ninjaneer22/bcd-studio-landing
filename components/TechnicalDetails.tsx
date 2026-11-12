@@ -32,7 +32,7 @@ const TechnicalDetails: React.FC = () => {
         {/* Main Title */}
         <div className="space-y-4">
           <span className="tech-reveal text-sm tracking-[0.4em] font-medium text-google-grey uppercase">
-            System Architechture
+            System Architecture
           </span>
           <h2 className="tech-reveal text-3xl md:text-5xl font-bold text-google-white tracking-tight">
             The engine behind the speed.

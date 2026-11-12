@@ -41,7 +41,7 @@
 .tm-head span{display:block;margin-top:5px;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);line-height:1.35}
 .tm-card blockquote{position:relative;margin:0;padding:0;border:0;font-size:17px;line-height:1.55;color:#c9c9d0;font-weight:400}
 .tm-card blockquote b{color:#fff;font-weight:700}
-@media(max-width:1000px){.tm-card,.tm-card:nth-child(n+5){grid-column:span 6}.tm-card:last-child{grid-column:3 / span 8}}
+@media(max-width:1200px){.tm-card,.tm-card:nth-child(n+5){grid-column:span 6}.tm-card:last-child{grid-column:3 / span 8}}
 @media(max-width:640px){.tm-grid{gap:14px}.tm-card,.tm-card:nth-child(n+5),.tm-card:last-child{grid-column:1 / -1}.tm-q-o,.tm-q-c{font-size:200px}}
 
 /* phones: show the whole 16:9 film instead of a tight centre crop */

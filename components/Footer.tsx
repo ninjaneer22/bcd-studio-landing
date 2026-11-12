@@ -67,7 +67,7 @@ const Footer: React.FC = () => {
             href="https://bcd.center/" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="text-[10px] tracking-[0.2em] uppercase text-zinc-600 hover:text-cyan-500 transition-colors duration-300 font-medium"
+            className="text-xs tracking-[0.2em] uppercase text-[#9AA0A6] hover:text-cyan-500 transition-colors duration-300 font-medium"
           >
             bcd.center
           </a>

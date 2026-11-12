@@ -41,7 +41,7 @@ const WhyInvest: React.FC = () => {
 
         {/* Updated Benefits List */}
         <div className="space-y-16">
-          <h2 className="invest-reveal text-sm tracking-[0.4em] font-medium text-neutral-500 uppercase">
+          <h2 className="invest-reveal text-sm tracking-[0.4em] font-medium text-[#9AA0A6] uppercase">
             CORE PROFESSIONAL ADVANTAGES:
           </h2>
 

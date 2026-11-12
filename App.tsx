@@ -20,6 +20,7 @@ import PricingSection from './components/PricingSection';
 import TechnicalDetails from './components/TechnicalDetails';
 import FAQSection from './components/FAQSection';
 import './components/mobile.css';
+import './components/buy.css';
 import Footer from './components/Footer';
 
 // The new Success page
@@ -30,6 +31,7 @@ import PaPromo from './components/pa-promo';
 import StudioOnePromo from './components/StudioOnePromo'; 
 import UADPromo from './components/UadPromo';
 import Utilities from './components/Utilities';
+import NotFound from './components/NotFound';
 import UtilitiesBand from './components/UtilitiesBand';
 import UtilitiesTitle from './components/UtilitiesTitle';
 import { gsap } from 'gsap';
@@ -42,6 +44,15 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
   useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  // Give each public page its own browser-tab title
+  useEffect(() => {
+    const titles: Record<string, string> = {
+      '/': 'BCD | Browse. Click. Done.',
+      '/utilities': 'Utilities | BCD',
+      '/success': 'Thank you | BCD',
+    };
+    document.title = titles[pathname] ?? (['/pa-promo', '/StudioOnePromo', '/UadPromo'].includes(pathname) ? 'BCD' : 'Page not found | BCD');
+  }, [pathname]);
   return null;
 };
 
@@ -93,6 +104,9 @@ const App: React.FC = () => {
           <Route path="/UadPromo" element={<UADPromo />} />
 
           <Route path="/utilities" element={<Utilities />} />
+
+          {/* Any other address shows a simple 404 page */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
         
         {/* Footer stays at the bottom of both pages */}

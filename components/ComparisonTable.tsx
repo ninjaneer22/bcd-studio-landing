@@ -112,7 +112,7 @@ const ComparisonTable: React.FC = () => {
                 </thead>
                 <tbody className="divide-y divide-white/5">
                   {[
-                    { label: "Price", std: "£29.99", max: "£49.99 (Intro Offer)" },
+                    { label: "Price", std: "£29.99", max: "£49.99" },
                     { label: "Logic Native Plugins", std: <><span className="text-emerald-500/70 text-[1.2em] mr-2">●</span> Included</>, max: <><span className="text-emerald-500/70 text-[1.2em] mr-2">●</span> Included</> },
                     { label: "3rd Party Plugins (AU)", std: <><span className="text-white/20 text-[1.2em] mr-2">●</span> (Native Only)</>, max: <><span className="text-emerald-500/70 text-[1.2em] mr-2">●</span> Fully Supported</> },
                     { label: "Custom Projects", std: <><span className="text-white/20 text-[1.2em] mr-2">●</span> (Preset Only)</>, max: <><span className="text-emerald-500/70 text-[1.2em] mr-2">●</span> 3 Custom Views</> },
@@ -131,26 +131,10 @@ const ComparisonTable: React.FC = () => {
                   <tr className="table-row-reveal transition-colors pt-8">
                     <td className="py-8 pr-8"></td>
                     <td className="py-8 px-6 text-center">
-                      <div className="relative inline-block group p-[2px] rounded-full overflow-hidden transition-all duration-500 hover:scale-105 active:scale-95">
-                        <div className="absolute inset-[-1000%] animate-spin-slow bg-[conic-gradient(from_90deg_at_50%_50%,#7dd3fc_0%,#0369a1_50%,#7dd3fc_100%)]"></div>
-                        <a 
-                          href="https://buy.stripe.com/fZu3cv55bbKadeYa0b8bS01" 
-                          className="relative block px-8 py-3 bg-neutral-950 text-neutral-200 rounded-full font-medium tracking-wide hover:bg-neutral-900 transition-colors text-center text-sm md:text-base"
-                        >
-                          Buy<span className="hidden md:inline"> Standard</span>
-                        </a>
-                      </div>
+                      <a href="https://buy.stripe.com/fZu3cv55bbKadeYa0b8bS01" className="buy-btn">Buy Standard · £29.99</a>
                     </td>
                     <td className="py-8 px-6 text-center">
-                      <div className="relative inline-block group p-[2px] rounded-full overflow-hidden transition-all duration-500 hover:scale-105 active:scale-95">
-                        <div className="absolute inset-[-1000%] animate-spin-slow bg-[conic-gradient(from_90deg_at_50%_50%,#fbbf24_0%,#ea580c_50%,#fbbf24_100%)]"></div>
-                        <a 
-                          href="https://buy.stripe.com/9B6fZh9lr15wb6Q0pB8bS02" 
-                          className="relative block px-8 py-3 bg-neutral-950 text-neutral-200 rounded-full font-medium tracking-wide hover:bg-neutral-900 transition-colors text-center text-sm md:text-base"
-                        >
-                          Buy<span className="hidden md:inline"> MAX</span>
-                        </a>
-                      </div>
+                      <a href="https://buy.stripe.com/9B6fZh9lr15wb6Q0pB8bS02" className="buy-btn">Buy MAX · £49.99</a>
                     </td>
                   </tr>
 
