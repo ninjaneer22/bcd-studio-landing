@@ -7,5 +7,19 @@
 .sh-link{font:500 12px/1 'Inter',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#9AA0A6;text-decoration:none;transition:color .25s}
 .sh-link:hover,.sh-link:focus-visible{color:#fff}
 .sh-buy{padding:9px 20px;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
-@media(max-width:700px){.sh-link{display:none}}
+.sh-menu{display:none}
+.sh-panel{display:none}
+@media(max-width:700px){
+  .sh{top:8px;left:10px;right:10px;height:48px;padding:0 8px 0 16px;border-radius:16px;border:1px solid rgba(255,255,255,.14);background:rgba(24,24,28,.42);-webkit-backdrop-filter:blur(22px) saturate(170%);backdrop-filter:blur(22px) saturate(170%);box-shadow:0 8px 30px rgba(0,0,0,.35)}
+  .sh-link{display:none}
+  .sh-nav{gap:8px}
+  .sh-buy{padding:8px 16px}
+  .sh-menu{display:flex;flex-direction:column;justify-content:center;gap:6px;width:40px;height:40px;padding:0 11px;background:none;border:0;cursor:pointer}
+  .sh-menu i{display:block;height:1.5px;background:#E8EAED;border-radius:1px;transition:transform .25s}
+  .sh-menu.is-open i:first-child{transform:translateY(3.75px) rotate(45deg)}
+  .sh-menu.is-open i:last-child{transform:translateY(-3.75px) rotate(-45deg)}
+  .sh-panel{display:flex;flex-direction:column;position:absolute;top:56px;left:0;right:0;padding:8px;border-radius:16px;border:1px solid rgba(255,255,255,.14);background:rgba(24,24,28,.5);-webkit-backdrop-filter:blur(22px) saturate(170%);backdrop-filter:blur(22px) saturate(170%);box-shadow:0 8px 30px rgba(0,0,0,.35)}
+  .sh-plink{padding:14px 12px;font:500 13px/1 'Inter',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#E8EAED;text-decoration:none;border-radius:10px}
+  .sh-plink:active{background:rgba(255,255,255,.08)}
+}
 @media(prefers-reduced-motion:reduce){.sh-intro{animation:none}}
