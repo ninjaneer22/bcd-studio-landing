@@ -13,7 +13,7 @@
   .sh{top:8px;left:10px;right:10px;height:48px;padding:0 8px 0 16px;border-radius:16px;border:1px solid rgba(255,255,255,.14);background:rgba(24,24,28,.42);-webkit-backdrop-filter:blur(22px) saturate(170%);backdrop-filter:blur(22px) saturate(170%);box-shadow:0 8px 30px rgba(0,0,0,.35)}
   .sh-link{display:none}
   .sh-nav{gap:8px}
-  .sh-buy{padding:8px 16px}
+  .sh-buy{display:none}
   .sh-menu{display:flex;flex-direction:column;justify-content:center;gap:6px;width:40px;height:40px;padding:0 11px;background:none;border:0;cursor:pointer}
   .sh-menu i{display:block;height:1.5px;background:#E8EAED;border-radius:1px;transition:transform .25s}
   .sh-menu.is-open i:first-child{transform:translateY(3.75px) rotate(45deg)}
