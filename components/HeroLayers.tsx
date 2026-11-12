@@ -132,14 +132,14 @@ const HeroLayers: React.FC = () => {
       const rot = document.createElement('div'); rot.className = 'rot'; rot.style.cssText = 'left:0;top:0;width:100%;height:100%';
       p.style.cssText = 'width:' + W + 'px;left:0;top:0;opacity:1'; rot.appendChild(p); rig.appendChild(rot); pan.appendChild(rig);
       const ZL = mobile ? 150 : 220, fz = W * (mobile ? .045 : .026);
-      const lbl = (txt, x, y, al, tag, href) => { const d = document.createElement('div'); d.className = 'lbl'; d.innerHTML = '<span class="lt">PLUGIN LAUNCHER<br>' + txt + '</span><span class="ltag">' + tag + '</span><a class="more" href="' + href + '"><i></i><b>More</b></a>';
+      const lbl = (txt, x, y, al, tag, href) => { const d = document.createElement('div'); d.className = 'lbl'; d.innerHTML = '<span class="lpe">LOGIC PRO EDITION</span><span class="lt">PLUGIN LAUNCHER<br>' + txt + '</span><span class="ltag">' + tag + '</span><a class="more" href="' + href + '"><i></i><b>More</b></a>';
         d.style.cssText = 'left:' + x * W + 'px;top:' + y * PH + 'px;font-size:' + fz + 'px;text-align:' + al + ';transform:translateZ(' + ZL + 'px);opacity:0';
         d.querySelector('.more').addEventListener('click', (ev) => { ev.preventDefault(); gsap.to(window, { duration: 1, scrollTo: { y: href, autoKill: true }, ease: 'power2.inOut' }); });
         rot.appendChild(d); return d; };
       const lS = lbl(mobile ? 'STANDARD' : 'STANDARD', mobile ? .5 : .018, mobile ? 0 : .1, mobile ? 'center' : 'right', 'The Native Console.', '#standard-cube'), lM = lbl('MAX', mobile ? .5 : .98, mobile ? 0 : .1, mobile ? 'center' : 'left', mobile ? 'The Ultimate Bespoke Console.' : 'The Ultimate Bespoke<br>Console.', '#max-cube');
       if (mobile) {
         // one line each, centred horizontally and in the gap between the DONE type and the laptop
-        [lS, lM].forEach((d) => { d.firstChild.innerHTML = 'PLUGIN LAUNCHER ' + (d === lS ? 'STANDARD' : 'MAX'); d.style.transform = 'translateZ(' + ZL + 'px) translateX(-50%)'; const Yt = (.24 * fh + .52 * fh) / 2 - .018 * fh, y0 = fh / 2 + (Yt - fh / 2) / (1400 / (1400 - ZL)); d.style.top = (y0 - d.offsetHeight / 2 - .52 * fh) + 'px'; });
+        [lS, lM].forEach((d) => { d.querySelector('.lt').innerHTML = 'PLUGIN LAUNCHER ' + (d === lS ? 'STANDARD' : 'MAX'); d.style.transform = 'translateZ(' + ZL + 'px) translateX(-50%)'; const Yt = (.24 * fh + .52 * fh) / 2 - .018 * fh, y0 = fh / 2 + (Yt - fh / 2) / (1400 / (1400 - ZL)); d.style.top = (y0 - d.offsetHeight / 2 - .52 * fh) + 'px'; });
       } else { lS.style.transform = 'translateZ(' + ZL + 'px) translateX(-100%)'; }
       an(rig, [{ opacity: 0, transform: 'translateZ(-420px) translateY(40px)' }, { opacity: 1, transform: 'translateZ(0) translateY(0)' }], { delay: T(6.0), duration: T(1.1), easing: 'cubic-bezier(.2,.7,.2,1)' });
       const EA = 'cubic-bezier(.45,0,.55,1)';
