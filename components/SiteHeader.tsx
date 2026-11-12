@@ -47,15 +47,16 @@ const SiteHeader: React.FC = () => {
           <a href="/#pricing-plans" className="buy-btn sh-buy" onClick={(e) => goTo(e, '#pricing-plans')}>Buy</a>
           <button type="button" className={'sh-menu' + (open ? ' is-open' : '')} aria-label="Menu" aria-expanded={open} onClick={() => setOpen(!open)}><i /><i /></button>
         </nav>
-        {open && (
-          <div className="sh-panel">
-            {link('Standard', '#standard-cube', 'sh-plink')}
-            {link('MAX', '#max-cube', 'sh-plink')}
-            <Link to="/utilities" className="sh-plink" onClick={() => setOpen(false)}>Utilities</Link>
-            {link('Pricing', '#pricing-plans', 'sh-plink')}
-          </div>
-        )}
       </header>
+      {/* Outside the header on purpose: a frosted element inside another frosted element cannot blur the page behind it */}
+      {open && (
+        <div className="sh-panel">
+          {link('Standard', '#standard-cube', 'sh-plink')}
+          {link('MAX', '#max-cube', 'sh-plink')}
+          <Link to="/utilities" className="sh-plink" onClick={() => setOpen(false)}>Utilities</Link>
+          {link('Pricing', '#pricing-plans', 'sh-plink')}
+        </div>
+      )}
       {/* Pushes the page down so the header never covers content (black on the home page to blend with the hero) */}
       <div style={{ height: HEADER_H, background: pathname === '/' ? '#000' : undefined }} aria-hidden="true" />
     </>
