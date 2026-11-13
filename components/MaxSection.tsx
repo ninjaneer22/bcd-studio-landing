@@ -70,7 +70,7 @@ const MaxSection: React.FC = () => {
         <div className="max-std-anim text-center mb-14 md:mb-24 overflow-hidden">
           <span 
             ref={labelRef} 
-            className="inline-block pl-[0.2em] text-xl md:text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent tracking-[0.2em] uppercase"
+            className="inline-block pl-[0.2em] text-xl md:text-2xl font-bold bg-gradient-to-r from-amber-400 to-orange-600 bg-clip-text text-transparent tracking-[0.2em] uppercase"
           >
             PLUGIN LAUNCHER MAX
           </span>
