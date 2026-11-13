@@ -49,6 +49,10 @@
   #pricing-plans { padding: 44px 24px 48px !important; }
   #pricing-plans h2.mb-16 { margin-bottom: 32px !important; }
 
+  /* one-line / three-line phone headings: size follows the screen width so the lines never wrap mid-sentence */
+  .tech-h2 { font-size: calc((100vw - 3rem) / 14.4) !important; line-height: 1.2 !important; white-space: nowrap; }
+  .invest-h2 { font-size: calc((100vw - 4rem) / 16.8) !important; line-height: 1.25 !important; white-space: nowrap; }
+
   /* technical details + FAQ */
   #tech-specs, #faq-panel { padding: 52px 24px !important; }
   #tech-specs .space-y-16 > :not([hidden]) ~ :not([hidden]) { margin-top: 36px !important; }

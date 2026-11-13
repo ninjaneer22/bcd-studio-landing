@@ -34,7 +34,7 @@ const TechnicalDetails: React.FC = () => {
           <span className="tech-reveal text-sm tracking-[0.4em] font-medium text-google-grey uppercase">
             System Architecture
           </span>
-          <h2 className="tech-reveal text-3xl md:text-5xl font-bold text-google-white tracking-tight">
+          <h2 className="tech-reveal tech-h2 text-3xl md:text-5xl font-bold text-google-white tracking-tight">
             The engine behind the speed.
           </h2>
         </div>

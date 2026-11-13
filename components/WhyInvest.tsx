@@ -30,9 +30,9 @@ const WhyInvest: React.FC = () => {
 
         {/* Section Heading */}
         <div className="space-y-8">
-          <h2 className="invest-reveal text-3xl md:text-5xl text-white font-bold leading-tight tracking-tight [text-wrap:balance] md:[text-wrap:wrap]">
-            Time is your most valuable asset.<br className="hidden md:block" />{' '}
-            For professionals, Plugin Launcher <br className="hidden md:block" /> pays for itself in a single session.
+          <h2 className="invest-reveal invest-h2 text-3xl md:text-5xl text-white font-bold leading-tight tracking-tight">
+            Time is your most valuable asset.<br />
+            For professionals, Plugin Launcher <br /> pays for itself in a single session.
           </h2>
           <p className="invest-reveal text-neutral-400 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
             Investing in Plugin Launcher is an investment <br />in your productivity, your creativity, and your vision.
