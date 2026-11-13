@@ -138,8 +138,9 @@
 @media (max-width:760px){.ut #ut-nav{top:38px}.ut #ut-stage{top:96px}}
 
 .ut-bar .ut-back{display:inline-flex;align-items:center;line-height:0;padding:12px;margin:-12px}
-.ut .top{left:60px}
-@media (max-width:760px){.ut .top{left:56px}}
+.ut .top{left:24px}
+/* Phones: the label is centred in the gap between the header and the nav and lines up with the nav frame's left edge; the nav buttons fit inside the frame; the cards start a little lower */
+@media (max-width:760px){.ut .top{left:12px;top:2px;height:36px;align-items:center}.ut #ut-stage{top:108px}.ut #ut-nav{width:calc(100% - 24px);justify-content:space-between}.ut #ut-nav button{padding:8px 9px;font-size:12px}}
 
 @media (min-width:761px){
 .ut-bar{left:21.5px;top:23.5px;align-items:center}
