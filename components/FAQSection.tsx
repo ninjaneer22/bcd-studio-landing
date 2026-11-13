@@ -64,7 +64,7 @@ const AccordionItem: React.FC<{ item: FAQItem; isOpen: boolean; onClick: () => v
 
       <div className={`grid transition-all duration-500 ease-in-out ${isOpen ? 'grid-rows-[1fr] opacity-100 pb-8' : 'grid-rows-[0fr] opacity-0'}`}>
         <div className="overflow-hidden">
-          <p className="text-google-grey text-lg md:text-xl leading-relaxed pl-6 border-l border-zinc-800">
+          <p className="text-google-grey text-base md:text-lg leading-relaxed pl-6 border-l border-zinc-800">
             A: {item.answer}
           </p>
         </div>
@@ -125,7 +125,7 @@ const FAQSection: React.FC = () => {
             <div className="absolute inset-[-1000%] animate-spin-slow bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]"></div>
             <a 
               href="mailto:tony@bcd.center"
-              className="relative block px-8 py-3 bg-neutral-950 text-neutral-200 rounded-full font-medium tracking-widest uppercase text-[10px] hover:bg-neutral-900 transition-colors text-center"
+              className="relative block px-8 py-3 bg-neutral-950 text-neutral-200 rounded-full font-medium tracking-widest uppercase text-xs hover:bg-neutral-900 transition-colors text-center"
             >
               Contact Support
             </a>

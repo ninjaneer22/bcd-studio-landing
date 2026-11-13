@@ -107,7 +107,7 @@ const MaxSection: React.FC = () => {
           <div className="w-full md:w-[40%] flex flex-col pt-2 md:sticky md:top-32">
             <div className="max-std-anim space-y-10 text-google-grey">
               <div className="space-y-6">
-                <h3 className="text-google-white text-3xl font-bold leading-tight tracking-tight">
+                <h3 className="text-google-white text-2xl md:text-3xl font-bold leading-tight tracking-tight">
                   The command center for<br className="hidden md:block" /> your plugin library.
                 </h3>
                 <p className="text-base leading-relaxed">
@@ -116,7 +116,7 @@ const MaxSection: React.FC = () => {
               </div>
 
               <div className="space-y-8">
-                <h4 className="text-google-white font-bold text-lg tracking-wide py-1">
+                <h4 className="text-google-white font-bold text-xl tracking-tight py-1 [text-wrap:balance]">
                   Engineered Control: Scale, Logic, Depth
                 </h4>
 

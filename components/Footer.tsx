@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
         {/* Legal Block */}
         <div className="space-y-6 text-google-grey text-[11px] md:text-xs tracking-wide leading-relaxed max-w-2xl mx-auto font-medium">
           <p>
-            Plugin Launcher and Plugin Launcher MAX are independent products <br />and are not affiliated with or endorsed by Apple Inc.
+            Plugin Launcher and Plugin Launcher MAX are independent products <br className="hidden md:block" />and are not affiliated with or endorsed by Apple Inc.
           </p>
           <p>
             Logic Pro and macOS are trademarks of Apple Inc., registered in the U.S. and other countries.
@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
             <div className="absolute inset-[-1000%] animate-spin-slow bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]"></div>
             <button 
               onClick={scrollToTop}
-              className="relative block px-8 py-3 bg-neutral-950 text-neutral-200 rounded-full font-medium tracking-widest uppercase text-[10px] hover:bg-neutral-900 transition-colors text-center"
+              className="relative block px-8 py-3 bg-neutral-950 text-neutral-200 rounded-full font-medium tracking-widest uppercase text-xs hover:bg-neutral-900 transition-colors text-center"
             >
               Back to Top
             </button>
@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
 
         {/* Footer Bottom */}
         <div className="pt-12 border-t border-white/5 flex flex-col items-center gap-4">
-          <div className="text-[10px] tracking-[0.4em] uppercase text-google-grey font-bold">
+          <div className="text-[10px] tracking-[0.25em] md:tracking-[0.4em] uppercase text-google-grey font-bold">
             © 2026 BCD. All rights reserved.
           </div>
 

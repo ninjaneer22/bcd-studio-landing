@@ -30,8 +30,8 @@ const WhyInvest: React.FC = () => {
 
         {/* Section Heading */}
         <div className="space-y-8">
-          <h2 className="invest-reveal text-3xl md:text-5xl text-white font-bold leading-tight tracking-tight">
-            Time is your most valuable asset.<br />
+          <h2 className="invest-reveal text-3xl md:text-5xl text-white font-bold leading-tight tracking-tight [text-wrap:balance] md:[text-wrap:wrap]">
+            Time is your most valuable asset.<br className="hidden md:block" />{' '}
             For professionals, Plugin Launcher <br className="hidden md:block" /> pays for itself in a single session.
           </h2>
           <p className="invest-reveal text-neutral-400 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
@@ -49,28 +49,28 @@ const WhyInvest: React.FC = () => {
             
             <div className="invest-reveal space-y-3">
               <span className="text-white font-bold text-xl block">Zero-Friction Integration</span>
-              <p className="text-neutral-400 text-sm md:text-base leading-relaxed">
+              <p className="text-neutral-400 text-base leading-relaxed">
                 Auto-starts with Logic Pro and discreetly hides until called. Minimal CPU footprint ensures your system stays focused on audio.
               </p>
             </div>
 
             <div className="invest-reveal space-y-3">
               <span className="text-white font-bold text-xl block">Instant Visual Clarity</span>
-              <p className="text-neutral-400 text-sm md:text-base leading-relaxed">
+              <p className="text-neutral-400 text-base leading-relaxed">
                 See your entire library clearly organized and ready to launch. Find what you need, exactly when you need it.
               </p>
             </div>
 
             <div className="invest-reveal space-y-3">
               <span className="text-white font-bold text-xl block">Responsive Architecture</span>
-              <p className="text-neutral-400 text-sm md:text-base leading-relaxed">
+              <p className="text-neutral-400 text-base leading-relaxed">
                 An interface that adapts to your screen. Intuitive pinch-to-zoom resizing ensures the project fits perfectly into your display setup.
               </p>
             </div>
 
             <div className="invest-reveal space-y-3">
               <span className="text-white font-bold text-xl block">Advanced Command (MAX Tier)</span>
-              <p className="text-neutral-400 text-sm md:text-base leading-relaxed">
+              <p className="text-neutral-400 text-base leading-relaxed">
                 Unlock the full power of Triple Layouts and Multi-Action Triggers to tame even the most expansive third-party collections.
               </p>
             </div>
