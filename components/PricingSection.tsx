@@ -52,44 +52,36 @@ const PricingSection: React.FC = () => {
           Revolutionize your Logic Pro <br className="hidden md:block" /> workflow today.
         </h3>
 
-        <div className="w-full space-y-16">
-          
-          {/* Standard Version */}
-          <div className="pricing-reveal flex flex-col items-center text-center max-w-2xl mx-auto">
-            <h3 className="text-white text-3xl font-bold mb-2 tracking-tight">
+        <div className="pricing-reveal w-full grid grid-cols-1 md:grid-cols-2 gap-6">
+
+          {/* Standard */}
+          <div className="flex flex-col items-center text-center rounded-2xl border border-cyan-500/25 bg-white/[0.03] p-8">
+            <h3 className="text-white text-2xl md:text-3xl font-bold mb-2 tracking-tight">
               Plugin Launcher <span className="text-cyan-400">Standard</span>
             </h3>
-            <p className="text-white text-xl font-bold mb-6">£29.99</p>
-
+            <p className="text-white text-2xl font-bold mb-6">£29.99</p>
             <ul className="text-zinc-400 text-base space-y-3 mb-8 list-none font-medium">
               <li>• Preloaded with all Logic Pro plugins</li>
               <li>• Plug-and-play setup</li>
               <li>• One-time purchase</li>
             </ul>
-
-            <a href="https://buy.stripe.com/fZu3cv55bbKadeYa0b8bS01" className="buy-btn">Buy Standard · £29.99</a>
+            <a href="https://buy.stripe.com/fZu3cv55bbKadeYa0b8bS01" className="buy-btn mt-auto">Buy Standard · £29.99</a>
           </div>
 
-          {/* Divider */}
-          <div className="pricing-reveal w-16 h-[1px] bg-white/10 mx-auto"></div>
-
-          {/* MAX Version */}
-          <div className="pricing-reveal flex flex-col items-center text-center max-w-2xl mx-auto">
-  <h3 className="text-white text-3xl font-bold mb-2 tracking-tight">
-    Plugin Launcher <span className="text-orange-400">MAX</span>
-  </h3>
-  
-  {/* Removed the wrapper div and badge; added mb-6 to match Standard */}
-  <p className="text-white text-xl font-bold mb-6">£49.99</p>
-
-  <ul className="text-zinc-400 text-base space-y-3 mb-8 list-none font-medium">
-    <li>• Full customization for any plugin</li>
-    <li>• Includes everything in Standard</li>
-    <li>• Full Flexi-Deck Creator license</li>
-  </ul>
-
-            <a href="https://buy.stripe.com/9B6fZh9lr15wb6Q0pB8bS02" className="buy-btn">Buy MAX · £49.99</a>
+          {/* MAX */}
+          <div className="flex flex-col items-center text-center rounded-2xl border border-orange-500/30 bg-white/[0.03] p-8">
+            <h3 className="text-white text-2xl md:text-3xl font-bold mb-2 tracking-tight">
+              Plugin Launcher <span className="text-orange-400">MAX</span>
+            </h3>
+            <p className="text-white text-2xl font-bold mb-6">£49.99</p>
+            <ul className="text-zinc-400 text-base space-y-3 mb-8 list-none font-medium">
+              <li>• Full customization for any plugin</li>
+              <li>• Includes everything in Standard</li>
+              <li>• Full Flexi-Deck Creator license</li>
+            </ul>
+            <a href="https://buy.stripe.com/9B6fZh9lr15wb6Q0pB8bS02" className="buy-btn mt-auto">Buy MAX · £49.99</a>
           </div>
+
         </div>
       </div>
     </section>

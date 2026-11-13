@@ -3,3 +3,8 @@
 .buy-btn:hover{background:#fff;transform:scale(1.04)}
 .buy-btn:active{transform:scale(.97)}
 .buy-btn:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.buy-btn--sm{padding:10px 22px;font-size:14px}
+@media(max-width:640px){
+  .buy-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 22px;font-size:14px}
+  .buy-btn--sm{padding:0 10px;font-size:13px}
+}

@@ -46,7 +46,6 @@
 
   /* pricing */
   #pricing-plans { padding: 44px 24px 48px !important; }
-  #pricing-plans .space-y-16 > :not([hidden]) ~ :not([hidden]) { margin-top: 36px !important; }
   #pricing-plans h3.mb-16 { margin-bottom: 32px !important; }
 
   /* technical details + FAQ */
@@ -73,7 +72,6 @@
   #comparison-panel th, #comparison-panel td { padding-left: 6px !important; padding-right: 6px !important; word-break: break-word; }
   #comparison-panel th:first-child, #comparison-panel td:first-child { width: 34%; }
   #comparison-panel th { font-size: 14px !important; letter-spacing: .08em !important; }
+  #comparison-panel th span.block { font-size: 17px !important; letter-spacing: 0 !important; margin-bottom: 12px !important; }
   #comparison-panel .bg-gradient-to-l { display: none !important; }
-  #comparison-panel td a.block { padding: 0 !important; min-width: 64px; min-height: 44px; display: flex; align-items: center; justify-content: center; font-size: 14px !important; }
-  #comparison-panel td:has(a.block) { padding-left: 4px !important; padding-right: 4px !important; }
 }
