@@ -14,10 +14,11 @@
   .sh-link{display:none}
   .sh-nav{gap:8px}
   .sh-buy{display:none}
-  .sh-menu{display:flex;flex-direction:column;justify-content:center;gap:6px;width:40px;height:40px;padding:0 11px;background:none;border:0;cursor:pointer}
-  .sh-menu i{display:block;height:1.5px;background:#E8EAED;border-radius:1px;transition:transform .25s}
-  .sh-menu.is-open i:first-child{transform:translateY(3.75px) rotate(45deg)}
-  .sh-menu.is-open i:last-child{transform:translateY(-3.75px) rotate(-45deg)}
+  .sh-menu{display:flex;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;padding:0 11px;background:none;border:0;cursor:pointer}
+  .sh-menu i{display:block;height:2px;background:#E8EAED;border-radius:1px;transition:transform .25s,opacity .2s}
+  .sh-menu.is-open i:first-child{transform:translateY(7px) rotate(45deg)}
+  .sh-menu.is-open i:nth-child(2){opacity:0}
+  .sh-menu.is-open i:last-child{transform:translateY(-7px) rotate(-45deg)}
   .sh-panel{display:flex;flex-direction:column;position:fixed;z-index:999;top:64px;left:10px;right:10px;padding:8px;border-radius:16px;border:1px solid rgba(255,255,255,.14);background:rgba(24,24,28,.55);-webkit-backdrop-filter:blur(24px) saturate(170%);backdrop-filter:blur(24px) saturate(170%);box-shadow:0 8px 30px rgba(0,0,0,.35)}
   .sh-plink{padding:14px 12px;font:500 13px/1 'Inter',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#E8EAED;text-decoration:none;border-radius:10px}
   .sh-plink:active{background:rgba(255,255,255,.08)}

@@ -45,7 +45,7 @@ const SiteHeader: React.FC = () => {
           <Link to="/utilities" className="sh-link">Utilities</Link>
           {link('Pricing', '#pricing-plans')}
           <a href="/#pricing-plans" className="buy-btn sh-buy" onClick={(e) => goTo(e, '#pricing-plans')}>Buy</a>
-          <button type="button" className={'sh-menu' + (open ? ' is-open' : '')} aria-label="Menu" aria-expanded={open} onClick={() => setOpen(!open)}><i /><i /></button>
+          <button type="button" className={'sh-menu' + (open ? ' is-open' : '')} aria-label="Menu" aria-expanded={open} onClick={() => setOpen(!open)}><i /><i /><i /></button>
         </nav>
       </header>
       {/* Outside the header on purpose: a frosted element inside another frosted element cannot blur the page behind it */}
