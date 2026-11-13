@@ -55,4 +55,12 @@
   .sc-stage{background-image:url(/images/cube/standard/studio_standard.webp)}
   .mc-stage{background-image:url(/images/cube/max/studio_max.webp)}
   .mc-std .mc-stage{background-image:url(/images/cube/standard/studio_standard.webp)}
+  /* halftone edge dots: tiny dots fading in toward the edges of the backplate, centre stays clean.
+     To remove: delete this block (.mc-stage::before and the two --dot lines). */
+  .mc-stage::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+    background-image:radial-gradient(circle,var(--dot) 0,var(--dot) .9px,transparent 1.5px);background-size:6px 6px;
+    -webkit-mask-image:radial-gradient(ellipse 75% 70% at 50% 50%,transparent 52%,rgba(0,0,0,.55) 78%,#000 100%);
+    mask-image:radial-gradient(ellipse 75% 70% at 50% 50%,transparent 52%,rgba(0,0,0,.55) 78%,#000 100%)}
+  .mc-stage{--dot:rgba(255,196,140,.34)}
+  .mc-std .mc-stage{--dot:rgba(185,200,255,.34)}
 }
