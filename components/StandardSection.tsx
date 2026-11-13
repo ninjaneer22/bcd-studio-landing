@@ -78,6 +78,7 @@ const StandardSection: React.FC = () => {
             {/* Media 1: Loading Plugins Video */}
             <div className="std-anim w-full aspect-video bg-black rounded-lg overflow-hidden border border-white/5 relative group shadow-2xl">
               <LazyVideo src="/images/movies/bcd_standard_3_plugins.mp4" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="vid-scan" aria-hidden="true" />
             </div>
 
             {/* Media 2: UI Angle Image */}

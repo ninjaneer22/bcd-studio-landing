@@ -84,6 +84,7 @@ const MaxSection: React.FC = () => {
             {/* Media 1: Loading Plugins Video */}
             <div className="max-std-anim w-full aspect-video bg-black rounded-xl overflow-hidden border border-white/10 relative group shadow-[0_0_100px_rgba(0,0,0,0.6)]">
               <LazyVideo src="/images/movies/bcd_max_load_3_plugins.mp4" className="w-full h-full object-cover opacity-90 transition-opacity duration-700" />
+              <div className="vid-scan" aria-hidden="true" />
             </div>
 
             {/* Media 2: UI Angle Image */}

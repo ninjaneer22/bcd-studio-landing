@@ -21,6 +21,7 @@ import TechnicalDetails from './components/TechnicalDetails';
 import FAQSection from './components/FAQSection';
 import './components/mobile.css';
 import './components/buy.css';
+import './components/scanlines.css';
 import Footer from './components/Footer';
 
 // The new Success page

@@ -1,0 +1,3 @@
+/* Very fine scan lines over the two Logic Pro screen clips (Standard and MAX details sections).
+   Same recipe as the hero: one dark pixel line every three pixels. The hero uses .22; these clips use .15 because they have bright pop-ups. Lower to soften, raise to strengthen. */
+.vid-scan{position:absolute;inset:0;z-index:5;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.15) 0,rgba(0,0,0,.15) 1px,transparent 1px,transparent 3px);mix-blend-mode:multiply}
