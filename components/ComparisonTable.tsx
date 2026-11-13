@@ -76,8 +76,8 @@ const ComparisonTable: React.FC = () => {
                 {/* Price, then the Buy buttons, at the foot of each column */}
                 <tr className="table-row-reveal">
                   <td className="pt-8 pb-2 pr-6 text-google-white font-bold align-bottom text-base">Price</td>
-                  <td className="pt-8 pb-2 px-6 text-center text-white text-3xl font-bold">£29.99</td>
-                  <td className="pt-8 pb-2 px-6 text-center text-white text-3xl font-bold">£49.99</td>
+                  <td className="pt-8 pb-2 px-6 text-center text-white text-xl font-bold">£29.99</td>
+                  <td className="pt-8 pb-2 px-6 text-center text-white text-xl font-bold">£49.99</td>
                 </tr>
                 <tr className="table-row-reveal !border-t-0">
                   <td className="pb-2"></td>
