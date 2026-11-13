@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { useReveal } from './useReveal';
 
 const STANDARD_URL = 'https://buy.stripe.com/fZu3cv55bbKadeYa0b8bS01';
@@ -23,13 +23,6 @@ const ROWS: { label: string; std: React.ReactNode; max: React.ReactNode }[] = [
 const ComparisonTable: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   useReveal(sectionRef, '.table-row-reveal');
-  const [showFade, setShowFade] = useState(true);
-
-  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
-    const { scrollLeft, scrollWidth, clientWidth } = e.currentTarget;
-    setShowFade(scrollLeft + clientWidth < scrollWidth - 20);
-  };
-
   return (
     <section
       id="comparison-panel"
@@ -39,6 +32,24 @@ const ComparisonTable: React.FC = () => {
       <style>{`
         .custom-scrollbar::-webkit-scrollbar { display: none; }
         .custom-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        /* Phones: no sideways scrolling. Each row becomes a small block: the feature name, then Standard, then MAX. */
+        @media (max-width: 767px) {
+          .cmp table, .cmp tbody { display: block; min-width: 0; width: 100%; }
+          .cmp thead { display: none; }
+          .cmp tr { display: block; padding: 18px 0; }
+          .cmp td { display: block; text-align: left; padding: 0; }
+          .cmp td.cmp-label { margin-bottom: 10px; font-size: 15px; }
+          .cmp td.cmp-std, .cmp td.cmp-max { font-size: 15px; line-height: 1.45; }
+          .cmp td.cmp-std { margin-bottom: 10px; }
+          .cmp td.cmp-std::before, .cmp td.cmp-max::before { display: block; margin-bottom: 2px; font-size: 11px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; }
+          .cmp td.cmp-std::before { content: "Standard"; color: #06b6d4; }
+          .cmp td.cmp-max::before { content: "MAX"; color: #f97316; }
+          .cmp tr.cmp-price, .cmp tr.cmp-buy { display: grid; grid-template-columns: 1fr 1fr; column-gap: 12px; padding: 12px 0 0; }
+          .cmp tr.cmp-price { padding-top: 24px; }
+          .cmp tr.cmp-price td.cmp-label, .cmp tr.cmp-buy td.cmp-gap { display: none; }
+          .cmp tr.cmp-price td.cmp-std, .cmp tr.cmp-price td.cmp-max { margin: 0; font-size: 22px; }
+          .cmp td.cmp-btn { text-align: center; }
+        }
       `}</style>
 
       <div className="max-w-6xl mx-auto space-y-12">
@@ -51,8 +62,8 @@ const ComparisonTable: React.FC = () => {
           </h2>
         </div>
 
-        <div className="relative group">
-          <div className="overflow-x-auto custom-scrollbar" onScroll={handleScroll}>
+        <div className="relative group cmp">
+          <div className="overflow-x-auto custom-scrollbar">
             <table className="w-full text-left border-collapse min-w-[620px]">
               <thead>
                 <tr className="border-b border-white/10">
@@ -68,26 +79,25 @@ const ComparisonTable: React.FC = () => {
               <tbody className="divide-y divide-white/5">
                 {ROWS.map((row) => (
                   <tr key={row.label} className="table-row-reveal group hover:bg-white/[0.02] transition-colors">
-                    <td className="py-6 pr-6 text-google-white font-bold align-top text-base">{row.label}</td>
-                    <td className="py-6 px-6 text-google-grey text-center align-top leading-relaxed text-base">{row.std}</td>
-                    <td className="py-6 px-6 text-google-grey text-center align-top leading-relaxed text-base">{row.max}</td>
+                    <td className="cmp-label py-6 pr-6 text-google-white font-bold align-top text-base">{row.label}</td>
+                    <td className="cmp-std py-6 px-6 text-google-grey text-center align-top leading-relaxed text-base">{row.std}</td>
+                    <td className="cmp-max py-6 px-6 text-google-grey text-center align-top leading-relaxed text-base">{row.max}</td>
                   </tr>
                 ))}
                 {/* Price, then the Buy buttons, at the foot of each column */}
-                <tr className="table-row-reveal">
-                  <td className="pt-8 pb-2 pr-6 text-google-white font-bold align-bottom text-base">Price</td>
-                  <td className="pt-8 pb-2 px-6 text-center text-white text-xl font-bold">£29.99</td>
-                  <td className="pt-8 pb-2 px-6 text-center text-white text-xl font-bold">£49.99</td>
+                <tr className="table-row-reveal cmp-price">
+                  <td className="cmp-label pt-8 pb-2 pr-6 text-google-white font-bold align-bottom text-base">Price</td>
+                  <td className="cmp-std pt-8 pb-2 px-6 text-center text-white text-xl font-bold">£29.99</td>
+                  <td className="cmp-max pt-8 pb-2 px-6 text-center text-white text-xl font-bold">£49.99</td>
                 </tr>
-                <tr className="table-row-reveal !border-t-0">
-                  <td className="pb-2"></td>
-                  <td className="pt-4 pb-2 px-3 text-center"><a href={STANDARD_URL} className="buy-btn buy-btn--sm">Buy Standard</a></td>
-                  <td className="pt-4 pb-2 px-3 text-center"><a href={MAX_URL} className="buy-btn buy-btn--sm">Buy MAX</a></td>
+                <tr className="table-row-reveal !border-t-0 cmp-buy">
+                  <td className="cmp-gap pb-2"></td>
+                  <td className="cmp-btn pt-4 pb-2 px-3 text-center"><a href={STANDARD_URL} className="buy-btn buy-btn--sm">Buy Standard</a></td>
+                  <td className="cmp-btn pt-4 pb-2 px-3 text-center"><a href={MAX_URL} className="buy-btn buy-btn--sm">Buy MAX</a></td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <div className={`absolute right-0 top-0 bottom-0 z-20 w-32 bg-gradient-to-l from-[#0b1220] via-[#0b1220]/90 to-transparent pointer-events-none transition-opacity duration-500 md:hidden ${showFade ? 'opacity-100' : 'opacity-0'}`} />
         </div>
       </div>
     </section>
