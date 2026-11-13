@@ -6,8 +6,8 @@ import './cube.css';
 
 const FACES = [
   { src: '/images/cube/max/side_1.png', alt: 'The interface your plugins deserve.' },
-  { src: '/images/cube/max/side_2.png', alt: 'Plugin Launcher Max: plugin grid' },
-  { src: '/images/cube/max/side_3.png', alt: 'Plugin Launcher Max: LPM grid' },
+  { src: '/images/cube/max/side_2.webp', alt: 'Plugin Launcher Max: plugin grid' },
+  { src: '/images/cube/max/side_3.webp', alt: 'Plugin Launcher Max: LPM grid' },
   { src: '/images/cube/max/side_4.png', alt: 'Browse. Click. Done.' },
 ];
 const OFFSETS = [0, 90, 180, -90];

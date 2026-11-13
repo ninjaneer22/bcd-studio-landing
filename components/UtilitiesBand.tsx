@@ -27,7 +27,7 @@ const UtilitiesBand: React.FC = () => {
       {TOOLS.map((t) => (
         <li key={t.key} className="ub-rv">
           <Link to="/utilities" className="ub-card" aria-label={t.name}>
-            <span className="ub-shot"><img src={`/images/utilities/${t.key}.png`} alt="" loading="lazy" draggable={false} /></span>
+            <span className="ub-shot"><img src={`/images/utilities/${t.key}.webp`} alt="" loading="lazy" draggable={false} /></span>
             <span className="ub-name">{t.name}</span>
           </Link>
         </li>

@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { useReveal } from './useReveal';
+import LazyVideo from './LazyVideo';
 
 const MaxSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -82,9 +83,7 @@ const MaxSection: React.FC = () => {
             
             {/* Media 1: Loading Plugins Video */}
             <div className="max-std-anim w-full aspect-video bg-black rounded-xl overflow-hidden border border-white/10 relative group shadow-[0_0_100px_rgba(0,0,0,0.6)]">
-              <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-90 transition-opacity duration-700">
-                <source src="/images/movies/bcd_max_load_3_plugins.mp4" type="video/mp4" />
-              </video>
+              <LazyVideo src="/images/movies/bcd_max_load_3_plugins.mp4" className="w-full h-full object-cover opacity-90 transition-opacity duration-700" />
             </div>
 
             {/* Media 2: UI Angle Image */}
@@ -98,9 +97,7 @@ const MaxSection: React.FC = () => {
 
             {/* Media 3: Button Explainer Video */}
             <div className="max-std-anim w-full aspect-video bg-black rounded-xl overflow-hidden border border-white/10 shadow-[0_0_80px_rgba(0,0,0,0.4)]">
-              <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-90 transition-opacity duration-700">
-                <source src="/images/movies/4_macros_per_button.mp4" type="video/mp4" />
-              </video>
+              <LazyVideo src="/images/movies/4_macros_per_button.mp4" className="w-full h-full object-cover opacity-90 transition-opacity duration-700" />
             </div>
 
           </div>

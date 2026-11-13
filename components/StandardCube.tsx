@@ -6,8 +6,8 @@ import './cube.css';
 
 const FACES = [
   { src: '/images/cube/standard/side_1.png', alt: 'The interface your plugins deserve.' },
-  { src: '/images/cube/standard/side_2.png', alt: 'Plugin Launcher Standard: Logic Pro Plugins' },
-  { src: '/images/cube/standard/side_3.png', alt: 'Plugin Launcher Standard: Logic Pro Instruments' },
+  { src: '/images/cube/standard/side_2.webp', alt: 'Plugin Launcher Standard: Logic Pro Plugins' },
+  { src: '/images/cube/standard/side_3.webp', alt: 'Plugin Launcher Standard: Logic Pro Instruments' },
   { src: '/images/cube/standard/side_4.png', alt: 'Browse. Click. Done.' },
 ];
 const OFFSETS = [0, 90, 180, -90];

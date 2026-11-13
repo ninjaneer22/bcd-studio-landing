@@ -48,7 +48,7 @@ const Utilities: React.FC = () => {
       el.style.setProperty('--ar', p.ar.toFixed(4));
       el.innerHTML =
         `<div class="inner"><span class="idx">0${k + 1}</span>` +
-        `<figure class="shot" data-zoom="${p.key}" title="Click to enlarge"><img src="/images/utilities/${p.key}.png" alt="${esc(p.name)} interface" draggable="false"></figure>` +
+        `<figure class="shot" data-zoom="${p.key}" title="Click to enlarge"><img src="/images/utilities/${p.key}.webp" alt="${esc(p.name)} interface" draggable="false"></figure>` +
         `<h3 class="name">${esc(p.name)}</h3>` +
         `<div class="r r2"><div><p class="tag">${esc(p.tag)}</p></div></div>` +
         `<div class="r r3"><div><p class="desc">${esc(p.desc)}</p></div></div>` +

@@ -2,6 +2,7 @@
 import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { useReveal } from './useReveal';
+import LazyVideo from './LazyVideo';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const VideoOnlySection: React.FC = () => {
@@ -22,16 +23,7 @@ const VideoOnlySection: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         <div className="video-only-anim relative group w-full aspect-video bg-zinc-950 rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_80px_rgba(0,0,0,0.8)]">
           {/* Main Video */}
-          <video
-            ref={videoRef}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover opacity-90 transition-opacity duration-700 group-hover:opacity-100"
-          >
-            <source src="/images/movies/bcd_max_promo_10_sec.mp4" type="video/mp4" />
-          </video>
+          <LazyVideo src="/images/movies/bcd_max_promo_10_sec.mp4" className="w-full h-full object-cover opacity-90 transition-opacity duration-700 group-hover:opacity-100" />
 
           {/* Subtle vignette and scanline effect overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60 pointer-events-none"></div>

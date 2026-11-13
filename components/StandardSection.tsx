@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { useReveal } from './useReveal';
+import LazyVideo from './LazyVideo';
 
 const StandardSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -76,9 +77,7 @@ const StandardSection: React.FC = () => {
             
             {/* Media 1: Loading Plugins Video */}
             <div className="std-anim w-full aspect-video bg-black rounded-lg overflow-hidden border border-white/5 relative group shadow-2xl">
-              <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700">
-                <source src="/images/movies/bcd_standard_3_plugins.mp4" type="video/mp4" />
-              </video>
+              <LazyVideo src="/images/movies/bcd_standard_3_plugins.mp4" className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" />
             </div>
 
             {/* Media 2: UI Angle Image */}
