@@ -65,7 +65,7 @@ const PricingSection: React.FC = () => {
               <li>• Plug-and-play setup</li>
               <li>• One-time purchase</li>
             </ul>
-            <a href="https://buy.stripe.com/fZu3cv55bbKadeYa0b8bS01" className="buy-btn mt-auto">Buy Standard · £29.99</a>
+            <a href="https://buy.stripe.com/fZu3cv55bbKadeYa0b8bS01" className="buy-btn mt-auto">Buy Standard</a>
           </div>
 
           {/* MAX */}
@@ -79,7 +79,7 @@ const PricingSection: React.FC = () => {
               <li>• Includes everything in Standard</li>
               <li>• Full Flexi-Deck Creator license</li>
             </ul>
-            <a href="https://buy.stripe.com/9B6fZh9lr15wb6Q0pB8bS02" className="buy-btn mt-auto">Buy MAX · £49.99</a>
+            <a href="https://buy.stripe.com/9B6fZh9lr15wb6Q0pB8bS02" className="buy-btn mt-auto">Buy MAX</a>
           </div>
 
         </div>

@@ -32,6 +32,7 @@
   #comparison-panel .space-y-12 > :not([hidden]) ~ :not([hidden]) { margin-top: 28px !important; }
   #comparison-panel .space-y-8 > :not([hidden]) ~ :not([hidden]) { margin-top: 20px !important; }
   #comparison-panel td, #comparison-panel th { padding-top: 16px !important; padding-bottom: 16px !important; }
+  #comparison-panel td.text-3xl { font-size: 22px !important; }
 
   /* benefits */
   #why-invest-now { padding: 44px 24px 28px !important; }
@@ -72,6 +73,6 @@
   #comparison-panel th, #comparison-panel td { padding-left: 6px !important; padding-right: 6px !important; word-break: break-word; }
   #comparison-panel th:first-child, #comparison-panel td:first-child { width: 34%; }
   #comparison-panel th { font-size: 14px !important; letter-spacing: .08em !important; }
-  #comparison-panel th span.block { font-size: 17px !important; letter-spacing: 0 !important; margin-bottom: 12px !important; }
+  #comparison-panel th span.block { font-size: 17px !important; letter-spacing: 0 !important; }
   #comparison-panel .bg-gradient-to-l { display: none !important; }
 }

@@ -55,21 +55,13 @@ const ComparisonTable: React.FC = () => {
           <div className="overflow-x-auto custom-scrollbar" onScroll={handleScroll}>
             <table className="w-full text-left border-collapse min-w-[620px]">
               <thead>
-                <tr className="border-b border-white/10 align-bottom">
+                <tr className="border-b border-white/10">
                   <th className="py-6 pr-4 text-sm tracking-[0.3em] font-bold text-google-grey uppercase w-1/4">Feature</th>
                   <th className="py-6 px-3 text-center w-3/8">
-                    <span className="block text-2xl font-black text-cyan-500 mb-4">Standard</span>
-                    <a href={STANDARD_URL} className="buy-btn buy-btn--sm">
-                      <span className="max-md:hidden">Buy Standard · £29.99</span>
-                      <span className="md:hidden">Buy · £29.99</span>
-                    </a>
+                    <span className="block text-2xl font-black text-cyan-500">Standard</span>
                   </th>
                   <th className="py-6 px-3 text-center w-3/8">
-                    <span className="block text-2xl font-black text-orange-500 mb-4">MAX</span>
-                    <a href={MAX_URL} className="buy-btn buy-btn--sm">
-                      <span className="max-md:hidden">Buy MAX · £49.99</span>
-                      <span className="md:hidden">Buy · £49.99</span>
-                    </a>
+                    <span className="block text-2xl font-black text-orange-500">MAX</span>
                   </th>
                 </tr>
               </thead>
@@ -81,6 +73,17 @@ const ComparisonTable: React.FC = () => {
                     <td className="py-6 px-6 text-google-grey text-center align-top leading-relaxed text-base">{row.max}</td>
                   </tr>
                 ))}
+                {/* Price, then the Buy buttons, at the foot of each column */}
+                <tr className="table-row-reveal">
+                  <td className="pt-8 pb-2 pr-6 text-google-white font-bold align-bottom text-base">Price</td>
+                  <td className="pt-8 pb-2 px-6 text-center text-white text-3xl font-bold">£29.99</td>
+                  <td className="pt-8 pb-2 px-6 text-center text-white text-3xl font-bold">£49.99</td>
+                </tr>
+                <tr className="table-row-reveal !border-t-0">
+                  <td className="pb-2"></td>
+                  <td className="pt-4 pb-2 px-3 text-center"><a href={STANDARD_URL} className="buy-btn buy-btn--sm">Buy Standard</a></td>
+                  <td className="pt-4 pb-2 px-3 text-center"><a href={MAX_URL} className="buy-btn buy-btn--sm">Buy MAX</a></td>
+                </tr>
               </tbody>
             </table>
           </div>
