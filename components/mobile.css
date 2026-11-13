@@ -47,7 +47,7 @@
 
   /* pricing */
   #pricing-plans { padding: 44px 24px 48px !important; }
-  #pricing-plans h3.mb-16 { margin-bottom: 32px !important; }
+  #pricing-plans h2.mb-16 { margin-bottom: 32px !important; }
 
   /* technical details + FAQ */
   #tech-specs, #faq-panel { padding: 52px 24px !important; }

@@ -42,3 +42,6 @@
 @keyframes hy-spin{to{transform:rotate(360deg)}}
 @media(prefers-reduced-motion:reduce){.hy-frame .more i{animation:none}}
 @media(max-width:640px){.hy-frame .more b{font-size:.85em}.hy-hero{height:auto;aspect-ratio:9/19;min-height:0}.hy-hero::after{height:6vh}.hy-down{display:none!important}}
+
+/* Hidden page heading for search engines and screen readers */
+.hy-hero > h1.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}

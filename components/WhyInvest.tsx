@@ -30,10 +30,10 @@ const WhyInvest: React.FC = () => {
 
         {/* Section Heading */}
         <div className="space-y-8">
-          <h3 className="invest-reveal text-3xl md:text-5xl text-white font-bold leading-tight tracking-tight">
+          <h2 className="invest-reveal text-3xl md:text-5xl text-white font-bold leading-tight tracking-tight">
             Time is your most valuable asset.<br />
             For professionals, Plugin Launcher <br className="hidden md:block" /> pays for itself in a single session.
-          </h3>
+          </h2>
           <p className="invest-reveal text-neutral-400 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
             Investing in Plugin Launcher is an investment <br />in your productivity, your creativity, and your vision.
           </p>
@@ -41,9 +41,9 @@ const WhyInvest: React.FC = () => {
 
         {/* Updated Benefits List */}
         <div className="space-y-16">
-          <h2 className="invest-reveal text-sm tracking-[0.4em] font-medium text-[#9AA0A6] uppercase">
+          <p className="invest-reveal text-sm tracking-[0.4em] font-medium text-[#9AA0A6] uppercase">
             CORE PROFESSIONAL ADVANTAGES:
-          </h2>
+          </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 max-w-4xl mx-auto text-left">
             

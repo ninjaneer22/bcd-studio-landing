@@ -209,6 +209,7 @@ const HeroLayers: React.FC = () => {
 
   return (
     <section id="panel-1-hero" ref={rootRef} className="hy-hero">
+      <h1 className="sr-only">BCD Plugin Launcher for Logic Pro: Browse. Click. Done.</h1>
       <div className="hy-frame" ref={frameRef} />
       <button className="hy-down" ref={cueRef} onClick={handleScrollDown}>
         <span>Scroll down</span>
