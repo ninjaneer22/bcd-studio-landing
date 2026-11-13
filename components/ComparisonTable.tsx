@@ -82,7 +82,7 @@ const ComparisonTable: React.FC = () => {
                 <tr className="table-row-reveal !border-t-0">
                   <td className="pb-2"></td>
                   <td className="pt-4 pb-2 px-3 text-center"><a href={STANDARD_URL} className="buy-btn buy-btn--sm">Buy Standard</a></td>
-                  <td className="pt-4 pb-2 px-3 text-center"><a href={MAX_URL} className="buy-btn buy-btn--sm">Buy MAX</a></td>
+                  <td className="pt-4 pb-2 px-3 text-center"><a href={MAX_URL} className="buy-btn buy-btn--sm buy-btn--max">Buy MAX</a></td>
                 </tr>
               </tbody>
             </table>

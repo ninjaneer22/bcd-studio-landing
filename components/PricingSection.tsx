@@ -79,7 +79,7 @@ const PricingSection: React.FC = () => {
               <li>• Includes everything in Standard</li>
               <li>• Full Flexi-Deck Creator license</li>
             </ul>
-            <a href="https://buy.stripe.com/9B6fZh9lr15wb6Q0pB8bS02" className="buy-btn mt-auto">Buy MAX</a>
+            <a href="https://buy.stripe.com/9B6fZh9lr15wb6Q0pB8bS02" className="buy-btn buy-btn--max mt-auto">Buy MAX</a>
           </div>
 
         </div>

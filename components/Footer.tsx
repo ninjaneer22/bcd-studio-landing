@@ -47,7 +47,7 @@ const Footer: React.FC = () => {
         {/* BACK TO TOP CTA - Pricing Section Style */}
         <div className="pt-8">
           <div className="relative inline-block group p-[2px] rounded-full overflow-hidden transition-all duration-500 hover:scale-105 active:scale-95">
-            <div className="absolute inset-[-1000%] animate-spin-slow bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]"></div>
+            <div className="absolute inset-[-1000%] animate-spin-slow bg-[conic-gradient(from_90deg_at_50%_50%,#7dd3fc_0%,#0369a1_50%,#7dd3fc_100%)]"></div>
             <button 
               onClick={scrollToTop}
               className="relative block px-8 py-3 bg-neutral-950 text-neutral-200 rounded-full font-medium tracking-widest uppercase text-xs hover:bg-neutral-900 transition-colors text-center"

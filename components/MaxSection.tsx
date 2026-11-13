@@ -139,7 +139,7 @@ const MaxSection: React.FC = () => {
                 </p>
 
                 <div className="pt-10">
-                  <a href="https://buy.stripe.com/9B6fZh9lr15wb6Q0pB8bS02" className="buy-btn">Buy MAX · £49.99</a>
+                  <a href="https://buy.stripe.com/9B6fZh9lr15wb6Q0pB8bS02" className="buy-btn buy-btn--max">Buy MAX · £49.99</a>
                 </div>
               </div>
             </div>
