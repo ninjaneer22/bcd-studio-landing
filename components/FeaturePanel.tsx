@@ -96,7 +96,7 @@ const FeaturePanel: React.FC = () => {
               muted
               playsInline
               preload="metadata"
-              poster="/images/explainer-first-frame.webp"
+              poster="/images/explainer-frame-2s.webp"
               aria-label="Plugin Launcher in Logic Pro: browse the list, click Beat Breaker, and the plugin opens."
             />
             <div className="pl-scrim" />
