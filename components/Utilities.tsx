@@ -7,6 +7,14 @@ import './utilities.css';
 const BUY_URL = 'https://flexi-deck.com/store.html#premium-libraries';
 
 const PRODUCTS = [
+  { key: 'panner', name: 'Panner', ar: 1603 / 902,
+    tag: 'Widen your production in 2 clicks.',
+    desc: 'Pans a run of channels in one go, in LR or LCR mode, starting from the selected Logic Pro channel. Manage up to 24 pairs or LCR groups at once.',
+    chips: ['LR or LCR', 'Up to 24', 'Batch pan', 'Logic Pro 11–12'] },
+  { key: 'gain', name: 'Gain', ar: 794 / 502,
+    tag: 'Precise, repeatable region gain.',
+    desc: 'Change gain on audio regions with a single click, from 0.1 dB to 10 dB in either direction, with the everyday edit, navigation and cutting tools right alongside.',
+    chips: ['±0.1 to ±10 dB', 'One click', 'Edit tools', 'Logic Pro 11–12'] },
   { key: 'groups', name: 'Groups', ar: 812 / 900,
     tag: 'Isolate any group. Instantly.',
     desc: 'Choose between 32 groups or 64 orchestral groups, already mapped out. Select a named group and its member channels are selected while everything else is hidden. A session of hundreds of channels becomes manageable with one click.',
@@ -16,14 +24,6 @@ const PRODUCTS = [
     tag: 'Up to 48 Stems Bounced Sequentially.',
     desc: 'Solos and bounces tracks with their effects to a folder you choose, then returns and repeats for the number of stems you set. Skip the deep export windows and process up to 48 stems in a single click action.',
     chips: ['Up to 48 stems', 'Fast bounce', 'Batch rename', 'Logic Pro 11–12'] },
-  { key: 'gain', name: 'Gain', ar: 794 / 502,
-    tag: 'Precise, repeatable region gain.',
-    desc: 'Change gain on audio regions with a single click, from 0.1 dB to 10 dB in either direction, with the everyday edit, navigation and cutting tools right alongside.',
-    chips: ['±0.1 to ±10 dB', 'One click', 'Edit tools', 'Logic Pro 11–12'] },
-  { key: 'panner', name: 'Panner', ar: 1603 / 902,
-    tag: 'Widen your production in 2 clicks.',
-    desc: 'Pans a run of channels in one go, in LR or LCR mode, starting from the selected Logic Pro channel. Manage up to 24 pairs or LCR groups at once.',
-    chips: ['LR or LCR', 'Up to 24', 'Batch pan', 'Logic Pro 11–12'] },
 ];
 
 const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' } as Record<string, string>)[c]);
